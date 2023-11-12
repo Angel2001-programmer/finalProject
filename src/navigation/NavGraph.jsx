@@ -7,7 +7,7 @@ const NavGraph = () => {
     return(
         <BrowserRouter>
          <Routes>
-            <Route path="/"
+            <Route path="/finalProject"
             index element={<Home/>}/>
             <Route path="/about"
             element={<About/>}/>
