@@ -1,22 +1,14 @@
 .navbar{
   background-color: rgb(51, 166, 253);
+  width: 100%;
+  min-height: 10vh;
   padding: 15px;
-}
-
-li a{
-  text-decoration: none;
-  color: black;
 }
 
 .navbar h1 {
   display: flex;
   align-items: center;
   margin-left: 5px;
-}
-
-.mainText{
-  font-size: 35px;
-  margin: 0;
 }
 
 .main {
@@ -28,7 +20,6 @@ li a{
 .main section {
   flex: 1;
   display: flex;
-  flex-flow: column wrap;
   padding-left: 15px;
 }
 
@@ -44,7 +35,7 @@ li a{
 }
 
 .sidebar{
-  min-height: 83vh;
+  height: 86vh;
   min-width: 20vh;
   background-color: rgb(159, 255, 63);
   padding: 0;
@@ -57,11 +48,4 @@ li a{
   background-color: orangered;
   justify-content: center;
   padding: 10px;
-  min-height: 6vh;
-}
-
-.card{
-  height: 10vh;
-  width: 10vh;
-  background-color: black;
 }

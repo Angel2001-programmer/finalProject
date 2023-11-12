@@ -1,0 +1,19 @@
+.card{
+    display: flex;
+    flex-flow: column wrap;
+    border-radius: 10px;
+    border: 2.5px solid black;
+    padding: 10px;
+    height: 30vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.card p {
+    margin: 5px;
+    padding: 0;
+}
+
+.card img {
+    width: 18vh;
+}
