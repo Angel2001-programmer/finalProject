@@ -73,7 +73,7 @@ export default function About() {
       <aside className="sidebar">
         <MenuItems/>
       </aside>
-      <section className="content">
+      <section className={styles.content}>
       <p className="mainText">About</p>
       <CardList data={list} className={styles.CardList}/>
       </section>

@@ -1,0 +1,12 @@
+@media only screen and (max-width: 400px){
+    .content{
+      padding: 0;
+      margin: 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    section.content{
+        height: 100%;
+      }
+}
