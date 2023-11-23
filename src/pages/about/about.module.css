@@ -1,3 +1,12 @@
+.aboutColumn{
+    display: flex;
+    max-width: fit-content;
+    padding: 20px;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: end;
+    gap: 100px;
+}
 @media only screen and (max-width: 400px){
     .content{
       padding: 0;

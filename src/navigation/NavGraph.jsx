@@ -8,9 +8,9 @@ const NavGraph = () => {
     return(
         <BrowserRouter>
          <Routes>
+            <Route path="/home"
+            element={<Home/>}/>
             <Route path="/finalProject"
-            index element={<Home/>}/>
-            <Route path="/about"
             element={<About/>}/>
             <Route path="/contact"
             element={<Contact/>}/>
