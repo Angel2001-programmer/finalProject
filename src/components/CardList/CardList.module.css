@@ -13,3 +13,9 @@
     gap: 10px;
     justify-content: center;
 }
+
+@media only screen and (max-width: 800px){
+    .CardRow{
+        margin: 0;
+    }
+}
