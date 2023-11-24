@@ -3,7 +3,7 @@ import MenuItems from '../../components/MenuItems/menuItems';
 export default function Home() {  
   return (
     <Fragment>
-    <nav className='navbar'><h1 href="/" className='headingTitles'>NAVBAR</h1></nav>
+    <nav className='navbar'><h1 className='headingTitles'>NAVBAR</h1></nav>
     <main className='main'>
       <aside className='sidebar'>
         <MenuItems />
