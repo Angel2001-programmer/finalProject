@@ -1,0 +1,16 @@
+.profile{
+    display: flex;
+    max-width: fit-content;
+}
+
+.favouriteActivity{
+    margin: 0;
+    padding: 0;
+  }
+  
+  .profileIMG{
+    height: 300px;
+    width: 300px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.139) 5px 5px 5px 5px;
+  }
