@@ -7,6 +7,7 @@ const CardList = props => {
             <div className={styles.CardRow}>
             {props.data.map((item) => {
             return <ListItem 
+                        key={item.id}
                         image={item.image} 
                         name={item.name} 
                         description={item.description}
