@@ -3,6 +3,7 @@ import MenuItems from '../../components/MenuItems/menuItems';
 // import CardList from '../../components/CardList/CardList'
 import styles from "./about.module.css";
 import Angel from "../../img/angel.jpeg";
+import Katherine from "../../img/katherine.png"
 import TeamMemeber from '../../components/TeamMember/teamMember';
 
 export default function About() {
@@ -97,12 +98,12 @@ export default function About() {
       />
 
       <TeamMemeber 
-      name='Your Name' 
+      name='Katherine Hooper' 
       // if you want your image on the website place it into the img folder, 
       // and link it same as me with import on the top of the file.
-      profilepictrue='' 
-      hobby='Your hobby/activity' 
-      purpose='Why do you do it?'
+      profilepictrue={Katherine} 
+      hobby='I enjoy running and kickboxing' 
+      purpose='Running feels freeing and helps me think. Kickboxing makes me feel connected and in control. I love to challenge myself and work hard to progress and improve.'
       />
       <TeamMemeber 
 
