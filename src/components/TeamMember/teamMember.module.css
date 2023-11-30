@@ -1,6 +1,8 @@
 .profile{
     display: flex;
-    max-width: fit-content;
+    flex-direction: column;
+    max-width: 320px;
+    word-wrap: break-word;
 }
 
 .favouriteActivity{
