@@ -1,9 +1,10 @@
 import { Fragment } from 'react'
 import MenuItems from '../../components/MenuItems/menuItems';
 import styles from "./about.module.css";
-import Angel from "../../img/angel.jpg";
-import Katherine from "../../img/katherine.png"
-import haiying from '../../img/haiying.jpg';
+import Angel from "../../assets/img/TeamMembers/angel.jpg";
+import Katherine from "../../assets/img/TeamMembers/katherine.png"
+import haiying from '../../assets/img/TeamMembers/haiying.jpg';
+import Katalin from '../../assets/img/TeamMembers/katalin.png';
 import TeamMemeber from '../../components/TeamMember/teamMember';
 
 export default function About() {
@@ -29,17 +30,13 @@ export default function About() {
 
           <TeamMemeber 
           name='Katalin' 
-        // if you want your image on the website place it into the img folder, 
-        // and link it same as me with import on the top of the file.
-        profilepictrue='' 
+        profilepictrue={Katalin} 
         hobby='Weight lifting and gaming.' 
         purpose='To be strong and have a quick trigger finger.'
       />
       
           <TeamMemeber 
           name='Abbie' 
-          // if you want your image on the website place it into the img folder, 
-          // and link it same as me with import on the top of the file.
           profilepictrue='' 
           hobby='Reading' 
           purpose='For mental stimulation and relaxation'
@@ -47,8 +44,6 @@ export default function About() {
 
           <TeamMemeber 
           name='Katherine Hooper' 
-          // if you want your image on the website place it into the img folder, 
-          // and link it same as me with import on the top of the file.
           profilepictrue={Katherine} 
           hobby='I enjoy running and kickboxing' 
           purpose='Running feels freeing and helps me think. Kickboxing makes me feel connected and in control. I love to challenge myself and work hard to progress and improve.'
