@@ -27,15 +27,15 @@ export default function About() {
             purpose='To get a job and have a good life'
           />
 
-          <TeamMemeber
-            name='Your Name'
-            // if you want your image on the website place it into the img folder,
-            // and link it same as me with import on the top of the file.
-            profilepictrue=''
-            hobby='Your hobby/activity'
-            purpose='Why do you do it?'
-          />
-
+          <TeamMemeber 
+          name='Katalin' 
+        // if you want your image on the website place it into the img folder, 
+        // and link it same as me with import on the top of the file.
+        profilepictrue='' 
+        hobby='Weight lifting and gaming.' 
+        purpose='To be strong and have a quick trigger finger.'
+      />
+      
           <TeamMemeber 
           name='Abbie' 
           // if you want your image on the website place it into the img folder, 
