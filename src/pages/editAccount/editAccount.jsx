@@ -5,9 +5,7 @@ import profile from "../../assets/images/user.png";
 import editProfile from "../../assets/images/editProfile.svg";
 
 const EditAccount = props => {  
-  const [isEditProfile, setIsEditProfile] = useState(false);
-  let landing = null;
-  
+  const [isEditProfile, setIsEditProfile] = useState(false);  
   return (
     <Fragment>
     <NavBar isEditProfile={isEditProfile} onEditProfile={setIsEditProfile}/>
