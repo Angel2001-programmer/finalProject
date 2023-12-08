@@ -1,0 +1,26 @@
+.main{
+    min-height: 50.9vw;
+    background-image: url("../../assets/images/background.svg");
+    background-size: cover;
+    background-position: center;
+}
+
+.container0{
+    display: flex;
+    min-height: 40vh;
+    background-color: green;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20vh;
+}
+
+.container1{
+    display: flex;
+    min-height: 40vh;
+    background-color: orange;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20vh;
+}

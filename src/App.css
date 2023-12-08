@@ -2,11 +2,6 @@ body{
   background-color: rgb(72, 72, 72);
 }
 
-.navbar{
-  background-color: rgb(51, 166, 253);
-  padding: 15px;
-}
-
 li a{
   text-decoration: none;
   color: black;
@@ -21,12 +16,14 @@ li a{
 .mainText{
   font-size: 35px;
   margin: 0;
+  margin-top: 150px;
+
 }
 
 .main {
   display: flex;
   flex-direction: row;
-  background-color: rgb(159, 255, 63);
+  background-color: beige;
 }
 
 .main section {

@@ -6,17 +6,13 @@ import Katherine from "../../assets/img/TeamMembers/katherine.png"
 import haiying from '../../assets/img/TeamMembers/haiying.jpg';
 import Katalin from '../../assets/img/TeamMembers/katalin.png';
 import TeamMemeber from '../../components/TeamMember/teamMember';
+import NavBar from "../../components/NavBar/navbar";
 
 export default function About() {
 	return (
 		<Fragment>
-			<nav className='navbar'>
-				<h1 className='headingTitles'>NAVBAR</h1>
-			</nav>
+			<NavBar/>
 			<main className='main'>
-				<aside className='sidebar'>
-					<MenuItems />
-				</aside>
 				<section className={styles.content}>
 					<p className='mainText'>About</p>
 					<h3>Team Introductiom</h3>
@@ -30,9 +26,9 @@ export default function About() {
 
           <TeamMemeber 
           name='Katalin' 
-        profilepictrue={Katalin} 
-        hobby='Weight lifting and gaming.' 
-        purpose='To be strong and have a quick trigger finger.'
+          profilepictrue={Katalin} 
+          hobby='Weight lifting and gaming.' 
+          purpose='To be strong and have a quick trigger finger.'
       />
       
           <TeamMemeber 
@@ -57,7 +53,6 @@ export default function About() {
         </div>
       </section>
     </main>
-    <footer className="footer"><p>(Group 1 Name) all rights reserved</p></footer>
     </Fragment>
   )
 }

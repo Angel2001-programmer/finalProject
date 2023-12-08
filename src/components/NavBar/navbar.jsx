@@ -3,6 +3,7 @@ import Button from "../../UI/Button/button";
 import { useState } from "react";
 import profile from "../../assets/images/user.png";
 import profileDropArrow from "../../assets/images/profileArrow.svg";
+import { Link } from "react-router-dom";
 
 const NavBar = props => {
     let isSignedin = false;
@@ -10,18 +11,18 @@ const NavBar = props => {
     
     return(
         <nav className={styles.navbar}>
-            <h1 className={styles.navHeadingTitles}>IntroVerse</h1>
+            <Link className={styles.link} to="/finalProject"><h1 className={styles.navHeadingTitles}>IntroVerse</h1></Link>
             {isSignedin ?
                <div className={styles.navItems}>
-               <h3 className={styles.navItem}>Home</h3>
-               <h3 className={styles.navItem}>About</h3>
-               <h3 className={styles.navItem}>Home</h3>
-               <h3 className={styles.navItem}>About</h3>
+                <Link className={styles.link} to="/finalProject"><h3 className={styles.navItem}>Home</h3></Link>
+                <Link className={styles.link} to="/about"><h3 className={styles.navItem}>About</h3></Link>
+                <Link className={styles.link} to="/finalProject"><h3 className={styles.navItem}>Home</h3></Link>
+                <Link className={styles.link} to="/about"><h3 className={styles.navItem}>About</h3></Link>
                </div>       
             :
             <div className={styles.navItems}>
-            <h3 className={styles.navItem}>Home</h3>
-            <h3 className={styles.navItem}>About</h3>
+                <Link className={styles.link} to="/finalProject"><h3 className={styles.navItem}>Home</h3></Link>
+                <Link className={styles.link} to="/about"><h3 className={styles.navItem}>About</h3></Link>
             </div>
             
             }
