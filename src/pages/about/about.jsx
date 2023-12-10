@@ -5,6 +5,7 @@ import Angel from "../../assets/img/TeamMembers/angel.jpg";
 import Katherine from "../../assets/img/TeamMembers/katherine.png"
 import haiying from '../../assets/img/TeamMembers/haiying.jpg';
 import Katalin from '../../assets/img/TeamMembers/katalin.png';
+import Abbie from '../../assets/img/TeamMembers/abbie.png';
 import TeamMemeber from '../../components/TeamMember/teamMember';
 
 export default function About() {
