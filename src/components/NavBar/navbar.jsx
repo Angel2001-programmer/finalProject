@@ -1,14 +1,15 @@
 import styles from "./nav.module.css";
 import Button from "../../UI/Button/button";
-import { useState } from "react";
 import profile from "../../assets/images/user.png";
 import profileDropArrow from "../../assets/images/profileArrow.svg";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../App";
+import { useContext } from "react";
 
 const NavBar = props => {
+    const [isOpened, setIsOpened]  = useContext(UserContext);
     let isSignedin = false;
-    const [isPressed, setIsPressed] = useState(false);
-    
+    // const [isClosed, setIsClosed] = useContext(ModalContext);    
     return(
         <nav className={styles.navbar}>
             <Link className={styles.link} to="/finalProject"><h1 className={styles.navHeadingTitles}>IntroVerse</h1></Link>
@@ -40,7 +41,7 @@ const NavBar = props => {
             :
             <Button 
             text="Log in or Sign up" 
-            click={() => setIsPressed(true)}>Log in or sign up?
+            click={() => setIsOpened(true)}>Log in or sign up?
             </Button>
             }
         </nav>

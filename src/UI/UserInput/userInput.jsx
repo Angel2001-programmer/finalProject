@@ -1,7 +1,11 @@
 import styles from "./userInput.module.css"
+import { useContext, useState } from 'react'
+import { UserContext } from "../../App";
 
 const UserInput = props => {
+    const [isOpened, setIsOpened]  = useContext(UserContext);
     let closeModal = null
+
     if(props.title !== ""){
         closeModal= 
             <div className= {styles.rowTop}>

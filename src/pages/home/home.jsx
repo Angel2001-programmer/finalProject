@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import NavBar from '../../components/NavBar/navbar';
 import styles from "./home.module.css";
 import HomeItem from "../../components/HomeItem/HomeItem";
@@ -9,10 +9,13 @@ import Friendship from "../../assets/images/friendship.png"
 import TreatOthers from "../../assets/images/treatothers.png"
 import News from "../../assets/images/discussions.png"
 import dropArrow from "../../assets/images/drop_Icon.svg"
+import Login from "../../UI/Login/login";
+
 export default function Home() {  
+  const [isPressed, setIsPressed] = useState(false);
   return (
     <Fragment>
-    <NavBar />
+    <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
     <main className={styles.main}>
       <div className={styles.rowHome}>
       <div className={styles.containerHeading}>

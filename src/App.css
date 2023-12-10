@@ -53,6 +53,23 @@ li a{
   background-color: black;
 }
 
+.modal{
+  background-color: purple;
+  max-width: 500px;
+  padding: 15px;
+}
+
+#modalBG{
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.672);
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+}
+
 @media only screen and (max-width: 600px) {
   .main {
     display: flex;

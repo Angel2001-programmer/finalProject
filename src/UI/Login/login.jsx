@@ -3,20 +3,26 @@ import Button from "../Button/button"
 import UserInput from "../UserInput/userInput"
 import Card from "../Card/card";
 import Signup from "../signup/signup"
-import { useState } from 'react'
+import { useContext, useState, createContext } from 'react'
+import { UserContext, SignUpContext } from "../../App";
+
+// export const SignUpContext = createContext();
+
 const Login = props => {
-    const [isPressed, setIsPressed] = useState(false);
+    const [isOpened, setIsOpened]  = useContext(UserContext);
+    const [isSignUp, setIsSignUp] = useContext(SignUpContext);
+    const [isClosed, setIsClosed] = useState(false);
     let createAccount = null;
 
-    if(isPressed !== true){
+    if(isOpened){
         createAccount = <div className={styles.login}>
             <UserInput 
             isCloseIcon="X"
-            isClose={() => setIsPressed(props.setPressed(false))}
+            isClose={() => setIsOpened(false)}
             title="Login" 
             for="email" 
             type="text" 
-            value="" 
+            // value="" 
             placeholder="Email"
             labelName="Email"
             />
@@ -25,7 +31,7 @@ const Login = props => {
             title="" 
             for="password" 
             type="password" 
-            value="" 
+            // value="" 
             placeholder="Password"
             labelName="Password"
             />
@@ -38,17 +44,16 @@ const Login = props => {
             dropShadow="#AD0B9A70 5px 5px 5px"
             paddingToRight="70px"
             paddingToLeft="70px"
-            click={() => setIsPressed(props.setPressed(false))}
+            click={() => setIsOpened(false)}
             />
             <div className={styles.noAccount}>
             <h2 className={styles.signUp}>Don't have an account</h2>
-            <h2 className={styles.signUpLink} onClick={() => setIsPressed(true)}>Sign up</h2>
+            <h2 className={styles.signUpLink} 
+            onClick={() => setIsSignUp(true)}
+            >Sign up</h2>
             </div>
             </div>
-        
         </div>
-    } else {
-        createAccount = <Signup pressed={setIsPressed}/>
     }
     return(
             <Card className={styles.modal}>

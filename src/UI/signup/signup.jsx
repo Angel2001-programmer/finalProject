@@ -2,34 +2,42 @@ import styles from "./signup.module.css";
 import Button from "../Button/button"
 import UserInput from "../UserInput/userInput"
 import Card from "../Card/card";
-import { useState } from "react";
-import { redirect } from "react-router-dom";
+import { useState, useContext } from "react";
+import { SignUpContext, UserContext } from "../../App";
 
 const SignUp = props => {
     let SignedUp = null;
-    const [isSignedUp, setIsSignedUp] = useState(false);
-    const [count, setCount] = useState(1);
+    const [isSignUp, setIsSignUp] = useContext(SignUpContext);
+    const [isOpened, setIsOpened] = useContext(UserContext);
+    const [newUser, setNewUser] = useState(false);
+    const [count, setCount] = useState(5);
  
-    if (isSignedUp !== false){
+    if (newUser !== false){
         setTimeout(() => {
-            if(count < 5){
-                setCount(count + 1)
+            if(count > 0){
+                setCount(count - 1)
             } else {
-                window.location.reload();
+                setIsSignUp(false);
+                setIsOpened(false);
             }
         }, 1000);
 
-        SignedUp = <Card>
+        return (SignedUp = <Card>
             <div className={styles.container}>
             <h2 className={styles.accountCreation}>Account creation successful! Welcome to our community</h2>
             <h2 className={styles.bottomText}>This will disappear in {count}</h2>
             </div>
         </Card>
-    } else {
-        SignedUp = <Card>
+        )
+
+    }
+
+    return (
+<Card>
         <UserInput 
         isCloseIcon="←"
-        isClose={() => props.pressed(false)}
+        isClose={() => setIsSignUp(false)
+        }
         className="userInput"
         title="Sign up" 
         for="username" 
@@ -41,6 +49,7 @@ const SignUp = props => {
 
         <div className={styles.nameContainer}>
         <UserInput
+        className={styles.UIName}
         title=""  
         for="name" 
         type="text" 
@@ -93,13 +102,11 @@ const SignUp = props => {
         UIcolor="linear-gradient(#D000AF, #9000A8)"
         borderColor="purple"
         dropShadow="#AD0B9A70 5px 5px 5px"
-        click={() => setIsSignedUp(true)}
+        click={() => setNewUser(true)}
         />
         </div>
         </Card>
-    }
-
-    return (<div>{SignedUp}</div>)
+    );
 }
 
 export default SignUp;
