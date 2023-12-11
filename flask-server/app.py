@@ -4,7 +4,7 @@ from flask_cors import CORS
 from flask_session import Session  # Need to find something to replace this
 from config import ApplicationConfig
 from models.user_models import db, User, Profile
-from models.content_models import db, Books, Anime, Games
+from models.content_models import Books, Anime, Games
 
 # This file might get quite big, might need to have some functions elsewhere and call them here instead
 
