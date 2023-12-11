@@ -2,17 +2,30 @@ import styles from "./login.module.css";
 import Button from "../Button/button"
 import UserInput from "../UserInput/userInput"
 import Card from "../Card/card";
-import Signup from "../signup/signup"
-import { useContext, useState, createContext } from 'react'
-import { UserContext, SignUpContext } from "../../App";
+import { useContext, useState } from 'react'
+import { UserContext, SignUpContext, NewUserContext } from "../../App";
 
 // export const SignUpContext = createContext();
 
 const Login = props => {
     const [isOpened, setIsOpened]  = useContext(UserContext);
     const [isSignUp, setIsSignUp] = useContext(SignUpContext);
-    const [isClosed, setIsClosed] = useState(false);
+    const [newUser, setNewUser] = useContext(NewUserContext);
+    const initialValues = {
+        userName: "",
+        password: ""
+    };
+
+    // This is just a test to see if login works with data.
+    const [userData, setUserData] = useState(initialValues);
+    const [errorMessage, setErrorMessage] = useState(null);
     let createAccount = null;
+    // const usercheck = testAccount.find(testAccount => (testAccount.userName === userData.userName && testAccount.password === userData.password));
+    //API here use either fetch or install Axios library.
+    
+    const handleValues = (e) => {
+        setUserData({ ...userData, [e.target.name]: e.target.value});
+    };
 
     if(isOpened){
         createAccount = <div className={styles.login}>
@@ -20,22 +33,26 @@ const Login = props => {
             isCloseIcon="X"
             isClose={() => setIsOpened(false)}
             title="Login" 
-            for="email" 
+            for="userName" 
             type="text" 
-            // value="" 
-            placeholder="Email"
-            labelName="Email"
+            name="userName"
+            value={userData.userName} 
+            onValue={handleValues}
+            placeholder="UserName"
+            labelName="UserName"
             />
 
             <UserInput 
             title="" 
             for="password" 
             type="password" 
-            // value="" 
+            name="password"
+            value={userData.password} 
+            onValue={handleValues}
             placeholder="Password"
             labelName="Password"
             />
-
+            {errorMessage}
             <div className={styles.bottomContainer}>
             <Button type="submit" 
             text="Sign in" 
@@ -44,12 +61,23 @@ const Login = props => {
             dropShadow="#AD0B9A70 5px 5px 5px"
             paddingToRight="70px"
             paddingToLeft="70px"
-            click={() => setIsOpened(false)}
+            click={() => {
+                if(userData.userName.trim().length === 0 || userData.password.trim().length === 0){
+                    setErrorMessage(<p className={styles.errorMessage}>Inputs cannot be empty</p>)
+                } else {
+                    setIsOpened(false)
+                    setNewUser(true)
+                    console.log('Login successful')
+                }
+            }}
             />
             <div className={styles.noAccount}>
             <h2 className={styles.signUp}>Don't have an account</h2>
             <h2 className={styles.signUpLink} 
-            onClick={() => setIsSignUp(true)}
+            onClick={() => {
+                setIsSignUp(true)
+            }
+            }
             >Sign up</h2>
             </div>
             </div>

@@ -27,8 +27,10 @@ const UserInput = props => {
             
             <input className={styles.userField} 
             type={props.type} 
-            name={props.for} 
             value={props.value} 
+            name={props.name} 
+            onChange={props.onValue}
+            minLength={props.length}
             placeholder={props.placeholder}/>
         </div>
     )

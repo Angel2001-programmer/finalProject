@@ -3,11 +3,12 @@ import Button from "../../UI/Button/button";
 import profile from "../../assets/images/user.png";
 import profileDropArrow from "../../assets/images/profileArrow.svg";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../App";
+import { UserContext, NewUserContext } from "../../App";
 import { useContext } from "react";
 
 const NavBar = props => {
     const [isOpened, setIsOpened]  = useContext(UserContext);
+    const [newUser, setNewUser] = useContext(NewUserContext);
     let isSignedin = false;
     // const [isClosed, setIsClosed] = useContext(ModalContext);    
     return(
@@ -27,7 +28,7 @@ const NavBar = props => {
             </div>
             
             }
-            {isSignedin ?
+            {newUser ?
             <div className={styles.profileRow}>
             <div className={styles.profile}>
                 <img className={styles.profilePicture} src={profile} alt="profile."/>
