@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import styles from './teamMember.module.css';
-import user from "../../img/user.png";
+import user from "../../assets/img/user.png";
 
 const TeamMemeber = props => {
     return(
