@@ -1,10 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
 body{
   background-color: rgb(72, 72, 72);
-}
-
-.navbar{
-  background-color: rgb(51, 166, 253);
-  padding: 15px;
 }
 
 li a{
@@ -21,12 +18,14 @@ li a{
 .mainText{
   font-size: 35px;
   margin: 0;
+  margin-top: 150px;
+
 }
 
 .main {
   display: flex;
   flex-direction: row;
-  background-color: rgb(159, 255, 63);
+  background-color: beige;
 }
 
 .main section {
@@ -48,34 +47,34 @@ li a{
   color: black;
 }
 
-.sidebar{
-  min-height: 83vh;
-  min-width: 20vh;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-}
-
-.footer{
-  display: flex;
-  background-color: orangered;
-  justify-content: center;
-  padding: 10px;
-  min-height: 6vh;
-}
-
 .card{
   height: 10vh;
   min-width: 5%;
   background-color: black;
 }
 
-.sidebar{
+.modal{
+  background-color: purple;
+  max-width: 500px;
+  padding: 15px;
+}
+
+#modalBG{
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.672);
   height: 100%;
-  min-width: 25vh;
-  padding: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.errorMessage{
+  color: rgb(255, 0, 0);
+  text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.51);
+  font-size: 20px;
   margin: 0;
-  text-align: center;
 }
 
 @media only screen and (max-width: 600px) {

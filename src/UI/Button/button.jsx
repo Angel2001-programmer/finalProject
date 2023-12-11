@@ -2,7 +2,7 @@ import styles from "./button.module.css"
 
 const Button = props => {
     return(
-        <button className={styles.button} onClick={props.click} 
+        <button className={styles.button} type={props.type} onClick={props.click} 
         style={{
             background: props.UIcolor, 
             borderColor: props.borderColor, 

@@ -2,58 +2,113 @@ import styles from "./signup.module.css";
 import Button from "../Button/button"
 import UserInput from "../UserInput/userInput"
 import Card from "../Card/card";
-import { useState } from "react";
-import { redirect } from "react-router-dom";
+import { useState, useContext } from "react";
+import { SignUpContext, UserContext, NewUserContext } from "../../App";
 
 const SignUp = props => {
+    const initialValues = {
+        userName: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPSW: ""
+    };
+
     let SignedUp = null;
-    const [isSignedUp, setIsSignedUp] = useState(false);
-    const [count, setCount] = useState(1);
- 
-    if (isSignedUp !== false){
+    const [isSignUp, setIsSignUp] = useContext(SignUpContext);
+    const [isOpened, setIsOpened] = useContext(UserContext);
+    const [newUser, setNewUser] = useState(NewUserContext);
+    const [count, setCount] = useState(5);
+    const [newUserData, setNewUserData] = useState(initialValues);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const handleValues = (e) => {
+        setNewUserData({ ...newUserData, [e.target.name]: e.target.value});
+    };
+
+    const handleForm = (e) => {
+        e.preventDefault();
+        
+        if (newUserData.userName === ""  || 
+            newUserData.firstName === "" || 
+            newUserData.lastName === ""  || 
+            newUserData.email === ""     || 
+            newUserData.password === ""  || 
+            newUserData.confirmPSW === "" 
+            ){
+            setErrorMessage("Inputs cannot be empty.");
+        } else {
+            setErrorMessage("");
+        }
+
+        if (newUserData.password !== newUserData.confirmPSW){
+            setErrorMessage("Password does not match.");
+        } else {
+            setErrorMessage("");
+            setIsSignUp(false);
+            setNewUser(false);
+            setIsOpened(false);
+        }
+    }
+
+    if (!newUser){
         setTimeout(() => {
-            if(count < 5){
-                setCount(count + 1)
+            if(count > 0){
+                setCount(count - 1)
             } else {
-                window.location.reload();
+                setIsSignUp(false);
+                setIsOpened(false);
             }
         }, 1000);
 
-        SignedUp = <Card>
+        return (SignedUp = <Card>
             <div className={styles.container}>
             <h2 className={styles.accountCreation}>Account creation successful! Welcome to our community</h2>
             <h2 className={styles.bottomText}>This will disappear in {count}</h2>
             </div>
         </Card>
-    } else {
-        SignedUp = <Card>
+        )
+    }
+
+    return (
+        <Card>
+        <form onSubmit={handleForm}>
         <UserInput 
         isCloseIcon="←"
-        isClose={() => props.pressed(false)}
+        isClose={() => setIsSignUp(false)
+        }
         className="userInput"
         title="Sign up" 
-        for="username" 
+        for="userName" 
         type="text" 
-        value="" 
+        name="userName"
+        value={newUserData.userName} 
+        onValue={handleValues}
         placeholder="Username"
         labelName="Username"
         />
 
         <div className={styles.nameContainer}>
         <UserInput
+        className={styles.UIName}
         title=""  
-        for="name" 
+        for="firstName" 
         type="text" 
-        value="" 
+        name="firstName"
+        value={newUserData.firstName} 
+        onValue={handleValues}
         placeholder="First Name"
         labelName="First Name"
         />
 
         <UserInput 
         title="" 
-        for="lastname" 
+        for="lastName" 
         type="text" 
-        value="" 
+        name="lastName"
+        value={newUserData.lastName} 
+        onValue={handleValues}
         placeholder="Last name"
         labelName="Last name"
         />
@@ -62,8 +117,10 @@ const SignUp = props => {
         <UserInput 
         title="" 
         for="email" 
-        type="text" 
-        value="" 
+        type="email" 
+        name="email"
+        value={newUserData.email} 
+        onValue={handleValues}
         placeholder="Email"
         labelName="Email"
         />
@@ -72,34 +129,40 @@ const SignUp = props => {
         title="" 
         for="password" 
         type="password" 
-        value="" 
+        name="password"
+        value={newUserData.password} 
+        onValue={handleValues}
+        length="8"
         placeholder="Password"
         labelName="Password"
         />
 
         <UserInput 
         title="" 
-        for="confirmpassword" 
+        for="confirmPSW" 
         type="password" 
-        value="" 
+        name="confirmPSW"
+        length="8"
+        value={newUserData.confirmPSW} 
+        onValue={handleValues}
         placeholder="Confirm Password"
         labelName="Confirm Password"
         />
         
         <div className={styles.bottomContainer}>
+        <p className="errorMessage">{errorMessage}</p>
         <p>Password must be between 8 and 20 characters long and contain at least one special character * Required fields</p>
-        <Button type="submit" 
+        <Button 
+        type="submit" 
         text="Create an account" 
         UIcolor="linear-gradient(#D000AF, #9000A8)"
         borderColor="purple"
         dropShadow="#AD0B9A70 5px 5px 5px"
-        click={() => setIsSignedUp(true)}
         />
         </div>
+        </form>
         </Card>
-    }
-
-    return (<div>{SignedUp}</div>)
+    );
 }
 
 export default SignUp;

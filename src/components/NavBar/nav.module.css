@@ -4,9 +4,11 @@
     background-color: #353be552;
     padding: 15px;
     margin: 0;
-    width: 97.9vw;
+    width: 98.2vw;
+    overflow-x: hidden;
     justify-content: space-between;
     align-items: center;
+    z-index: 1;
 }
 
 .navbar h1 {
@@ -15,7 +17,7 @@
     margin-left: 5px;
     color: white;
     text-shadow: 4px 4px 4px #0094FF56;
-    font-weight: 500;
+    font-weight: 800;
 }
 
 .navItems{
@@ -70,6 +72,10 @@
     padding: 0;
     margin: 0;
   }
+
+.link{
+    text-decoration: none;
+}
 
 @media all and (max-width: 500px){
     .navbar{
