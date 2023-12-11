@@ -18,7 +18,8 @@ db.init_app(app)
 
 # Will create all tables
 with app.app_context():
-    db.create_all()
+    db.create_all()  # Creating the tables from the user model file
+    # content_db.create_all() # Creating the tables from the content model file
 
 @app.route("/")
 def home():

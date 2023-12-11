@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
+from user_models import db
 
-db = SQLAlchemy()
+# db = SQLAlchemy()
 
 
 # Class for Books table
