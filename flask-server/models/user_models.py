@@ -18,6 +18,6 @@ class User(db.Model):
     password = db.Column(db.String(60), nullable=False)  # Double check if bcrypt is always 60
 
 
-class Profile(db.Model):
-    __tablename__ = "user_profiles"
-    # Possibly
+# class Profile(db.Model):
+#     __tablename__ = "user_profiles"
+#     # Possibly
