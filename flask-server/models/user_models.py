@@ -1,7 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
+from app import db
 from uuid import uuid4
 
-db = SQLAlchemy()
+# db = SQLAlchemy()
 
 
 # Generate a unique user ID, 32 characters long
