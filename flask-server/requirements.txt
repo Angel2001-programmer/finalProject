@@ -5,3 +5,6 @@ flask-cors
 flask-session
 redis
 python-dotenv
+mysql-connector
+mysql-connector-python
+pymysql
