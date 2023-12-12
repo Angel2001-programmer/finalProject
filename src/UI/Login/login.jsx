@@ -4,6 +4,7 @@ import UserInput from "../UserInput/userInput"
 import Card from "../Card/card";
 import { useContext, useState } from 'react'
 import { UserContext, SignUpContext, NewUserContext } from "../../App";
+import axios from "axios";
 
 const Login = props => {
     const [isOpened, setIsOpened]  = useContext(UserContext);
@@ -13,6 +14,26 @@ const Login = props => {
         userName: "",
         password: ""
     };
+
+    // Code needed to connect to the backend, just weave this in with your checks, change variables to however you have them called
+    const loginUser = async () => {
+        console.log(username, password);  // remove from final code
+    
+        try {
+          const resp = await axios.post("//localhost:5000/login", {
+            username,
+            password,
+          });
+    
+        //   window.location.href = "/";
+    
+    
+        } catch (error) {
+          if (error.response.status === 401) {
+            alert("Invalid credentials");
+          }
+        }
+      };
 
     // This is just a test to see if login works with data.
     const [userData, setUserData] = useState(initialValues);
