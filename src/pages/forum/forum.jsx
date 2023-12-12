@@ -35,7 +35,7 @@ export default function Forum() {
   }
 
   const postHandler = (e) => {
-    setIsPost(e.target.value);
+    setPostContent(e.target.value);
   }
 
   return (
@@ -53,7 +53,7 @@ export default function Forum() {
       placeholder='Post content goes here....' 
       name='postContent' 
       value={postContent}
-      onChange={postHandler}/>
+      onChange={(e) => postHandler(e)}/>
       <div className={styles.buttonContainer}>
       <Button 
       UIcolor="linear-gradient(#D000AF, #9000A8)"
