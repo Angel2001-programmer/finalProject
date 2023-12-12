@@ -18,12 +18,10 @@ const SignUp = props => {
     let SignedUp = null;
     const [isSignUp, setIsSignUp] = useContext(SignUpContext);
     const [isOpened, setIsOpened] = useContext(UserContext);
-    const [newUser, setNewUser] = useState(NewUserContext);
+    const [newUser, setNewUser] = useContext(NewUserContext);
     const [count, setCount] = useState(5);
     const [newUserData, setNewUserData] = useState(initialValues);
     const [errorMessage, setErrorMessage] = useState("");
-
-    // setIsSignUp(false);
 
     const handleValues = (e) => {
         setNewUserData({ ...newUserData, [e.target.name]: e.target.value});
@@ -32,47 +30,42 @@ const SignUp = props => {
     const handleForm = (e) => {
         e.preventDefault();
         
-        if (newUserData.userName === ""  || 
-            newUserData.firstName === "" || 
-            newUserData.lastName === ""  || 
-            newUserData.email === ""     || 
-            newUserData.password === ""  || 
-            newUserData.confirmPSW === "" 
-            ){
-            setErrorMessage("Inputs cannot be empty.");
-        } else {
-            setErrorMessage("");
-        }
-
-        if (newUserData.password !== newUserData.confirmPSW){
+        if (newUserData.userName === "" || newUserData.userName.length === 0 &&
+            newUserData.firstName === "" || newUserData.firstName.length === 0 &&
+            newUserData.lastName === "" || newUserData.lastName.length === 0 &&
+            newUserData.email === "" || newUserData.email.length === 0 &&
+            newUserData.password === "" || newUserData.password.length === 0 &&
+            newUserData.confirmPSW === "" || newUserData.confirmPSW.length === 0){
+            setNewUser(false);
+            return setErrorMessage("Inputs cannot be empty.");
+        } else if (newUserData.password !== newUserData.confirmPSW){
             setErrorMessage("Password does not match.");
+            setNewUser(false);
         } else {
             setErrorMessage("");
             setNewUser(true);
         }
-
-        if (!newUser){
-            setTimeout(() => {
-                if(count > 0){
-                    setCount(count - 1)
-                } else {
-                    setIsSignUp(false);
-                    setIsOpened(false);
-                    console.log('Login successful')
-                }
-            }, 1000);
-    
-            return (SignedUp = <Card>
-                <div className={styles.container}>
-                <h2 className={styles.accountCreation}>Account creation successful! Welcome to our community</h2>
-                <h2 className={styles.bottomText}>This will disappear in {count}</h2>
-                </div>
-            </Card>
-            )
-        }
     }
 
+    if (newUser === true){
+        setTimeout(() => {
+            if(count > 0){
+                setCount(count - 1)
+            } else {
+                setIsSignUp(false);
+                setIsOpened(false);
+                console.log('Login successful')
+            }
+        }, 1000);
 
+        return (SignedUp = <Card>
+            <div className={styles.container}>
+            <h2 className={styles.accountCreation}>Account creation successful! Welcome to our community</h2>
+            <h2 className={styles.bottomText}>This will disappear in {count}</h2>
+            </div>
+        </Card>
+        )
+    }
 
     return (
         <Card>
