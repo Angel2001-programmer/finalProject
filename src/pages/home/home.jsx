@@ -2,13 +2,13 @@ import { Fragment, useState, useContext } from 'react'
 import NavBar from '../../components/NavBar/navbar';
 import styles from "./home.module.css";
 import HomeItem from "../../components/HomeItem/HomeItem";
-import Community from "../../assets/images/community.png"
-import Gaming from "../../assets/images/gaming.png"
-import Books from "../../assets/images/books.png"
-import Friendship from "../../assets/images/friendship.png"
-import TreatOthers from "../../assets/images/treatothers.png"
-import News from "../../assets/images/discussions.png"
-import dropArrow from "../../assets/images/drop_Icon.svg"
+import Community from "../../assets/images/logos/community.png"
+import Gaming from "../../assets/images/logos/gaming.png"
+import Books from "../../assets/images/logos/books.png"
+import Friendship from "../../assets/images/logos/friendship.png"
+import TreatOthers from "../../assets/images/logos/treatothers.png"
+import News from "../../assets/images/logos/discussions.png"
+import dropArrow from "../../assets/images/logos/drop_Icon.svg"
 import { NewUserContext } from "../../App";
 import DropDownMenu from "../../components/DropDownMenu/dropDownMenu";
 

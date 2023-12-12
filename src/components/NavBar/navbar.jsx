@@ -1,6 +1,6 @@
 import styles from "./nav.module.css";
 import Button from "../../UI/Button/button";
-import profile from "../../assets/images/user.png";
+import profile from "../../assets/images/logos/user.png";
 import profileDropArrow from "../../assets/images/profileArrow.svg";
 import { Link } from "react-router-dom";
 import { UserContext, NewUserContext, SignUpContext } from "../../App";

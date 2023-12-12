@@ -6,7 +6,7 @@
 .cover{
     display: flex;
     height: 40vh;
-    background-image: url("../../assets/images/sergey-shmidt-koy6FlCCy5s-unsplash.jpg");
+    background-image: url("../../assets/images/backgrounds/sergey-shmidt-koy6FlCCy5s-unsplash.jpg");
     background-position: center;
     background-size: cover;
 }

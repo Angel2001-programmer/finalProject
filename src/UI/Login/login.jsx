@@ -39,8 +39,11 @@ const Login = props => {
     const [userData, setUserData] = useState(initialValues);
     const [errorMessage, setErrorMessage] = useState(null);
     let createAccount = null;
+
     //API here use either fetch or install Axios library.
     
+
+
     const handleValues = (e) => {
         setUserData({ ...userData, [e.target.name]: e.target.value});
     };
@@ -86,6 +89,7 @@ const Login = props => {
                     setIsOpened(false)
                     setNewUser(true)
                     setIsSignModal(false)
+                    console.log('')
                     console.log('Login successful')
                 }
             }}

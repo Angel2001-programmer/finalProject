@@ -31,5 +31,4 @@ const AccountCreation = () => {
     )
         
 }
-
 export default AccountCreation;

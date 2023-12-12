@@ -1,7 +1,7 @@
 import { Fragment, useState, React } from 'react'
 import styles from "./editAccount.module.css";
 import NavBar from "../../components/NavBar/navbar";
-import profile from "../../assets/images/user.png";
+import profile from "../../assets/images/logos/user.png";
 import editProfile from "../../assets/images/editProfile.svg";
 import DropDownMenu from '../../components/DropDownMenu/dropDownMenu';
 const EditAccount = props => {  
