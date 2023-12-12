@@ -4,6 +4,7 @@ import UserInput from "../UserInput/userInput"
 import Card from "../Card/card";
 import { useState, useContext } from "react";
 import { SignUpContext, UserContext, NewUserContext } from "../../App";
+import axios from "axios"
 
 const SignUp = props => {
     const initialValues = {
@@ -13,6 +14,29 @@ const SignUp = props => {
         email: "",
         password: "",
         confirmPSW: ""
+    };
+
+    
+    // Code needed to connect to the backend, just weave this in with your checks, change variables to however you have them called
+    const registerUser = async () => {
+
+        try {
+        const resp = await axios.post("//localhost:5000/register", {
+            username,
+            first_name,
+            last_name,
+            email,
+            password
+        });
+
+        // window.location.href = "/";
+
+
+        } catch (error) {
+        if (error.response.status === 401) {
+            alert("Invalid credentials");
+        }
+        }
     };
 
     let SignedUp = null;
@@ -66,6 +90,9 @@ const SignUp = props => {
         </Card>
         )
     }
+
+    // Comments for below
+    // - we don't need to specify max password length anymore (best not say what our max is in case they guess the hashing mechanism) just don't let user enter more than 72 chars
 
     return (
         <Card>
