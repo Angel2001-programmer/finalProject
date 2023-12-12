@@ -5,7 +5,7 @@ import Angel from "../../assets/img/TeamMembers/angel.jpg";
 import Katherine from "../../assets/img/TeamMembers/katherine.png"
 import haiying from '../../assets/img/TeamMembers/haiying.jpg';
 import Katalin from '../../assets/img/TeamMembers/katalin.png';
-import Abbie from '../../assets/img/TeamMembers/abbie.png';
+import Abbie from '../../assets/img/TeamMembers/abbie.jpg';
 import TeamMemeber from '../../components/TeamMember/teamMember';
 import NavBar from "../../components/NavBar/navbar";
 import { Link } from 'react-router-dom';
@@ -45,7 +45,7 @@ export default function About() {
       
           <TeamMemeber 
           name='Abbie' 
-          profilepictrue='' 
+          profilepictrue={Abbie} 
           hobby='Reading' 
           purpose='For mental stimulation and relaxation'
           />
