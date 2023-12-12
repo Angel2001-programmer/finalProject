@@ -23,6 +23,8 @@ const SignUp = props => {
     const [newUserData, setNewUserData] = useState(initialValues);
     const [errorMessage, setErrorMessage] = useState("");
 
+    // setIsSignUp(false);
+
     const handleValues = (e) => {
         setNewUserData({ ...newUserData, [e.target.name]: e.target.value});
     };
@@ -46,30 +48,31 @@ const SignUp = props => {
             setErrorMessage("Password does not match.");
         } else {
             setErrorMessage("");
-            setIsSignUp(false);
-            setNewUser(false);
-            setIsOpened(false);
+            setNewUser(true);
+        }
+
+        if (!newUser){
+            setTimeout(() => {
+                if(count > 0){
+                    setCount(count - 1)
+                } else {
+                    setIsSignUp(false);
+                    setIsOpened(false);
+                    console.log('Login successful')
+                }
+            }, 1000);
+    
+            return (SignedUp = <Card>
+                <div className={styles.container}>
+                <h2 className={styles.accountCreation}>Account creation successful! Welcome to our community</h2>
+                <h2 className={styles.bottomText}>This will disappear in {count}</h2>
+                </div>
+            </Card>
+            )
         }
     }
 
-    if (!newUser){
-        setTimeout(() => {
-            if(count > 0){
-                setCount(count - 1)
-            } else {
-                setIsSignUp(false);
-                setIsOpened(false);
-            }
-        }, 1000);
 
-        return (SignedUp = <Card>
-            <div className={styles.container}>
-            <h2 className={styles.accountCreation}>Account creation successful! Welcome to our community</h2>
-            <h2 className={styles.bottomText}>This will disappear in {count}</h2>
-            </div>
-        </Card>
-        )
-    }
 
     return (
         <Card>
