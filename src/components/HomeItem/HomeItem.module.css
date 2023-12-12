@@ -1,4 +1,5 @@
 .logo{
+  height: 140px;
   width: 140px;
 }
 
@@ -6,11 +7,12 @@
   font-size: 20px;
   padding: 0;
   margin: 0;
+  color: white;
 }
 
 .container{
   display: flex;
   flex-flow: column;
   align-items: center;
-  width: 20vh;
+  width: 30vh;
 }

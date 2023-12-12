@@ -1,31 +1,25 @@
 import styles from "./nav.module.css";
 import Button from "../../UI/Button/button";
-import { useState } from "react";
 import profile from "../../assets/images/user.png";
 import profileDropArrow from "../../assets/images/profileArrow.svg";
+import { Link } from "react-router-dom";
+import { UserContext, NewUserContext, SignUpContext } from "../../App";
+import { useContext } from "react";
 
 const NavBar = props => {
-    let isSignedin = false;
-    const [isPressed, setIsPressed] = useState(false);
-    
+    const [isOpened, setIsOpened]  = useContext(UserContext);
+    const [newUser, setNewUser] = useContext(NewUserContext);
+    const [isSignUp, setIsSignUp] = useContext(SignUpContext);
+
     return(
         <nav className={styles.navbar}>
-            <h1 className={styles.navHeadingTitles}>IntroVerse</h1>
-            {isSignedin ?
-               <div className={styles.navItems}>
-               <h3 className={styles.navItem}>Home</h3>
-               <h3 className={styles.navItem}>About</h3>
-               <h3 className={styles.navItem}>Home</h3>
-               <h3 className={styles.navItem}>About</h3>
-               </div>       
-            :
+            <Link className={styles.link} to="/finalProject"><h1>IntroVerse</h1></Link>
+            {newUser ?
             <div className={styles.navItems}>
-            <h3 className={styles.navItem}>Home</h3>
-            <h3 className={styles.navItem}>About</h3>
-            </div>
-            
-            }
-            {isSignedin ?
+                <Link className={styles.link} to="/finalProject"><h3 className={styles.navItem}>Home</h3></Link>
+                <Link className={styles.link} to="/about"><h3 className={styles.navItem}>About</h3></Link>
+                <Link className={styles.link} to="/forums"><h3 className={styles.navItem}>Forums</h3></Link>
+
             <div className={styles.profileRow}>
             <div className={styles.profile}>
                 <img className={styles.profilePicture} src={profile} alt="profile."/>
@@ -34,16 +28,39 @@ const NavBar = props => {
             className={styles.profilePicture} 
             src={profileDropArrow} 
             alt="drop arrow." 
-            onClick={() => props.onEditProfile(!props.isEditProfile)}/>
+            onClick={() => props.onChangePressed(!props.isPressed)}/>
+            </div>
             </div>
             :
+            <div className={styles.navItems}>
+                <Link className={styles.link} to="/finalProject"><h3 className={styles.navItem}>Home</h3></Link>
+                <Link className={styles.link} to="/about"><h3 className={styles.navItem}>About</h3></Link>
             <Button 
             text="Log in or Sign up" 
-            click={() => setIsPressed(true)}>Log in or sign up?
+            click={() => setIsOpened(true)}>Log in or sign up?
             </Button>
-            }
+            </div>
+        }
         </nav>
     )
 }
 
 export default NavBar;
+/* 
+
+     /* <Link className={styles.link} to="/finalProject"><h1 className={styles.navHeadingTitles}>IntroVerse</h1></Link> */
+            /* {
+                // isSignedin 
+                ?
+               <div className={styles.navItems}>
+                <Link className={styles.link} to="/finalProject"><h3 className={styles.navItem}>Home</h3></Link>
+                <Link className={styles.link} to="/about"><h3 className={styles.navItem}>About</h3></Link>
+                <Link className={styles.link} to="/forums"><h3 className={styles.navItem}>Forums</h3></Link>
+               </div>       
+            :
+            <div className={styles.navItems}>
+                <Link className={styles.link} to="/finalProject"><h3 className={styles.navItem}>Home</h3></Link>
+                <Link className={styles.link} to="/about"><h3 className={styles.navItem}>About</h3></Link>
+            </div>
+            
+            } */

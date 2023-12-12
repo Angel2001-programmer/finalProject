@@ -1,7 +1,11 @@
 import styles from "./userInput.module.css"
+import { useContext, useState } from 'react'
+import { UserContext } from "../../App";
 
 const UserInput = props => {
+    const [isOpened, setIsOpened]  = useContext(UserContext);
     let closeModal = null
+
     if(props.title !== ""){
         closeModal= 
             <div className= {styles.rowTop}>
@@ -23,8 +27,10 @@ const UserInput = props => {
             
             <input className={styles.userField} 
             type={props.type} 
-            name={props.for} 
             value={props.value} 
+            name={props.name} 
+            onChange={props.onValue}
+            minLength={props.length}
             placeholder={props.placeholder}/>
         </div>
     )
