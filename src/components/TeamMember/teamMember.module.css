@@ -34,3 +34,7 @@
     box-shadow: rgba(0, 0, 0, 0.139) 5px 5px 5px 5px;
     object-fit: cover;
   }
+
+  li{
+    list-style-type: none;
+  }
