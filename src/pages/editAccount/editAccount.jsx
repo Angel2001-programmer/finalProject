@@ -3,19 +3,22 @@ import styles from "./editAccount.module.css";
 import NavBar from "../../components/NavBar/navbar";
 import profile from "../../assets/images/user.png";
 import editProfile from "../../assets/images/editProfile.svg";
+import { Link } from 'react-router-dom';
 
 const EditAccount = props => {  
-  const [isEditProfile, setIsEditProfile] = useState(false);  
+  const [isPressed, setIsPressed] = useState(false);
+
   return (
     <Fragment>
-    <NavBar isEditProfile={isEditProfile} onEditProfile={setIsEditProfile}/>
-    {isEditProfile ?
-    <div className={styles.dropmenu}>
-      Edit Profile
+    <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
+    {isPressed?
+    <div className="dropDownMenuContainer">
+    
+      <div className="dropDownMenu">
+      <Link className='link' to="/editAccount"><p className='dropMenuItem'>EditAccount</p></Link>
+      </div>
     </div>
-    :
-    <div></div>
-    }
+    : null}
   <main className={styles.main}>
     <div className={styles.cover}>
         <div className={styles.profile}>

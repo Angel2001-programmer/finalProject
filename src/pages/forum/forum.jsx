@@ -9,12 +9,14 @@ import gaming from "../../assets/images/joystick.png"
 import books from "../../assets/images/books_3771417.png"
 import manga from "../../assets/images/tiger.png"
 import Button from "../../UI/Button/button";
+import { Link } from 'react-router-dom';
 
 export default function Forum() {  
     const [isClicked, setIsClicked] = useState(false);
     const [postContent, setPostContent] = useState("");
     const [isPost, setIsPost] = useState(false);
     const [title, setTitle] = useState("");
+    const [isPressed, setIsPressed] = useState(false);
     const list = [
       {icon: tiger, title: "Introduce Yourself"},
       {icon: anime, title: "Anime"},
@@ -65,7 +67,14 @@ export default function Forum() {
       </div>
     </Card>
     </div> : null}
-    <NavBar />
+    <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
+    {isPressed?
+    <div className="dropDownMenuContainer">
+      <div className="dropDownMenu">
+      <Link className='link' to="/editAccount"><p className='dropMenuItem'>EditAccount</p></Link>
+      </div>
+    </div>
+    : null}
     <main className={styles.main}>
     {!isClicked? <div className={styles.column}>
         <Card 

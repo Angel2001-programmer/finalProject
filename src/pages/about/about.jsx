@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import MenuItems from '../../components/MenuItems/menuItems';
 import styles from "./about.module.css";
 import Angel from "../../assets/img/TeamMembers/angel.jpg";
@@ -7,11 +7,22 @@ import haiying from '../../assets/img/TeamMembers/haiying.jpg';
 import Katalin from '../../assets/img/TeamMembers/katalin.png';
 import TeamMemeber from '../../components/TeamMember/teamMember';
 import NavBar from "../../components/NavBar/navbar";
+import { Link } from 'react-router-dom';
 
 export default function About() {
+  const [isPressed, setIsPressed] = useState(false);
+
 	return (
 		<Fragment>
-			<NavBar/>
+			    <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
+    {isPressed?
+    <div className="dropDownMenuContainer">
+    
+      <div className="dropDownMenu">
+      <Link className='link' to="/editAccount"><p className='dropMenuItem'>EditAccount</p></Link>
+      </div>
+    </div>
+    : null}
 			<main className='main'>
 				<section className={styles.content}>
 					<p className='mainText'>About</p>

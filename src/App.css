@@ -2,6 +2,8 @@
 
 body{
   background-color: rgb(72, 72, 72);
+  overflow-x: hidden;
+
 }
 
 li a{
@@ -75,6 +77,37 @@ li a{
   text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.51);
   font-size: 20px;
   margin: 0;
+}
+
+.dropDownMenuContainer{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dropDownMenu{
+  position: absolute;
+  display: flex;
+  background-color: white;
+  padding: 10px;
+  width: 400px;
+  justify-content: center;
+  top: 120px;
+  border-radius: 0 0 10px 10px;
+}
+
+.dropDownMenu:hover{
+  background-color: rgb(224, 224, 224);
+}
+
+.dropMenuItem{
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.link{
+  text-decoration: none;
+  color: black;
 }
 
 @media only screen and (max-width: 600px) {
