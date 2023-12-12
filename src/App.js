@@ -1,8 +1,6 @@
 import './App.css';
 import { Fragment, createContext, useState } from 'react';
 import NavGraph from './navigation/NavGraph';
-import Login from './UI/Login/login';
-import SignUp from './UI/signup/signup';
 import AccountCreation from './components/accountCreation/accountCreation';
 
 export const UserContext = createContext();
@@ -11,13 +9,13 @@ export const NewUserContext = createContext();
 
 function App() {
   const [isOpened, setIsOpened] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(false);
+  const [isSignModal, setIsSignModal] = useState(false);
   const [newUser, setNewUser] = useState(false);
 
   return (   
       <Fragment>
       <NewUserContext.Provider value={[newUser, setNewUser]}>
-      <SignUpContext.Provider value={[isSignUp, setIsSignUp]}>
+      <SignUpContext.Provider value={[isSignModal, setIsSignModal]}>
       <UserContext.Provider value={[isOpened, setIsOpened]}>
         <AccountCreation/>
         <NavGraph/>

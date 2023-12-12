@@ -6,11 +6,9 @@ import { useContext, useState } from 'react'
 import { UserContext, SignUpContext, NewUserContext } from "../../App";
 import axios from "axios";
 
-// export const SignUpContext = createContext();
-
 const Login = props => {
     const [isOpened, setIsOpened]  = useContext(UserContext);
-    const [isSignUp, setIsSignUp] = useContext(SignUpContext);
+    const [isSignModal, setIsSignModal] = useContext(SignUpContext);
     const [newUser, setNewUser] = useContext(NewUserContext);
     const initialValues = {
         userName: "",
@@ -41,7 +39,6 @@ const Login = props => {
     const [userData, setUserData] = useState(initialValues);
     const [errorMessage, setErrorMessage] = useState(null);
     let createAccount = null;
-    // const usercheck = testAccount.find(testAccount => (testAccount.userName === userData.userName && testAccount.password === userData.password));
     //API here use either fetch or install Axios library.
     
     const handleValues = (e) => {
@@ -88,7 +85,7 @@ const Login = props => {
                 } else {
                     setIsOpened(false)
                     setNewUser(true)
-                    setIsSignUp(false)
+                    setIsSignModal(false)
                     console.log('Login successful')
                 }
             }}
@@ -97,7 +94,7 @@ const Login = props => {
             <h2 className={styles.signUp}>Don't have an account</h2>
             <h2 className={styles.signUpLink} 
             onClick={() => {
-                setIsSignUp(true)
+                setIsSignModal(true)
             }
             }
             >Sign up</h2>
