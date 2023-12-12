@@ -44,16 +44,18 @@ function App() {
   if(!isOpened){
     modal = null;
   } else {
-      modal = component;
+    modal = component;
   }
 
   return (   
       <Fragment>
             {modal}
             <NewUserContext.Provider value={[newUser, setNewUser]}>
+            <SignUpContext.Provider value={[isSignUp, setIsSignUp]}>
             <UserContext.Provider value={[isOpened, setIsOpened]}>
             <NavGraph/>
             </UserContext.Provider>
+            </SignUpContext.Provider>
             </NewUserContext.Provider>
       </Fragment>
   );
