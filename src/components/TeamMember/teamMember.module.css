@@ -1,6 +1,25 @@
 .profile{
     display: flex;
-    max-width: fit-content;
+    flex-direction: column;
+    max-width: 320px;
+    word-wrap: break-word;
+    flex-basis: 22.22222%;
+}
+
+.profileContainer{
+  display: flex;
+  background-color: #9C9C9C;
+  border: 6px solid #4C4B4B;
+  border-radius: 15px;
+  padding: 5px;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.139) 5px 5px 5px 5px;
+}
+
+.profileContainer img{
+  height: 279px;
+  width: 279px;
+  box-shadow: none;
 }
 
 .favouriteActivity{
@@ -13,4 +32,5 @@
     width: 300px;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.139) 5px 5px 5px 5px;
+    object-fit: cover;
   }

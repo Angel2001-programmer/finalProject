@@ -1,0 +1,65 @@
+.main{
+    display: flex;
+    min-height: 50.9vw;
+    background-image: url("../../assets/images/background.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container0{
+    display: flex;
+    min-height: 40vh;
+    background-color: #D16C01;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10vh;
+}
+
+.container1{
+    display: flex;
+    min-height: 40vh;
+    background-color: #0DA4C5;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10vh;
+}
+
+.rowHome{
+    display: flex;
+    position: relative;
+    bottom: 30px;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 30vh;
+}
+
+.dropArrow{
+    height: 40px;
+    margin-left: 60vh;
+    margin-bottom: 0;
+    animation-name: drop-Arrow;
+    animation-duration: 1.3s;
+    animation-iteration-count: infinite;
+}
+
+.containerHeading{
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.textHeading{
+    position: relative;
+    margin-left: 30px;
+    width: 10px;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.572);
+    z-index: 1;
+}
+
+@keyframes drop-Arrow {
+    from {margin-bottom: 15px;}
+    to {margin-bottom: 0;}
+}
