@@ -28,7 +28,7 @@ const NavBar = props => {
             className={styles.profilePicture} 
             src={profileDropArrow} 
             alt="drop arrow." 
-            onClick={() => props.onEditProfile(!props.isEditProfile)}/>
+            onClick={() => props.onChangePressed(!props.isPressed)}/>
             </div>
             </div>
             :

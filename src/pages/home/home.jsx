@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useContext } from 'react'
 import NavBar from '../../components/NavBar/navbar';
 import styles from "./home.module.css";
 import HomeItem from "../../components/HomeItem/HomeItem";
@@ -9,13 +9,24 @@ import Friendship from "../../assets/images/friendship.png"
 import TreatOthers from "../../assets/images/treatothers.png"
 import News from "../../assets/images/discussions.png"
 import dropArrow from "../../assets/images/drop_Icon.svg"
-import Login from "../../UI/Login/login";
+import { Link } from 'react-router-dom';
+import { NewUserContext } from "../../App";
+
 
 export default function Home() {  
   const [isPressed, setIsPressed] = useState(false);
+  const [newUser, setNewUser] = useContext(NewUserContext);
   return (
     <Fragment>
     <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
+    {isPressed?
+    <div className="dropDownMenuContainer">
+    
+      <div className="dropDownMenu">
+      <Link className='link' to="/editAccount"><p className='dropMenuItem'>EditAccount</p></Link>
+      </div>
+    </div>
+    : null}
     <main className={styles.main}>
       <div className={styles.rowHome}>
       <div className={styles.containerHeading}>
@@ -25,7 +36,7 @@ export default function Home() {
       </div>
     </main>
     <div className={styles.container0}>
-    <HomeItem text="A friendly place for introverts and everyone to express themseleves in safe a good environment" image={Community}/>
+      <HomeItem text="A friendly place for introverts and everyone to express themseleves in safe a good environment" image={Community}/>
       <HomeItem text="A place for gamers of all kinds ranging from PC, Xbox, Playstation and much more!" image={Gaming}/>
       <HomeItem text="A place for book readers, to discuss there most loved pages." image={Books}/>
     </div>

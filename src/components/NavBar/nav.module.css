@@ -4,8 +4,7 @@
     background-color: #353be552;
     padding: 15px;
     margin: 0;
-    width: 98.2vw;
-    overflow-x: hidden;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     z-index: 1;
