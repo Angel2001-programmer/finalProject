@@ -34,12 +34,14 @@ def register_user():
 
     # Hashing the password
     hashed_password = bcrypt.generate_password_hash(password)
-    # Create an instance of the Profile class to add to user_profiles table, all other fields will be null, think need to declare first because it is FK in other table
-    new_profile=Profile(username=username)
-    db.session.add(new_profile)
     # Creating an instance of User class to add to user_accounts table, user_id will use default generation
     new_user = User(username=username, first_name=first_name, last_name=last_name, email=email, password=hashed_password)
     db.session.add(new_user)
+    db.session.commit()
+    # Create an instance of the Profile class to add to user_profiles table, all other fields will be null, think need to declare first because it is FK in other table
+    new_profile=Profile(username=username)
+    db.session.add(new_profile)
+
 
     db.session.commit()
 
