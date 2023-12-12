@@ -9,9 +9,8 @@ import Friendship from "../../assets/images/friendship.png"
 import TreatOthers from "../../assets/images/treatothers.png"
 import News from "../../assets/images/discussions.png"
 import dropArrow from "../../assets/images/drop_Icon.svg"
-import { Link } from 'react-router-dom';
 import { NewUserContext } from "../../App";
-
+import DropDownMenu from "../../components/DropDownMenu/dropDownMenu";
 
 export default function Home() {  
   const [isPressed, setIsPressed] = useState(false);
@@ -19,14 +18,22 @@ export default function Home() {
   return (
     <Fragment>
     <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
-    {isPressed?
+    {/* {isPressed?
     <div className="dropDownMenuContainer">
     
       <div className="dropDownMenu">
-      <Link className='link' to="/editAccount"><p className='dropMenuItem'>EditAccount</p></Link>
+      <Link className='link' to="/editAccount">
+        <div className='dropMenuItem'>
+        <p>EditAccount</p>
+        </div>
+        <div className='dropMenuItem'>
+        <p>Sign Out</p>
+        </div>
+      </Link>
       </div>
     </div>
-    : null}
+    : null} */}
+    <DropDownMenu isPressed={isPressed}/>
     <main className={styles.main}>
       <div className={styles.rowHome}>
       <div className={styles.containerHeading}>

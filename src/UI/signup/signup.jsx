@@ -5,7 +5,7 @@ import Card from "../Card/card";
 import { useState, useContext } from "react";
 import { SignUpContext, UserContext, NewUserContext } from "../../App";
 
-const SignUp = props => {
+const SignUp = () => {
     const initialValues = {
         userName: "",
         firstName: "",
@@ -15,8 +15,7 @@ const SignUp = props => {
         confirmPSW: ""
     };
 
-    let SignedUp = null;
-    const [isSignUp, setIsSignUp] = useContext(SignUpContext);
+    const [isSignModal, setIsSignModal] = useContext(SignUpContext);
     const [isOpened, setIsOpened] = useContext(UserContext);
     const [newUser, setNewUser] = useContext(NewUserContext);
     const [count, setCount] = useState(5);
@@ -52,13 +51,14 @@ const SignUp = props => {
             if(count > 0){
                 setCount(count - 1)
             } else {
-                setIsSignUp(false);
+                setIsSignModal(false);
                 setIsOpened(false);
                 console.log('Login successful')
             }
         }, 1000);
 
-        return (SignedUp = <Card>
+        return (
+        <Card>
             <div className={styles.container}>
             <h2 className={styles.accountCreation}>Account creation successful! Welcome to our community</h2>
             <h2 className={styles.bottomText}>This will disappear in {count}</h2>
@@ -72,7 +72,7 @@ const SignUp = props => {
         <form onSubmit={handleForm}>
         <UserInput 
         isCloseIcon="←"
-        isClose={() => setIsSignUp(false)
+        isClose={() => setIsSignModal(false)
         }
         className="userInput"
         title="Sign up" 

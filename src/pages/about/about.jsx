@@ -7,27 +7,20 @@ import haiying from '../../assets/img/TeamMembers/haiying.jpg';
 import Katalin from '../../assets/img/TeamMembers/katalin.png';
 import TeamMemeber from '../../components/TeamMember/teamMember';
 import NavBar from "../../components/NavBar/navbar";
-import { Link } from 'react-router-dom';
-
+import DropDownMenu from '../../components/DropDownMenu/dropDownMenu';
 export default function About() {
   const [isPressed, setIsPressed] = useState(false);
 
 	return (
 		<Fragment>
 			    <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
-    {isPressed?
-    <div className="dropDownMenuContainer">
-    
-      <div className="dropDownMenu">
-      <Link className='link' to="/editAccount"><p className='dropMenuItem'>EditAccount</p></Link>
-      </div>
-    </div>
-    : null}
+          <DropDownMenu isPressed={isPressed}/>
 			<main className='main'>
 				<section className={styles.content}>
 					<p className='mainText'>About</p>
 					<h3>Team Introductiom</h3>
 				<div className={styles.about}>
+          
           <TeamMemeber
             name='Angel'
             profilepictrue={Angel}
