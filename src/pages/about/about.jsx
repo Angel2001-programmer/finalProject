@@ -14,13 +14,13 @@ export default function About() {
 	return (
 		<Fragment>
 			    <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
-          <DropDownMenu isPressed={isPressed}/>
+          <DropDownMenu isPressed={isPressed} setIsPressed={setIsPressed}/>
 			<main className='main'>
 				<section className={styles.content}>
 					<p className='mainText'>About</p>
 					<h3>Team Introductiom</h3>
 				<div className={styles.about}>
-          
+
           <TeamMemeber
             name='Angel'
             profilepictrue={Angel}

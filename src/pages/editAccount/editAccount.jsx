@@ -10,7 +10,7 @@ const EditAccount = props => {
   return (
     <Fragment>
     <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
-    <DropDownMenu isPressed={isPressed}/>
+    <DropDownMenu isPressed={isPressed} setIsPressed={setIsPressed}/>
   <main className={styles.main}>
     <div className={styles.cover}>
         <div className={styles.profile}>

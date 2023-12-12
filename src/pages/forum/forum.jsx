@@ -69,14 +69,9 @@ export default function Forum() {
     </Card>
     </div> : null}
     <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
-    {/* {isPressed?
-    <div className="dropDownMenuContainer">
-      <div className="dropDownMenu">
-      <Link className='link' to="/editAccount"><p className='dropMenuItem'>EditAccount</p></Link>
-      </div>
-    </div>
-    : null} */}
-    <DropDownMenu isPressed={isPressed}/>
+    <Link className='link' to="/finalProject">
+    <DropDownMenu isPressed={isPressed} setIsPressed={setIsPressed}/>
+    </Link>
     <main className={styles.main}>
     {!isClicked? <div className={styles.column}>
         <Card 

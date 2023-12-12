@@ -18,22 +18,7 @@ export default function Home() {
   return (
     <Fragment>
     <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
-    {/* {isPressed?
-    <div className="dropDownMenuContainer">
-    
-      <div className="dropDownMenu">
-      <Link className='link' to="/editAccount">
-        <div className='dropMenuItem'>
-        <p>EditAccount</p>
-        </div>
-        <div className='dropMenuItem'>
-        <p>Sign Out</p>
-        </div>
-      </Link>
-      </div>
-    </div>
-    : null} */}
-    <DropDownMenu isPressed={isPressed}/>
+    <DropDownMenu isPressed={isPressed} setIsPressed={setIsPressed}/>
     <main className={styles.main}>
       <div className={styles.rowHome}>
       <div className={styles.containerHeading}>
