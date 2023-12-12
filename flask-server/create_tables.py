@@ -1,5 +1,4 @@
-# This file will handle the database deployment tasks
-
+# This file will create the tables if they do not already exist
 
 def deploy():
     from app import create_app, db
