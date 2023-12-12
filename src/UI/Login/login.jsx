@@ -67,6 +67,7 @@ const Login = props => {
                 } else {
                     setIsOpened(false)
                     setNewUser(true)
+                    setIsSignUp(false)
                     console.log('Login successful')
                 }
             }}
