@@ -45,10 +45,10 @@ def register_user():
 
     # session["user_id"] = new_user.id  # Doesn't work with flask 3.0
 
-    # return jsonify({
-    #     "id": new_user.id,
-    #     "email": new_user.email
-    # })
+    return jsonify({
+        "user_id": new_user.user_id,
+        "email": new_user.email
+    })
 
 # Login
 @app.route("/login", methods=["POST"])
@@ -64,12 +64,12 @@ def login_user():
     if not bcrypt.check_password_hash(user.password, password):
         return jsonify({"error": "Unauthorised"}), 401
     
-    session["user_id"] = user.id  # Doesn't work with flask 3.0
+    # session["user_id"] = user.id  # Doesn't work with flask 3.0
     
-    return jsonify({
-        "id": user.id,
-        "email": user.username
-    })
+    # return jsonify({
+    #     "id": user.id,
+    #     "email": user.username
+    # })
 
 
 # Logout
