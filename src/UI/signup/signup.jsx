@@ -208,7 +208,6 @@ const SignUp = () => {
         for="confirmPSW" 
         type="password" 
         name="confirmPSW"
-        length="8"
         value={confirmPSW} 
         onValue={(e) => setConfirmPSW(e.target.value)}
         placeholder="Confirm Password"

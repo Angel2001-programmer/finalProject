@@ -62,7 +62,7 @@
     margin-left: 46%;
     margin-right: 15px;
     transform: translate(-50%, -50%);
-    margin-top: 81vh;
+    margin-top: 79vh;
 }
 .row{
     display: flex;
@@ -91,16 +91,16 @@
     display: flex;
     justify-content: center;
     left: 46%;
-    bottom: 400px;
+    bottom: 42vh;
     transform: translate(-50%, -50%);
 
 }
 
-.postsContainer{
+/* .postsContainer{
     position: absolute;
     top: 43vh;
     left: 43vh;
-}
+} */
 
 .smallerProfile{
     display: flex;
