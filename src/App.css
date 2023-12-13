@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
 
+html{
+  overflow-x: hidden;
+}
+
 body{
   background-color: rgb(72, 72, 72);
   overflow-x: hidden;
@@ -115,6 +119,12 @@ li a{
 .link{
   text-decoration: none;
   color: black;
+}
+
+@media all and (min-width: 800px) {
+  html{
+    overflow-x: hidden;
+  }
 }
 
 @media only screen and (max-width: 600px) {
