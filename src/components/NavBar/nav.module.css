@@ -77,6 +77,39 @@
     text-decoration: none;
 }
 
+@media all and (max-width: 900px){
+    .navbar{
+        justify-content: space-around;
+    }
+
+    .navItems{
+        overflow-x: hidden;
+        width: 65%;
+    }
+
+    .navbar h1 {
+        margin-left: 0;
+        font-size: 35px;
+    }
+}
+
+@media all and (max-width: 800px){
+    .navbar{
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .navItems{
+        display: none;
+        overflow-x: hidden;
+    }
+
+    .navbar h1 {
+        margin-left: 0;
+        font-size: 35px;
+    }
+}
+
 @media all and (max-width: 500px){
     .navbar{
         width: 93.6vw;
