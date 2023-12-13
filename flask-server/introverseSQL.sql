@@ -102,3 +102,17 @@ VALUES
 (10, 'Two Point Hospital', 'SIMULATION', 'PC, NINTENDO SWITCH, XBOX, PLAYSTATION', 24.99, 'Design stunning hospitals, cure peculiar illnesses and manage troublesome staff as you spread your budding healthcare organisation across Two Point County.'),
 (11, 'GAME DEV TYCOON', 'SIMULATION', 'PC', 8.50, 'In Game Dev Tycoon you replay the history of the gaming industry by starting your own video game development company in the 80s. Create best selling games. Research new technologies and invent new game types. Become the leader of the market and gain worldwide fans.'),
 (12, 'NAHEULBEUKS DUNGEON MASTER', 'SIMULATION', 'PC', 20.99, 'A dungeon in danger ! Build, manage, and defend your tower in the satirical heroic fantasy universe of Dungeon of Naheulbeuk. From a shaky establishment to an infamous lair!');
+
+-- Values for user tables, need to update and best not to insert directly from SQL because need to hash passwords, but keeping them here in meantime for an idea
+
+INSERT INTO Users (UserID, Username, Email, Name, DateOfBirth, Interests, Password)
+VALUES
+(1,'the_kickboxer', 'kathoop@email.com', 'Katherine Hooper', '1990-01-01', 'Gaming ', 'password1'),
+(2,'pokemon_girl', 'angel.pika@email.com', 'Angel Witchell', '2001-02-02', 'Shonen' , 'password2' ) ,
+(3,'lover_ofbooks', 'agd@email.com', 'Abbie-Gayle Daniel', '2002-03-03', 'Reading', 'password3'),
+(4, 'dog_mum', 'haiyingl@email.com', 'Haiying Liao', '2003-04-04', 'Cozy_games', 'password4'),
+(5, 'the_baroness', 'katbray@email.com', 'Katalin Bray', '1920-04-04', 'History', 'password5'),
+(6, 'friday_13', 'jimmychamp@email.com', 'Jimmy Champagne', '1970-05-05', 'Horror', 'password6'),
+(7, 'elder_scrolls', 'pewdiepie@email.com', 'Felix Kjellberg', '1995-06-06', 'Adventure', 'password7'),
+(8,'nerdrotic', 'garyb@email.com', 'Gary Brown', '1950-07-07', 'Fantasy', 'password8'),
+(9, 'critical_drinker', 'willjordan@email.com', 'Will Jordan', '1980-07-07', 'Simulation', 'password8');

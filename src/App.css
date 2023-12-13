@@ -31,15 +31,14 @@ li a{
 .main {
   display: flex;
   flex-direction: row;
-  background-color: beige;
 }
 
 .main section {
   display: flex;
   flex-flow: column wrap;
   padding-left: 15px;
-  background-color: beige;
   width: 100%;
+  background-color: rgb(215, 215, 215);
 }
 
 .headingTitles{

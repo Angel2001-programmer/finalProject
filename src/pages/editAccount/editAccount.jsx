@@ -17,15 +17,15 @@ const EditAccount = props => {
         <img className={styles.profilePicture} src={profile} alt="profile."/>
         <h4 className={styles.profileName}>USERNAME</h4>
         </div>
-        <div className={styles.postsContainer}>
-        <h2>Posts</h2>
+        {/* <div className={styles.postsContainer}> */}
+        {/* <h2>Posts</h2>
           <div className={styles.smallerProfile}>
           <div className={styles.profileRow}>
           </div>
           </div>
           <p>Any got a Spare Iphone charger I can have until the weekend?</p>
           <p>5</p>
-        </div>
+        </div> */}
         <div className={styles.titleContainer}>
         <h2>About Your Account</h2>
         </div>
