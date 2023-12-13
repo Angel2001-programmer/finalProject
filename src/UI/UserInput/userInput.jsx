@@ -30,7 +30,7 @@ const UserInput = props => {
             value={props.value} 
             name={props.name} 
             onChange={props.onValue}
-            minLength={props.length}
+            maxLength={props.length}
             placeholder={props.placeholder}/>
         </div>
     )

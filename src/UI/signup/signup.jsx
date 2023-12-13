@@ -67,11 +67,15 @@ const SignUp = () => {
         } else if (newUserData.password !== newUserData.confirmPSW){
             setErrorMessage("Password does not match.");
             setNewUser(false);
+        } else if (newUserData.userName.length >= 72){
+            setErrorMessage("Username must not be more than 72 characters.");
+            setNewUser(false);
         } else {
             setErrorMessage("");
             setNewUser(true);
         }
     }
+    console.log(newUserData.userName.length);
 
     if (newUser === true){
         setTimeout(() => {
@@ -81,7 +85,7 @@ const SignUp = () => {
                 setIsSignModal(false);
                 setIsOpened(false);
                 console.log('Login successful')
-                registerUser();
+                // registerUser();
             }
         }, 1000);
 

@@ -42,12 +42,30 @@ const Login = props => {
         }
       };
 
+    //Set new keystroke to UserData values.
     const handleValues = (e) => {
         setUserData({ ...userData, [e.target.name]: e.target.value});
     };
 
+    const handleLogin = (e) => {
+        //Prevents form from refreshing when Sign button is clicked.
+        e.preventDefault();
+        if(userData.userName.trim().length === 0 || userData.password.trim().length === 0){
+            setErrorMessage(<p className={styles.errorMessage}>Inputs cannot be empty</p>)
+        } else {
+            setErrorMessage("")
+            // setIsOpened(false)
+            // setNewUser(true)
+            // setIsSignModal(false)
+            console.log('Login successful')
+            // loginUser();
+        }
+    }
+
+    //Check if Modal is opened.
     if(isOpened){
         createAccount = <div className={styles.login}>
+            <form onSubmit={handleLogin}>
             <UserInput 
             isCloseIcon="X"
             isClose={() => setIsOpened(false)}
@@ -73,25 +91,15 @@ const Login = props => {
             />
             {errorMessage}
             <div className={styles.bottomContainer}>
-            <Button type="submit" 
+
+            <Button 
+            type="submit" 
             text="Sign in" 
             UIcolor="linear-gradient(#D000AF, #9000A8)"
             borderColor="purple"
             dropShadow="#AD0B9A70 5px 5px 5px"
             paddingToRight="70px"
             paddingToLeft="70px"
-            click={() => {
-                if(userData.userName.trim().length === 0 || userData.password.trim().length === 0){
-                    setErrorMessage(<p className={styles.errorMessage}>Inputs cannot be empty</p>)
-                } else {
-                    // setIsOpened(false)
-                    // setNewUser(true)
-                    // setIsSignModal(false)
-                    // console.log('')
-                    console.log('Login successful')
-                    loginUser();
-                }
-            }}
             />
             <div className={styles.noAccount}>
             <h2 className={styles.signUp}>Don't have an account</h2>
@@ -103,13 +111,14 @@ const Login = props => {
             >Sign up</h2>
             </div>
             </div>
+            </form>
         </div>
     }
     return(
-            <Card className={styles.modal}>
+        <Card className={styles.modal}>
             {createAccount}
         </Card>        
     )
 }
 
-export default Login
+export default Login;
