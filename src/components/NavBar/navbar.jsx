@@ -5,6 +5,7 @@ import profileDropArrow from "../../assets/images/profileArrow.svg";
 import { Link } from "react-router-dom";
 import { UserContext, NewUserContext, SignUpContext } from "../../App";
 import { useContext } from "react";
+import Menu from "../../assets/images/logos/menu.svg";
 
 const NavBar = props => {
     const [isOpened, setIsOpened]  = useContext(UserContext);
@@ -13,7 +14,9 @@ const NavBar = props => {
 
     return(
         <nav className={styles.navbar}>
+            <div className={styles.menu}>
             <Link className={styles.link} to="/finalProject"><h1>IntroVerse</h1></Link>
+            </div>
             {newUser ?
             <div className={styles.navItems}>
                 <Link className={styles.link} to="/finalProject"><h3 className={styles.navItem}>Home</h3></Link>
@@ -24,6 +27,8 @@ const NavBar = props => {
             <div className={styles.profile}>
                 <img className={styles.profilePicture} src={profile} alt="profile."/>
             </div>
+            <img src={Menu} alt="dropDownMenu"/>
+
             <img 
             className={styles.profilePicture} 
             src={profileDropArrow} 
