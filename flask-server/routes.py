@@ -31,6 +31,15 @@ def register_user():
     
     if email_exists:
         return jsonify({"error": "Email is already registered"}), 409
+    
+    # Validate input
+    if len(username) < 1 or len(username) > 30:
+        return jsonify({"error": "Username is invalid"}), 400  # Not sure if should use 409 or 422 or 400 even
+    if len(first_name) < 1 or len(first_name) > 50:
+        return jsonify({"error": "Name is invalid"}), 400
+    if len(last_name) < 1 or len(last_name) > 50:
+        return jsonify({"error": "Name is invalid"}), 400
+    # add email validation here
 
     # Hashing the password
     hashed_password = bcrypt.generate_password_hash(password)
@@ -48,7 +57,7 @@ def register_user():
     return jsonify({
         "user_id": new_user.user_id,
         "email": new_profile.email
-    })
+    }), 201  # Need to return status code?
 
 # Login
 @app.route("/login", methods=["POST"])
