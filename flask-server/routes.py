@@ -75,10 +75,9 @@ def login_user():
     
     # session["user_id"] = user.id  # Doesn't work with flask 3.0
     
-    # return jsonify({
-    #     "id": user.id,
-    #     "email": user.username
-    # })
+    return jsonify({
+        "username": user.username
+    }), 201  # Need to return status code? Change this jsonify later
 
 
 # Logout

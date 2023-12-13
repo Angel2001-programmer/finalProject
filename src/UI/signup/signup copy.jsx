@@ -37,84 +37,76 @@ const SignUp = () => {
     const [newUserData, setNewUserData] = useState(initialValues);
     const [errorMessage, setErrorMessage] = useState("");
 
-    // Need new variables that are compatible with the JSON keys, trying this out
-    const [username, setUsername] = useState("")
-    const [first_name, setFirstName] = useState("")
-    const [last_name, setLastName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPSW, setConfirmPSW] = useState("")
-
     // Code needed to connect to the backend, just weave this in with your checks, change variables to however you have them called
     const registerUser = async () => {
         try {
         const resp = await httpClient.post("//localhost:5000/register", {
-            username,
-            first_name,
-            last_name,
-            email,
-            password,
+            auth: {
+                username,
+                first_name,
+                last_name,
+                email,
+                password,
+            }
         });
 
-        console.log(username, email)
-        console.log("it worked")
+        // window.location.href = "/";
 
         } catch (error) {
         if (error.response.status === 401) {
             alert("Invalid credentials");
         }
-        else {
-            alert("Error")
-          }
         }
     };
 
+    // const registerUser = async () => {
+    //     try {
+    //     const resp = await httpClient.post("//localhost:5000/register", {
+    //         auth: {
+    //             username: newUserData.userName,
+    //             first_name: newUserData.firstName,
+    //             last_name: newUserData.lastName,
+    //             email: newUserData.email,
+    //             password: newUserData.password
+    //         }
+    //     });
+
+    //     // window.location.href = "/";
+
+    //     } catch (error) {
+    //     if (error.response.status === 401) {
+    //         alert("Invalid credentials");
+    //     }
+    //     }
+    // };
 
     const handleValues = (e) => {
         setNewUserData({ ...newUserData, [e.target.name]: e.target.value});
     };
 
-
-
-    // Added in the error checks that were missing (VARCHAR 50 for each name, 30 for username, 254 for email, 8 for password if it isn't there?)
-    // Might want to convert it to a switch case or rewrite it in a nicer JS looking way
-    // Add check for number in password
     const handleForm = (e) => {
         e.preventDefault();
         
-        if (username === "" || username.length === 0 &&
-            first_name === "" || first_name.length === 0 &&
-            last_name === "" || last_name.length === 0 &&
-            email === "" || email.length === 0 &&
-            password === "" || password.length === 0 &&
-            confirmPSW === "" || confirmPSW.length === 0){
+        if (newUserData.userName === "" || newUserData.userName.length === 0 &&
+            newUserData.firstName === "" || newUserData.firstName.length === 0 &&
+            newUserData.lastName === "" || newUserData.lastName.length === 0 &&
+            newUserData.email === "" || newUserData.email.length === 0 &&
+            newUserData.password === "" || newUserData.password.length === 0 &&
+            newUserData.confirmPSW === "" || newUserData.confirmPSW.length === 0){
             setNewUser(false);
             return setErrorMessage("Inputs cannot be empty.");
-        } else if (password !== confirmPSW){
+        } else if (newUserData.password !== newUserData.confirmPSW){
             setErrorMessage("Password does not match.");
             setNewUser(false);
-        } else if (username.length >= 30){
-            setErrorMessage("Username must not be more than 30 characters.");
-            setNewUser(false);
-        } else if (first_name.length >= 50){
-            setErrorMessage("First name must be no more than 50 characters.");
-            setNewUser(false);
-        } else if (last_name.length >= 50){
-            setErrorMessage("Last name must be no more than 50 characters.");
-            setNewUser(false);
-        } else if (email.length >= 254){
-            setErrorMessage("Email address is too long.");
-            setNewUser(false);
-        } else if (password.length >= 72 || password.length < 8){
-            setErrorMessage("Password is too short or long.");  // Don't give details on max length
+        } else if (newUserData.userName.length >= 72){
+            setErrorMessage("Username must not be more than 72 characters.");
             setNewUser(false);
         } else {
             setErrorMessage("");
             setNewUser(true);
-            registerUser();
         }
     }
-    console.log(username.length);
+    console.log(newUserData.userName.length);
 
     if (newUser === true){
         setTimeout(() => {
@@ -124,6 +116,7 @@ const SignUp = () => {
                 setIsSignModal(false);
                 setIsOpened(false);
                 console.log('Login successful')
+                registerUser();
             }
         }, 1000);
 
@@ -137,6 +130,8 @@ const SignUp = () => {
         )
     }
 
+    // Comments for below
+    // - we don't need to specify max password length anymore (best not say what our max is in case they guess the hashing mechanism) just don't let user enter more than 72 chars
 
     return (
         <Card>
@@ -150,8 +145,8 @@ const SignUp = () => {
         for="userName" 
         type="text" 
         name="userName"
-        value={username} 
-        onValue={(e) => setUsername(e.target.value)}
+        value={newUserData.userName} 
+        onValue={handleValues}
         placeholder="Username"
         labelName="Username"
         />
@@ -163,8 +158,8 @@ const SignUp = () => {
         for="firstName" 
         type="text" 
         name="firstName"
-        value={first_name} 
-        onValue={(e) => setFirstName(e.target.value)}
+        value={newUserData.firstName} 
+        onValue={handleValues}
         placeholder="First Name"
         labelName="First Name"
         />
@@ -174,8 +169,8 @@ const SignUp = () => {
         for="lastName" 
         type="text" 
         name="lastName"
-        value={last_name} 
-        onValue={(e) => setLastName(e.target.value)}
+        value={newUserData.lastName} 
+        onValue={handleValues}
         placeholder="Last name"
         labelName="Last name"
         />
@@ -186,8 +181,8 @@ const SignUp = () => {
         for="email" 
         type="email" 
         name="email"
-        value={email} 
-        onValue={(e) => setEmail(e.target.value)}
+        value={newUserData.email} 
+        onValue={handleValues}
         placeholder="Email"
         labelName="Email"
         />
@@ -197,8 +192,8 @@ const SignUp = () => {
         for="password" 
         type="password" 
         name="password"
-        value={password} 
-        onValue={(e) => setPassword(e.target.value)}
+        value={newUserData.password} 
+        onValue={handleValues}
         placeholder="Password"
         labelName="Password"
         />
@@ -209,15 +204,15 @@ const SignUp = () => {
         type="password" 
         name="confirmPSW"
         length="8"
-        value={confirmPSW} 
-        onValue={(e) => setConfirmPSW(e.target.value)}
+        value={newUserData.confirmPSW} 
+        onValue={handleValues}
         placeholder="Confirm Password"
         labelName="Confirm Password"
         />
         
         <div className={styles.bottomContainer}>
         <p className="errorMessage">{errorMessage}</p>
-        <p>Password must be 8 or more characters long and contain at least one number</p>
+        <p>Password must be between 8 and 20 characters long and contain at least one special character * Required fields</p>
         <Button 
         type="submit" 
         text="Create an account" 
