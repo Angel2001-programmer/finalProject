@@ -8,13 +8,23 @@ import httpClient from "../../httpClient";
 
 const SignUp = () => {
     const initialValues = {
-        userName: "",
-        firstName: "",
-        lastName: "",
+        username: "",
+        first_name: "",
+        last_name: "",
         email: "",
         password: "",
         confirmPSW: ""
     };
+
+    // const initialValues = {
+    //     userName: "",
+    //     firstName: "",
+    //     lastName: "",
+    //     email: "",
+    //     password: "",
+    //     confirmPSW: ""
+    // };
+
 
     let SignedUp = null;
     const [isSignUp, setIsSignUp] = useContext(SignUpContext);
@@ -32,22 +42,43 @@ const SignUp = () => {
         try {
         const resp = await httpClient.post("//localhost:5000/register", {
             auth: {
-                username: newUserData.userName,
-                first_name: newUserData.firstName,
-                last_name: newUserData.lastName,
-                email: newUserData.email,
-                password: newUserData.password
+                username,
+                first_name,
+                last_name,
+                email,
+                password,
             }
         });
 
         // window.location.href = "/";
 
         } catch (error) {
-        if (error.resp.status === 401) {
+        if (error.response.status === 401) {
             alert("Invalid credentials");
         }
         }
     };
+
+    // const registerUser = async () => {
+    //     try {
+    //     const resp = await httpClient.post("//localhost:5000/register", {
+    //         auth: {
+    //             username: newUserData.userName,
+    //             first_name: newUserData.firstName,
+    //             last_name: newUserData.lastName,
+    //             email: newUserData.email,
+    //             password: newUserData.password
+    //         }
+    //     });
+
+    //     // window.location.href = "/";
+
+    //     } catch (error) {
+    //     if (error.response.status === 401) {
+    //         alert("Invalid credentials");
+    //     }
+    //     }
+    // };
 
     const handleValues = (e) => {
         setNewUserData({ ...newUserData, [e.target.name]: e.target.value});
@@ -85,7 +116,7 @@ const SignUp = () => {
                 setIsSignModal(false);
                 setIsOpened(false);
                 console.log('Login successful')
-                // registerUser();
+                registerUser();
             }
         }, 1000);
 
