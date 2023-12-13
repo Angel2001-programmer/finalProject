@@ -1,0 +1,137 @@
+.main{
+    background-color: #F0F0F0;
+    height: 100vh;
+}
+
+.cover{
+    display: flex;
+    height: 40vh;
+    background-image: url("../../assets/images/backgrounds/sergey-shmidt-koy6FlCCy5s-unsplash.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.profile{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-direction: row;
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    background-color: gray;
+    border-radius: 15px;
+    border: 5px solid rgb(47, 47, 47);
+    top: 27vh;
+    left: 2vh;
+    gap: 70px;
+}
+
+.profilePicture{
+    display: flex;
+    width: 220px;
+    height: 200px;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.profileName{
+    position: absolute;
+    background-color: #F0F0F0;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 9px;
+    box-shadow: 2px 2px 6px black;
+    font-size: 40px;
+    top: 0;
+    left: 230px;
+}
+
+.accountSettings{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 25px;
+}
+
+.EditAccountform{
+    display: flex;
+    position: absolute;
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    margin-left: 46%;
+    margin-right: 15px;
+    transform: translate(-50%, -50%);
+    margin-top: 81vh;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.editInput{
+    display: flex;
+    padding: 8px;
+    border-radius: 10px;
+    text-align: center;
+    width: 60vh;
+    gap: 10px;
+}
+
+.imageButton{
+    background-color: none;
+    width: 5vh;
+}
+
+.titleContainer{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    left: 46%;
+    bottom: 400px;
+    transform: translate(-50%, -50%);
+
+}
+
+.postsContainer{
+    position: absolute;
+    top: 43vh;
+    left: 43vh;
+}
+
+.smallerProfile{
+    display: flex;
+    background-color: grey;
+    width: 5vh;
+    height: 5vh;
+    border-radius: 5px;
+    border: rgb(63, 63, 63) 3.5px solid;
+}
+
+.smallerProfilePicture{
+    display: flex;
+}
+
+@media all and (max-width: 500px){
+    .EditAccountform{
+        width: 93.6vw;
+    }
+
+    .profilePicture{
+        width: 15vh;
+        height: 15vh;
+    }
+
+    .profile{
+        width: 15vh;
+        height: 15vh;
+    }
+
+    .profileName{
+        left: 140px;
+        bottom: 20px;
+    }
+}

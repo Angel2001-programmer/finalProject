@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import styles from './teamMember.module.css';
-import user from "../../img/user.png";
+import user from "../../assets/img/user.png";
 
 const TeamMemeber = props => {
     return(
@@ -19,8 +19,8 @@ const TeamMemeber = props => {
           <h2>{props.name}</h2>
           <h4 className={styles.favouriteActivity}>Favourite hobby</h4>
             <li>{props.hobby}</li>
-            <h4 className={styles.favouriteActivity}>Why do I do it?</h4>
-            <li>{props.purpose}</li>
+            <h4 className={styles.favouriteActivity}>Description</h4>
+            <li>{props.description}</li>
       </section>
         </Fragment>
     )

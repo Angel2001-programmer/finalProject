@@ -1,68 +1,63 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import MenuItems from '../../components/MenuItems/menuItems';
 import styles from "./about.module.css";
-import Angel from "../../img/angel.jpg";
-import Katherine from "../../img/katherine.png"
-import haiying from '../../img/haiying.jpg';
+import Angel from "../../assets/img/TeamMembers/angel.jpg";
+import Katherine from "../../assets/img/TeamMembers/katherine.png"
+import haiying from '../../assets/img/TeamMembers/haiying.jpg';
+import Katalin from '../../assets/img/TeamMembers/katalin.png';
+import Abbie from '../../assets/img/TeamMembers/abbie.jpg';
 import TeamMemeber from '../../components/TeamMember/teamMember';
-
+import NavBar from "../../components/NavBar/navbar";
+import DropDownMenu from '../../components/DropDownMenu/dropDownMenu';
 export default function About() {
+  const [isPressed, setIsPressed] = useState(false);
+
 	return (
 		<Fragment>
-			<nav className='navbar'>
-				<h1 className='headingTitles'>NAVBAR</h1>
-			</nav>
+			    <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
+          <DropDownMenu isPressed={isPressed} setIsPressed={setIsPressed}/>
 			<main className='main'>
-				<aside className='sidebar'>
-					<MenuItems />
-				</aside>
 				<section className={styles.content}>
 					<p className='mainText'>About</p>
 					<h3>Team Introductiom</h3>
 				<div className={styles.about}>
+
           <TeamMemeber
             name='Angel'
             profilepictrue={Angel}
             hobby='Coding websites in my spare time.'
-            purpose='To get a job and have a good life'
+            description='To get a job and have a good life'
           />
 
           <TeamMemeber 
           name='Katalin' 
-        // if you want your image on the website place it into the img folder, 
-        // and link it same as me with import on the top of the file.
-        profilepictrue='' 
-        hobby='Weight lifting and gaming.' 
-        purpose='To be strong and have a quick trigger finger.'
+          profilepictrue={Katalin} 
+          hobby='Weight lifting and gaming.' 
+          description='To be strong and have a quick trigger finger.'
       />
       
           <TeamMemeber 
           name='Abbie' 
-          // if you want your image on the website place it into the img folder, 
-          // and link it same as me with import on the top of the file.
-          profilepictrue='' 
+          profilepictrue={Abbie} 
           hobby='Reading' 
-          purpose='For mental stimulation and relaxation'
+          description='For mental stimulation and relaxation'
           />
 
           <TeamMemeber 
           name='Katherine Hooper' 
-          // if you want your image on the website place it into the img folder, 
-          // and link it same as me with import on the top of the file.
           profilepictrue={Katherine} 
           hobby='I enjoy running and kickboxing' 
-          purpose='Running feels freeing and helps me think. Kickboxing makes me feel connected and in control. I love to challenge myself and work hard to progress and improve.'
+          description='Running feels freeing and helps me think. Kickboxing makes me feel connected and in control. I love to challenge myself and work hard to progress and improve.'
           />
           
           <TeamMemeber
           name='Haiying Liao'
           profilepictrue={haiying}
           hobby='I like to keep learning new stuff'
-          purpose='because I enjoy leaning :)' />  
+          description='because I enjoy leaning :)' />  
         </div>
       </section>
     </main>
-    <footer className="footer"><p>(Group 1 Name) all rights reserved</p></footer>
     </Fragment>
   )
 }
