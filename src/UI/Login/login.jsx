@@ -4,7 +4,7 @@ import UserInput from "../UserInput/userInput"
 import Card from "../Card/card";
 import { useContext, useState } from 'react'
 import { UserContext, SignUpContext, NewUserContext } from "../../App";
-import axios from "axios";
+import httpClient from "../../httpClient";
 
 const initialValues = {
     userName: "",
@@ -28,7 +28,7 @@ const Login = props => {
         console.log(userData.userName, userData.password);  // remove from final code
     
         try {
-          const resp = await axios.post("//localhost:5000/login", {
+          const resp = await httpClient.post("//localhost:5000/login", {
             username: userData.userName,
             password: userData.password
           });

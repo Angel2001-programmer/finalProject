@@ -4,7 +4,7 @@ import UserInput from "../UserInput/userInput"
 import Card from "../Card/card";
 import { useState, useContext } from "react";
 import { SignUpContext, UserContext, NewUserContext } from "../../App";
-import axios from "axios"
+import httpClient from "../../httpClient";
 
 const SignUp = () => {
     const initialValues = {
@@ -30,7 +30,7 @@ const SignUp = () => {
     // Code needed to connect to the backend, just weave this in with your checks, change variables to however you have them called
     const registerUser = async () => {
         try {
-        const resp = await axios.post("//localhost:5000/register", {
+        const resp = await httpClient.post("//localhost:5000/register", {
             auth: {
                 username: newUserData.userName,
                 first_name: newUserData.firstName,
