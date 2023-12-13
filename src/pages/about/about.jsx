@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import styles from './about.module.css';
 import Angel from '../../assets/img/TeamMembers/angel.jpg';
 import Katherine from '../../assets/img/TeamMembers/katherine.png';
-import haiying from '../../assets/img/TeamMembers/haiying.JPG';
+import haiying from '../../assets/img/TeamMembers/haiying.jpg';
 import Katalin from '../../assets/img/TeamMembers/katalin.png';
 import Abbie from '../../assets/img/TeamMembers/abbie.jpg';
 import TeamMemeber from '../../components/TeamMember/teamMember';

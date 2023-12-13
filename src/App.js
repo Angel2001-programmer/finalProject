@@ -10,7 +10,7 @@ export const NewUserContext = createContext();
 function App() {
   const [isOpened, setIsOpened] = useState(false);
   const [isSignModal, setIsSignModal] = useState(false);
-  const [newUser, setNewUser] = useState(false);
+  const [newUser, setNewUser] = useState(true);
 
   return (   
       <Fragment>
