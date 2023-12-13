@@ -1,7 +1,6 @@
 CREATE DATABASE introverse;
 USE introverse;
 
-
 -- Tables for user profile and accounts (can also create them from Python)
 CREATE TABLE user_profiles (
         user_id VARCHAR(36) NOT NULL,

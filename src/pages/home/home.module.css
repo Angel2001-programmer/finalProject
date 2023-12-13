@@ -1,7 +1,7 @@
 .main{
     display: flex;
     min-height: 50.9vw;
-    background-image: url("../../assets/images/background.svg");
+    background-image: url("../../assets/images/backgrounds/background.svg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -62,4 +62,156 @@
 @keyframes drop-Arrow {
     from {margin-bottom: 15px;}
     to {margin-bottom: 0;}
+}
+
+@media all and (max-width: 900px) {
+    .main{
+        height: 100vh;
+
+    }
+
+    .textHeading{
+        font-size: 7vh;
+    }
+
+    .rowHome{
+        gap: 40vh;
+    }
+
+    .dropArrow{
+        margin-left: 0;
+    }
+
+    .container0{
+        min-height: 30vh;
+        gap: 1vh;
+    }
+
+    .container1{
+        min-height: 30vh;
+        gap: 1vh;
+    }
+}
+
+
+@media all and (max-width: 800px) {
+    .main{
+        height: 100vh;
+
+    }
+
+    .textHeading{
+        font-size: 7vh;
+    }
+
+    .rowHome{
+        gap: 40vh;
+    }
+
+    .dropArrow{
+        margin-left: 0;
+    }
+
+    .container0{
+        min-height: 30vh;
+        gap: 1vh;
+        padding-bottom: 15px;
+    }
+
+    .container1{
+        min-height: 30vh;
+        gap: 1vh;
+        padding-bottom: 15px;
+    }
+}
+
+@media all and (max-width: 500px) {
+    .main{
+        height: 100vh;
+    }
+
+    .textHeading{
+        font-size: 6vh;
+        margin-left: 10px;
+    }
+
+    .rowHome{
+        gap: 35vh;
+    }
+
+    .dropArrow{
+        margin-left: 0;
+    }
+
+    .container0{
+        flex-direction: column;
+        min-height: 30vh;
+        gap: 1vh;
+    }
+
+    .container1{
+        flex-direction: column;
+        min-height: 30vh;
+        gap: 1vh;
+    }
+}
+
+@media all and (max-width: 400px) {
+    .main{
+        height: 100vh;
+    }
+
+    .textHeading{
+        font-size: 6vh;
+    }
+
+    .rowHome{
+        gap: 32vh;
+    }
+
+    .dropArrow{
+        margin-left: 0;
+    }
+
+    .container0{
+        flex-direction: column;
+        min-height: 30vh;
+        gap: 1vh;
+    }
+
+    .container1{
+        flex-direction: column;
+        min-height: 30vh;
+        gap: 1vh;
+    }
+}
+
+@media all and (max-width: 360px) {
+    .main{
+        height: 100vh;
+    }
+
+    .textHeading{
+        font-size: 5vh;
+    }
+
+    .rowHome{
+        gap: 28vh;
+    }
+
+    .dropArrow{
+        margin-left: 0;
+    }
+
+    .container0{
+        flex-direction: column;
+        min-height: 30vh;
+        gap: 1vh;
+    }
+
+    .container1{
+        flex-direction: column;
+        min-height: 30vh;
+        gap: 1vh;
+    }
 }

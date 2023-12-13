@@ -3,11 +3,11 @@ import NavBar from '../../components/NavBar/navbar';
 import styles from "./forum.module.css";
 import Card from "../../UI/Card/card"
 import ForumItem from "../../components/ForumItem/ForumItem";
-import tiger from "../../assets/images/tiger.png"
-import anime from "../../assets/images/anime.png"
-import gaming from "../../assets/images/joystick.png"
-import books from "../../assets/images/books_3771417.png"
-import manga from "../../assets/images/tiger.png"
+import tiger from "../../assets/images/logos/tiger.png"
+import anime from "../../assets/images/logos/anime.png"
+import gaming from "../../assets/images/logos/joystick.png"
+import books from "../../assets/images/logos/books_3771417.png"
+import manga from "../../assets/images/logos/tiger.png"
 import Button from "../../UI/Button/button";
 import { Link } from 'react-router-dom';
 import DropDownMenu from "../../components/DropDownMenu/dropDownMenu";
