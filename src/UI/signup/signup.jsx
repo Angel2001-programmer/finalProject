@@ -16,30 +16,6 @@ const SignUp = () => {
         confirmPSW: ""
     };
 
-
-    
-    // Code needed to connect to the backend, just weave this in with your checks, change variables to however you have them called
-    const registerUser = async () => {
-
-        try {
-        const resp = await axios.post("//localhost:5000/register", {
-            username,
-            first_name,
-            last_name,
-            email,
-            password
-        });
-
-        // window.location.href = "/";
-
-
-        } catch (error) {
-        if (error.response.status === 401) {
-            alert("Invalid credentials");
-        }
-        }
-    };
-
     let SignedUp = null;
     const [isSignUp, setIsSignUp] = useContext(SignUpContext);
 
@@ -50,6 +26,28 @@ const SignUp = () => {
     const [count, setCount] = useState(5);
     const [newUserData, setNewUserData] = useState(initialValues);
     const [errorMessage, setErrorMessage] = useState("");
+
+    // Code needed to connect to the backend, just weave this in with your checks, change variables to however you have them called
+    const registerUser = async () => {
+        try {
+        const resp = await axios.post("//localhost:5000/register", {
+            auth: {
+                username: newUserData.userName,
+                first_name: newUserData.firstName,
+                last_name: newUserData.lastName,
+                email: newUserData.email,
+                password: newUserData.password
+            }
+        });
+
+        // window.location.href = "/";
+
+        } catch (error) {
+        if (error.resp.status === 401) {
+            alert("Invalid credentials");
+        }
+        }
+    };
 
     const handleValues = (e) => {
         setNewUserData({ ...newUserData, [e.target.name]: e.target.value});
@@ -83,6 +81,7 @@ const SignUp = () => {
                 setIsSignModal(false);
                 setIsOpened(false);
                 console.log('Login successful')
+                registerUser();
             }
         }, 1000);
 
@@ -160,7 +159,6 @@ const SignUp = () => {
         name="password"
         value={newUserData.password} 
         onValue={handleValues}
-        length="8"
         placeholder="Password"
         labelName="Password"
         />

@@ -6,27 +6,34 @@ import { useContext, useState } from 'react'
 import { UserContext, SignUpContext, NewUserContext } from "../../App";
 import axios from "axios";
 
+const initialValues = {
+    userName: "",
+    password: ""
+};
+
 const Login = props => {
     const [isOpened, setIsOpened]  = useContext(UserContext);
     const [isSignModal, setIsSignModal] = useContext(SignUpContext);
     const [newUser, setNewUser] = useContext(NewUserContext);
-    const initialValues = {
-        userName: "",
-        password: ""
-    };
+
+    // This is just a test to see if login works with data.
+    const [userData, setUserData] = useState(initialValues);
+    const [errorMessage, setErrorMessage] = useState(null);
+    let createAccount = null;
+    
+    //API here use either fetch or install Axios library.
 
     // Code needed to connect to the backend, just weave this in with your checks, change variables to however you have them called
     const loginUser = async () => {
-        console.log(username, password);  // remove from final code
+        console.log(userData.userName, userData.password);  // remove from final code
     
         try {
           const resp = await axios.post("//localhost:5000/login", {
-            username,
-            password,
+            username: userData.userName,
+            password: userData.password
           });
     
         //   window.location.href = "/";
-    
     
         } catch (error) {
           if (error.response.status === 401) {
@@ -34,15 +41,6 @@ const Login = props => {
           }
         }
       };
-
-    // This is just a test to see if login works with data.
-    const [userData, setUserData] = useState(initialValues);
-    const [errorMessage, setErrorMessage] = useState(null);
-    let createAccount = null;
-
-    //API here use either fetch or install Axios library.
-    
-
 
     const handleValues = (e) => {
         setUserData({ ...userData, [e.target.name]: e.target.value});
@@ -86,11 +84,12 @@ const Login = props => {
                 if(userData.userName.trim().length === 0 || userData.password.trim().length === 0){
                     setErrorMessage(<p className={styles.errorMessage}>Inputs cannot be empty</p>)
                 } else {
-                    setIsOpened(false)
-                    setNewUser(true)
-                    setIsSignModal(false)
-                    console.log('')
+                    // setIsOpened(false)
+                    // setNewUser(true)
+                    // setIsSignModal(false)
+                    // console.log('')
                     console.log('Login successful')
+                    loginUser();
                 }
             }}
             />
