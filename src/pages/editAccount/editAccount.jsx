@@ -53,8 +53,9 @@ const EditAccount = (props) => {
 					))}
 				</div>
 
-				<form className={styles.EditAccountform}>
-					<div className={styles.accountSettings}>
+				<div className={styles.formContainer}>
+					<h2>About your account</h2>
+					<form className={styles.EditAccountform}>
 						<div className={styles.row}>
 							<label>FirstName:</label>
 							<input
@@ -85,7 +86,6 @@ const EditAccount = (props) => {
 								alt='edit Password.'
 							></img>
 						</div>
-
 						<div className={styles.row}>
 							<label>UserName:</label>
 							<input
@@ -116,7 +116,6 @@ const EditAccount = (props) => {
 								alt='edit Password.'
 							></img>
 						</div>
-
 						<div className={styles.row}>
 							<label>Password:</label>
 							<input
@@ -132,8 +131,8 @@ const EditAccount = (props) => {
 								alt='edit Password.'
 							></img>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</main>
 		</Fragment>
 	);
