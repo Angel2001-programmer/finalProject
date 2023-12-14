@@ -64,7 +64,18 @@
     to {margin-bottom: 0;}
 }
 
-@media all and (max-width: 900px) {
+@media all and (min-width: 1000px) {
+    .main{
+        height: 100vh;
+
+    }
+
+    .rowHome{
+        gap: 20vh;
+    }
+}
+
+@media all and (min-width: 900px) {
     .main{
         height: 100vh;
 
@@ -94,7 +105,7 @@
 }
 
 
-@media all and (max-width: 800px) {
+@media all and (min-width: 800px) {
     .main{
         height: 100vh;
 
@@ -156,7 +167,7 @@
     }
 }
 
-@media all and (max-width: 400px) {
+@media all and (min-width: 400px) {
     .main{
         height: 100vh;
     }

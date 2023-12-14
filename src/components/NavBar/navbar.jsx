@@ -16,6 +16,7 @@ const NavBar = props => {
         <nav className={styles.navbar}>
             <div className={styles.menu}>
             <Link className={styles.link} to="/finalProject"><h1>IntroVerse</h1></Link>
+            <img className={styles.MobileMenu} src={Menu} alt="dropDownMenu"/>
             </div>
             {newUser ?
             <div className={styles.navItems}>
@@ -27,8 +28,6 @@ const NavBar = props => {
             <div className={styles.profile}>
                 <img className={styles.profilePicture} src={profile} alt="profile."/>
             </div>
-            <img src={Menu} alt="dropDownMenu"/>
-
             <img 
             className={styles.profilePicture} 
             src={profileDropArrow} 

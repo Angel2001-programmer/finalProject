@@ -40,6 +40,10 @@
     border: white 2px solid;
 }
 
+.MobileMenu{
+    display: none;
+}
+
 .profile{
     display: flex;
     justify-content: center;
@@ -78,8 +82,14 @@
 }
 
 @media all and (max-width: 900px){
+    .MobileMenu{
+        display: none;
+        height: 50px;
+        width: 50px;
+    }
     .navbar{
-        justify-content: space-around;
+        display: flex;
+        width: 96.2%;
     }
 
     .navItems{
@@ -94,15 +104,19 @@
 }
 
 @media all and (max-width: 800px){
+    .MobileMenu{
+        display: block;
+    }
+
     .menu{
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        gap: 60vw;
     }
 
     .navbar{
-        justify-content: flex-start;
-        width: 100%;
+        display: flex;
+        width: 96%;
     }
 
     .navItems{
@@ -116,8 +130,39 @@
     }
 }
 
+@media all and (max-width: 700px){
+    .navbar{
+        display: flex;
+        width: 94.6%;
+    }
+
+    .menu{
+        display: flex;
+        flex-direction: row;
+        gap: 50vw;
+    }
+}
+
 @media all and (max-width: 500px){
     .navbar{
-        width: 93.6vw;
+        width: 92%;
+    }
+
+    .menu{
+        display: flex;
+        flex-direction: row;
+        gap: 40vw;
+    }
+}
+
+@media all and (max-width: 360px){
+    .navbar{
+        width: 92%;
+    }
+
+    .menu{
+        display: flex;
+        flex-direction: row;
+        gap: 30vw;
     }
 }

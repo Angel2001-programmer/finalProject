@@ -2,6 +2,7 @@ import './App.css';
 import { Fragment, createContext, useState } from 'react';
 import NavGraph from './navigation/NavGraph';
 import AccountCreation from './components/accountCreation/accountCreation';
+import UnderAge from "./pages/underAge/UnderAge";
 
 export const UserContext = createContext();
 export const SignUpContext = createContext();
