@@ -91,10 +91,11 @@ def login_user():
 
 
 # Logout
-@app.route("/logout")
+@app.route("/logout", methods=["POST"])
 def logout_user():
     response = jsonify({"message": "Logout successful"})
     unset_jwt_cookies(response)
+    return response
     # session.pop("user_id")  # This won't work currently
     # return "200"
 
