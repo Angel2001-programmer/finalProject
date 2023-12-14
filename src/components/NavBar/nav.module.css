@@ -2,7 +2,8 @@
     display: flex;
     position: absolute;
     background-color: #353be552;
-    padding: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     margin: 0;
     width: 100%;
     justify-content: space-between;
@@ -24,7 +25,7 @@
     display: flex;
     gap: 10px;
     justify-content: flex-end;
-    width: 71%;
+    /* width: 71%; */
     margin: 0;
     padding: 0;
 }
@@ -33,7 +34,7 @@
     font-size: 25px;
     color: white;
     font-weight: 400;
-    padding: 5px;
+    /* padding: 5px; */
 }
 
 .navItem:hover{
@@ -52,20 +53,21 @@
     width: 60px;
     background-color: grey;
     border-radius: 10px;
-    margin-right: 25px;
+    /* margin-right: 25px; */
     border: 4px #4C4B4B solid;
 }
 
 .profilePicture{
     display: flex;
-    width: 50px;
+    /* width: 50px; */
     height: 50px;
 }
 
 .profileRow{
+    position: relative;
     display: flex;
     flex-direction: row;
-    margin-right: 5px;
+    /* margin-right: 5px; */
     align-items: center;
     justify-content: center;
 }
@@ -80,16 +82,11 @@
 .link{
     text-decoration: none;
 }
-
 @media all and (max-width: 900px){
     .MobileMenu{
         display: none;
         height: 50px;
         width: 50px;
-    }
-    .navbar{
-        display: flex;
-        width: 96.2%;
     }
 
     .navItems{
@@ -111,12 +108,7 @@
     .menu{
         display: flex;
         flex-direction: row;
-        gap: 60vw;
-    }
-
-    .navbar{
-        display: flex;
-        width: 96%;
+        gap: 65vw;
     }
 
     .navItems{
@@ -125,17 +117,12 @@
     }
 
     .navbar h1 {
-        margin-left: 0;
+        margin-left: 15px;
         font-size: 35px;
     }
 }
 
 @media all and (max-width: 700px){
-    .navbar{
-        display: flex;
-        width: 94.6%;
-    }
-
     .menu{
         display: flex;
         flex-direction: row;
@@ -144,22 +131,14 @@
 }
 
 @media all and (max-width: 500px){
-    .navbar{
-        width: 92%;
-    }
-
     .menu{
         display: flex;
         flex-direction: row;
-        gap: 40vw;
+        gap: 38vw;
     }
 }
 
 @media all and (max-width: 360px){
-    .navbar{
-        width: 92%;
-    }
-
     .menu{
         display: flex;
         flex-direction: row;

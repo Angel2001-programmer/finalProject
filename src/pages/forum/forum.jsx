@@ -11,6 +11,7 @@ import manga from "../../assets/images/logos/tiger.png"
 import Button from "../../UI/Button/button";
 import { Link } from 'react-router-dom';
 import DropDownMenu from "../../components/DropDownMenu/dropDownMenu";
+import MobileNav from '../../components/MobileNav/MobileNav';
 
 export default function Forum() {  
     const [isClicked, setIsClicked] = useState(false);
@@ -69,6 +70,7 @@ export default function Forum() {
     </Card>
     </div> : null}
     <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
+    <MobileNav/>
     <Link className='link' to="/finalProject">
     <DropDownMenu isPressed={isPressed} setIsPressed={setIsPressed}/>
     </Link>
