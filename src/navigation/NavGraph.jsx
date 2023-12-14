@@ -3,6 +3,7 @@ import About from '../pages/about/about';
 import Error from '../pages/error/error';
 import EditAccount from '../pages/editAccount/editAccount';
 import Forums from '../pages/forum/forum';
+import Recommendations from '../pages/recommendations/recommendations';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 const NavGraph = () => {
@@ -13,6 +14,7 @@ const NavGraph = () => {
             <Route path="/about" element={<About/>}/>
             <Route path="/editAccount" element={<EditAccount/>}/>
             <Route path="/forums" element={<Forums/>}/>
+            <Route path="/recommendations" element={<Recommendations/>}/>
             <Route path='*' element={<Error/>}/>
         </Routes>
         </BrowserRouter>

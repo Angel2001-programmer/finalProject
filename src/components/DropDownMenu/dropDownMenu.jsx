@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { NewUserContext } from "../../App"
 import { useContext } from 'react';
 
+
+// set log out functionality here?
 const DropDownMenu = props => {
   const [newUser, setNewUser] = useContext(NewUserContext);
 
@@ -17,7 +19,7 @@ const DropDownMenu = props => {
                   setNewUser(false);
                   props.setIsPressed(false);
                   }}>
-                <p>Sign Out</p>
+                <Link className='link' to="/finalProject"><p>Sign Out</p></Link>
                 </div>
               </div>
             </div>

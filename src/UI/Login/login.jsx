@@ -115,7 +115,7 @@ const Login = props => {
         paddingToLeft="70px"
         />
         <div className={styles.noAccount}>
-        <h2 className={styles.signUp}>Don't have an account</h2>
+        <h2 className={styles.signUp}>Don't have an account? </h2>
         <h2 className={styles.signUpLink} 
         onClick={() => {
             setIsSignModal(true)

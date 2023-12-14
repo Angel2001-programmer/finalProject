@@ -225,7 +225,7 @@ const SignUp = () => {
       
       <div className={styles.bottomContainer}>
       <p className="errorMessage">{errorMessage}</p>
-      <p>Password must be 8 or more characters long and contain at least one number</p>
+      <p>Password must be at least 8 characters</p>
       <Button 
       type="submit" 
       text="Create an account" 
