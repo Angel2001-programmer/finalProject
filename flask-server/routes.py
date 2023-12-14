@@ -3,6 +3,8 @@ from flask import current_app, jsonify, request, session
 from app import create_app, db, bcrypt
 from models.user_models import User, Profile
 from models.content_models import Books, Anime, Games
+from flask_jwt_extended import create_access_token, create_refresh_token, unset_jwt_cookies, get_jwt_identity, jwt_required
+from flask_restx import Resource
 
 # Create an application instance
 app = create_app()
@@ -54,10 +56,14 @@ def register_user():
 
     # session["user_id"] = new_user.id  # Doesn't work with flask 3.0
 
-    return jsonify({
-        "user_id": new_user.user_id,
-        "email": new_profile.email
-    }), 201  # Need to return status code?
+    access_token = create_access_token(identity=new_user.username)
+    refresh_token = create_refresh_token(identity=new_user.username)
+    return jsonify(
+        {"access_token": access_token, "refresh_token": refresh_token})
+    # return jsonify({
+    #     "user_id": new_user.user_id,
+    #     "email": new_profile.email
+    # }), 201  # Need to return status code?
 
 # Login
 @app.route("/login", methods=["POST"])
@@ -75,16 +81,31 @@ def login_user():
     
     # session["user_id"] = user.id  # Doesn't work with flask 3.0
     
-    return jsonify({
-        "username": user.username
-    }), 201  # Need to return status code? Change this jsonify later
+    access_token = create_access_token(identity=user.username)
+    refresh_token = create_refresh_token(identity=user.username)
+    return jsonify(
+        {"access_token": access_token, "refresh_token": refresh_token})
+    # return jsonify({
+    #     "username": user.username
+    # }), 201  # Need to return status code? Change this jsonify later
 
 
 # Logout
 @app.route("/logout")
 def logout_user():
-    session.pop("user_id")  # This won't work currently
-    return "200"
+    response = jsonify({"message": "Logout successful"})
+    unset_jwt_cookies(response)
+    # session.pop("user_id")  # This won't work currently
+    # return "200"
+
+@app.route("/refresh")
+class RefreshResource(Resource):
+    @jwt_required(refresh=True)
+    def post(self):
+        current_user = get_jwt_identity()
+        new_access_token = create_access_token(identity=current_user)
+
+        return make_response(jsonify({"access_token": new_access_token}), 200)
 
 
 

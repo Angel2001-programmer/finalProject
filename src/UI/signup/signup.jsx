@@ -16,15 +16,6 @@ const SignUp = () => {
         confirmPSW: ""
     };
 
-    // const initialValues = {
-    //     userName: "",
-    //     firstName: "",
-    //     lastName: "",
-    //     email: "",
-    //     password: "",
-    //     confirmPSW: ""
-    // };
-
 
     let SignedUp = null;
     const [isSignUp, setIsSignUp] = useContext(SignUpContext);
