@@ -1,9 +1,32 @@
 import { Link } from 'react-router-dom';
 import { NewUserContext } from "../../App"
 import { useContext } from 'react';
+import { useAuth, logout } from "../../auth";
+import httpClient from "../../httpClient";
 
+
+// set log out functionality here?
 const DropDownMenu = props => {
   const [newUser, setNewUser] = useContext(NewUserContext);
+
+  // Function to log out the user
+  function logMeOut() {
+    httpClient({
+      method: "POST",
+      url: "http://localhost:5000/logout"
+    })
+    .then((response) => {
+      logout()
+      alert("You have successfully logged out")
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.error)
+      }
+    })
+
+  }
 
     return(
         props.isPressed?
@@ -17,7 +40,7 @@ const DropDownMenu = props => {
                   setNewUser(false);
                   props.setIsPressed(false);
                   }}>
-                <p>Sign Out</p>
+                <Link className='link' to="/finalProject" onClick={logMeOut}><p>Sign Out</p></Link>
                 </div>
               </div>
             </div>

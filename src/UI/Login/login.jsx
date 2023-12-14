@@ -23,7 +23,7 @@ const Login = props => {
   let createAccount = null;
   
 
-  // If this way works can swap back the old variables
+  // Function to fetch user data from database, log in user if successful
   const loginUser = async () => {
     httpClient({
       method: "POST",
@@ -38,6 +38,9 @@ const Login = props => {
       console.log(response.data.access_token)
       login(response.data.access_token)
       console.log(userData.userName, " has logged in")
+      setIsOpened(false)
+      setNewUser(true)
+      setIsSignModal(false)
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)
@@ -112,7 +115,7 @@ const Login = props => {
         paddingToLeft="70px"
         />
         <div className={styles.noAccount}>
-        <h2 className={styles.signUp}>Don't have an account</h2>
+        <h2 className={styles.signUp}>Don't have an account? </h2>
         <h2 className={styles.signUpLink} 
         onClick={() => {
             setIsSignModal(true)
