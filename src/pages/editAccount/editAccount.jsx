@@ -5,13 +5,15 @@ import profile from '../../assets/images/logos/user.png';
 import editProfile from '../../assets/images/editProfile.svg';
 import messageIcon from '../../assets/images/message.svg';
 import DropDownMenu from '../../components/DropDownMenu/dropDownMenu';
+import MobileNav from '../../components/MobileNav/MobileNav';
 
-const EditAccount = (props) => {
+const EditAccount = () => {
 	const [isPressed, setIsPressed] = useState(false);
 
 	return (
 		<Fragment>
 			<NavBar isPressed={isPressed} onChangePressed={setIsPressed} />
+			<MobileNav/>
 			<DropDownMenu isPressed={isPressed} setIsPressed={setIsPressed} />
 			<main className={styles.main}>
 				<div className={styles.banner}>

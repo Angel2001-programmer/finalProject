@@ -64,7 +64,18 @@
     to {margin-bottom: 0;}
 }
 
-@media all and (max-width: 900px) {
+@media all and (min-width: 1000px) {
+    .main{
+        height: 100vh;
+
+    }
+
+    .rowHome{
+        gap: 20vh;
+    }
+}
+
+@media all and (min-width: 900px) {
     .main{
         height: 100vh;
 
@@ -94,7 +105,7 @@
 }
 
 
-@media all and (max-width: 800px) {
+@media all and (min-width: 800px) {
     .main{
         height: 100vh;
 
@@ -156,7 +167,7 @@
     }
 }
 
-@media all and (max-width: 400px) {
+@media all and (min-width: 400px) {
     .main{
         height: 100vh;
     }
@@ -166,7 +177,7 @@
     }
 
     .rowHome{
-        gap: 32vh;
+        gap: 31vh;
     }
 
     .dropArrow{
@@ -184,7 +195,46 @@
         min-height: 30vh;
         gap: 1vh;
     }
+
+    .MobileNav{
+        display: none;
+    }
 }
+
+/* @media all and (max-width: 800px) {
+    .MobileNav{
+        position: absolute;
+        display: flex;
+        top: 9.3vh;
+        justify-content: center;
+        width: 100%;
+    }
+    .navItemsMobile{
+        display: flex;
+        flex-direction: column;
+        background-color: #353be552;
+        width: 100%;
+    }
+
+    .navItemMobile{
+        font-size: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .navItemMobile:hover{
+        background-color: #2d32c052;
+    }
+
+    .navLink{
+        color: white;
+        text-decoration: none;
+    }
+} */
 
 @media all and (max-width: 360px) {
     .main{

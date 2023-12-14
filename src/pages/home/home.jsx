@@ -11,6 +11,7 @@ import News from "../../assets/images/logos/discussions.png"
 import dropArrow from "../../assets/images/logos/drop_Icon.svg"
 import { NewUserContext } from "../../App";
 import DropDownMenu from "../../components/DropDownMenu/dropDownMenu";
+import MobileNav from '../../components/MobileNav/MobileNav';
 
 export default function Home() {  
   const [isPressed, setIsPressed] = useState(false);
@@ -19,6 +20,7 @@ export default function Home() {
     <Fragment>
     <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
     <DropDownMenu isPressed={isPressed} setIsPressed={setIsPressed}/>
+    <MobileNav/>
     <main className={styles.main}>
       <div className={styles.rowHome}>
       <div className={styles.containerHeading}>
