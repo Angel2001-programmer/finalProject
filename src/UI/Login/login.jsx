@@ -38,6 +38,9 @@ const Login = props => {
       console.log(response.data.access_token)
       login(response.data.access_token)
       console.log(userData.userName, " has logged in")
+      setIsOpened(false)
+      setNewUser(true)
+      setIsSignModal(false)
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)
