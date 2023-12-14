@@ -8,14 +8,6 @@ import httpClient from "../../httpClient";
 import { login } from "../../auth";
 
 const SignUp = () => {
-  // const initialValues = {
-  //     username: "",
-  //     first_name: "",
-  //     last_name: "",
-  //     email: "",
-  //     password: "",
-  //     confirmPSW: ""
-  // };
   const initialValues = {
     userName: "",
     firstName: "",
@@ -37,15 +29,8 @@ const SignUp = () => {
   const [newUserData, setNewUserData] = useState(initialValues);
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Need new variables that are compatible with the JSON keys, trying this out
-  // const [username, setUsername] = useState("")
-  // const [first_name, setFirstName] = useState("")
-  // const [last_name, setLastName] = useState("")
-  // const [email, setEmail] = useState("")
-  // const [password, setPassword] = useState("")
-  // const [confirmPSW, setConfirmPSW] = useState("")
 
-  // Code needed to connect to the backend, just weave this in with your checks, change variables to however you have them called
+  // Function to register a new user, post the data to backend if legit, and log user in afterwards
   const registerUser = async () => {
     httpClient({
       method: "POST",

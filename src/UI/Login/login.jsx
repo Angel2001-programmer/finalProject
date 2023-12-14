@@ -23,7 +23,7 @@ const Login = props => {
   let createAccount = null;
   
 
-  // If this way works can swap back the old variables
+  // Function to fetch user data from database, log in user if successful
   const loginUser = async () => {
     httpClient({
       method: "POST",

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { NewUserContext, MobileNavContext, StyleMobileNavContext } from "../../App";
 import { useContext, useState } from "react";
 
+
+// Angel, can you update this one to match the login requirements of the other navbar too? Although I don't think mobile functionality is a prio for submission
 const MobileNav = () => {
     const [newUser, setNewUser] = useContext(NewUserContext);
     const [isMobileClicked, setIsMobileClicked] = useContext(MobileNavContext);
