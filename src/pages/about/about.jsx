@@ -9,6 +9,7 @@ import TeamMemeber from '../../components/TeamMember/teamMember';
 import NavBar from '../../components/NavBar/navbar';
 import DropDownMenu from '../../components/DropDownMenu/dropDownMenu';
 import { charities } from '../../constants';
+import MobileNav from '../../components/MobileNav/MobileNav';
 
 export default function About() {
 	const [isPressed, setIsPressed] = useState(false);
@@ -16,6 +17,7 @@ export default function About() {
 	return (
 		<Fragment>
 			<NavBar isPressed={isPressed} onChangePressed={setIsPressed} />
+			<MobileNav/>
 			<DropDownMenu isPressed={isPressed} setIsPressed={setIsPressed} />
 			<main className='main'>
 				<section className={styles.content}>

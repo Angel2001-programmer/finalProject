@@ -1,13 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
 
-html{
-  overflow-x: hidden;
-}
-
 body{
   background-color: rgb(72, 72, 72);
-  overflow-x: hidden;
-
 }
 
 li a{
@@ -50,6 +44,7 @@ li a{
 
 .mainText{
   color: black;
+  margin-top: 8vh;
 }
 
 .card{
@@ -139,5 +134,11 @@ li a{
 
   section.content{
     height: 100vh;
+  }
+}
+
+@media all and (min-width: 360px){
+  .mainText{
+    margin-top: 12vh;
   }
 }

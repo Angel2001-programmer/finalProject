@@ -3,17 +3,22 @@ import Button from "../../UI/Button/button";
 import profile from "../../assets/images/logos/user.png";
 import profileDropArrow from "../../assets/images/profileArrow.svg";
 import { Link } from "react-router-dom";
-import { UserContext, NewUserContext, SignUpContext } from "../../App";
-import { useContext } from "react";
+import { UserContext, NewUserContext, SignUpContext, MobileNavContext } from "../../App";
+import { useContext, useState } from "react";
+import Menu from "../../assets/images/logos/menu.svg";
 
 const NavBar = props => {
     const [isOpened, setIsOpened]  = useContext(UserContext);
     const [newUser, setNewUser] = useContext(NewUserContext);
     const [isSignUp, setIsSignUp] = useContext(SignUpContext);
+    const [isMobileClicked, setIsMobileClicked] = useContext(MobileNavContext);
 
     return(
         <nav className={styles.navbar}>
+            <div className={styles.menu}>
             <Link className={styles.link} to="/finalProject"><h1>IntroVerse</h1></Link>
+            <img className={styles.MobileMenu} src={Menu} alt="dropDownMenu" onClick={() => setIsMobileClicked(!isMobileClicked)}/>
+            </div>
             {newUser ?
             <div className={styles.navItems}>
                 <Link className={styles.link} to="/finalProject"><h3 className={styles.navItem}>Home</h3></Link>

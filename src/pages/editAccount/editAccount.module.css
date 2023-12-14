@@ -4,10 +4,11 @@
 }
 
 .banner {
+	position: relative;
 	display: flex;
 	align-items: end;
 	justify-content: center;
-
+	z-index: 0;
 	height: 40vh;
 	width: 100%;
 	background-image: url('../../assets/images/backgrounds/sergey-shmidt-koy6FlCCy5s-unsplash.jpg');
