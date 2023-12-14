@@ -5,9 +5,10 @@ import Card from "../Card/card";
 import { useContext, useState } from 'react'
 import { UserContext, SignUpContext, NewUserContext } from "../../App";
 import httpClient from "../../httpClient";
+import { login } from "../../auth";
 
 const initialValues = {
-  username: "",
+  userName: "",
   password: ""
 };
 
@@ -21,39 +22,6 @@ const Login = props => {
   const [errorMessage, setErrorMessage] = useState(null);
   let createAccount = null;
   
-  //API here use either fetch or install Axios library.
-  // Need new variables that are compatible with the JSON keys, trying this out
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-
-  // Code needed to connect to the backend, just weave this in with your checks, change variables to however you have them called
-  // const loginUser = (data) => {
-  //   try {
-  //     const requestOptions = {
-  //       method: "POST",
-  //       headers: {
-  //         "content-type": "application/json"
-  //       },
-  //       body: JSON.stringify(data)
-  //     } 
-      
-  //     fetch("//localhost:5000/login", requestOptions)
-  //     .then(res=>res.json())
-  //     .then(data=>{
-  //       console.log(data)
-  //     })
-
-  //     console.log(username, " has logged in")
-
-  //   } catch (error) {
-  //     if (error.response.status === 401) {
-  //         alert("Invalid credentials");
-  //     }
-  //     else {
-  //         alert("Error")
-  //       }
-  //     }
-  // };
 
   // If this way works can swap back the old variables
   const loginUser = async () => {
@@ -61,13 +29,15 @@ const Login = props => {
       method: "POST",
       url: "http://localhost:5000/login",
       data: {
-        username: username,
-        password: password
+        username: userData.userName,
+        password: userData.password
       }
     })
     .then((response) => {
       console.log(response)
-      console.log(username, " has logged in")
+      console.log(response.data.access_token)
+      login(response.data.access_token)
+      console.log(userData.userName, " has logged in")
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)
@@ -81,26 +51,6 @@ const Login = props => {
 
   };
 
-  // const loginUser = async () => {
-  //   try {
-  //     const resp = await httpClient.post("//localhost:5000/login", {
-  //       username,
-  //       password,
-  //     });
-
-  //     console.log(username, " has logged in")
-
-  //   } catch (error) {
-  //     if (error.response.status === 401) {
-  //         alert("Invalid credentials");
-  //     }
-  //     else {
-  //         alert("Error")
-  //       }
-  //     }
-  // };
-
-
 
   //Set new keystroke to UserData values.
   const handleValues = (e) => {
@@ -110,7 +60,7 @@ const Login = props => {
   const handleLogin = (e) => {
       //Prevents form from refreshing when Sign button is clicked.
       e.preventDefault();
-      if(username.trim().length === 0 || password.trim().length === 0){
+      if(userData.userName.trim().length === 0 || userData.password.trim().length === 0){
           setErrorMessage(<p className={styles.errorMessage}>Inputs cannot be empty</p>)
       } else {
           setErrorMessage("")
@@ -133,8 +83,8 @@ const Login = props => {
         for="userName" 
         type="text" 
         name="userName"
-        value={username} 
-        onValue={(e) => setUsername(e.target.value)}
+        value={userData.userName}
+        onValue={handleValues}
         placeholder="UserName"
         labelName="UserName"
         />
@@ -144,8 +94,8 @@ const Login = props => {
         for="password" 
         type="password" 
         name="password"
-        value={password} 
-        onValue={(e) => setPassword(e.target.value)}
+        value={userData.password} 
+        onValue={handleValues}
         placeholder="Password"
         labelName="Password"
         />
