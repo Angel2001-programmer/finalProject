@@ -94,6 +94,12 @@
 }
 
 @media all and (max-width: 800px){
+    .menu{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
     .navbar{
         justify-content: flex-start;
         width: 100%;
