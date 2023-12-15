@@ -14,7 +14,7 @@ bcrypt = Bcrypt()
 cors = CORS()
 jwt = JWTManager()
 
-def create_app():
+def create_app(config):  # Changed function to take in a config so can unit test with a test config
     app = Flask(__name__)
     app.config.from_object(ApplicationConfig)
     db.init_app(app)

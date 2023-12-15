@@ -5,9 +5,10 @@ from models.user_models import User, Profile
 from models.content_models import Books, Anime, Games
 from flask_jwt_extended import create_access_token, create_refresh_token, unset_jwt_cookies, get_jwt_identity, jwt_required
 from flask_restx import Resource
+from config import ApplicationConfig
 
 # Create an application instance
-app = create_app()
+app = create_app(ApplicationConfig)  # Takes in a config now so can unit test with a test config
 
 # Defining routes
 
