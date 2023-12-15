@@ -1,5 +1,5 @@
 # This file runs the server
-from flask import current_app, jsonify, request, session
+from flask import current_app, jsonify, request
 from app import create_app, db, bcrypt
 from models.user_models import User, Profile
 from models.content_models import Books, Anime, Games
@@ -7,13 +7,13 @@ from flask_jwt_extended import create_access_token, create_refresh_token, unset_
 from flask_restx import Resource
 
 # Create an application instance
-app = create_app()
+app = create_app()  # Takes in a config now so can unit test with a test config
 
 # Defining routes
 
 @app.route("/")
 def home():
-    return "hello"
+    return {"message": "hello"}
 
 
 # Register

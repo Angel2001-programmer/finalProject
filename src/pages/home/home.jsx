@@ -8,27 +8,20 @@ import Books from "../../assets/images/logos/books.png"
 import Friendship from "../../assets/images/logos/friendship.png"
 import TreatOthers from "../../assets/images/logos/treatothers.png"
 import News from "../../assets/images/logos/discussions.png"
-import dropArrow from "../../assets/images/logos/drop_Icon.svg"
-import { NewUserContext } from "../../App";
+import { NewUserContext } from "../../components/FinalProject/FinalProject";
 import DropDownMenu from "../../components/DropDownMenu/dropDownMenu";
 import MobileNav from '../../components/MobileNav/MobileNav';
+import Landing from "../../components/landing/landing";
 
 export default function Home() {  
   const [isPressed, setIsPressed] = useState(false);
-  const [newUser, setNewUser] = useContext(NewUserContext);
+  // const [newUser, setNewUser] = useContext(NewUserContext);
   return (
     <Fragment>
     <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
     <DropDownMenu isPressed={isPressed} setIsPressed={setIsPressed}/>
     <MobileNav/>
-    <main className={styles.main}>
-      <div className={styles.rowHome}>
-      <div className={styles.containerHeading}>
-      <h1 className={styles.textHeading}>Find your community</h1>
-      </div>
-      <img className={styles.dropArrow} src={dropArrow} alt='Scroll down for more information'/>
-      </div>
-    </main>
+    <Landing/>
     <div className={styles.container0}>
       <HomeItem text="A friendly place for introverts and everyone to express themseleves in safe a good environment" image={Community}/>
       <HomeItem text="A place for gamers of all kinds ranging from PC, Xbox, Playstation and much more!" image={Gaming}/>

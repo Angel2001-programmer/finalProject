@@ -1,6 +1,6 @@
 import styles from "./MobileNav.module.css";
 import { Link } from "react-router-dom";
-import { NewUserContext, MobileNavContext, StyleMobileNavContext } from "../../App";
+import { NewUserContext, MobileNavContext, StyleMobileNavContext, UserContext} from "../../components/FinalProject/FinalProject";
 import { useContext, useState } from "react";
 
 
@@ -8,6 +8,8 @@ import { useContext, useState } from "react";
 const MobileNav = () => {
     const [newUser, setNewUser] = useContext(NewUserContext);
     const [isMobileClicked, setIsMobileClicked] = useContext(MobileNavContext);
+    const [isOpened, setIsOpened] = useContext(UserContext);
+
     let style2 = StyleMobileNavContext;
 
     if (!isMobileClicked){
@@ -48,7 +50,10 @@ const MobileNav = () => {
           </div>
           {/* Will implement tomorrow. */}
           <div className={styles.navItemMobile}>
-          <Link className={styles.navLink} to={null} onClick={() => setIsMobileClicked(false)}>Sign in</Link>
+          <Link className={styles.navLink} to={null} onClick={() => {
+            setIsOpened(true);
+            setIsMobileClicked(false)}}
+            >Sign in</Link>
           </div>
         </div>
         }

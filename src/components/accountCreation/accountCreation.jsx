@@ -1,7 +1,7 @@
 import { Fragment, useContext } from 'react';
 import Login from '../../UI/Login/login';
 import SignUp from '../../UI/signup/signup';
-import { SignUpContext, UserContext } from '../../App';
+import { SignUpContext, UserContext } from "../../components/FinalProject/FinalProject";
 
 const AccountCreation = () => {
     const [isOpened, setIsOpened] = useContext(UserContext);
