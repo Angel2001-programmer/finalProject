@@ -2,6 +2,7 @@ import unittest
 from unittest import TestCase
 from app import create_app, db
 from config import TestConfig
+from routes import register_user
 
 class APITestCase(TestCase):
     # This function will set up our test database
@@ -22,6 +23,10 @@ class APITestCase(TestCase):
         expected = {"message":"hello"}
 
         self.assertEqual(expected, result)
+
+    
+    def test_register_user_success(self):
+        pass
 
 
     # This function will remove everything from our test database
