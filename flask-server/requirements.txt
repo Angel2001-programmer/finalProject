@@ -9,3 +9,5 @@ mysql-connector
 mysql-connector-python
 pymysql
 cryptography
+flask_jwt_extended
+flask_restx
