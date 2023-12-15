@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 import Menu from "../../assets/images/logos/menu.svg";
 import { useAuth } from "../../auth";
 import { UserContext, NewUserContext, SignUpContext, MobileNavContext } from "../../components/FinalProject/FinalProject";
-import { useContext, useState } from "react";
-import { UserContext, NewUserContext, SignUpContext, MobileNavContext } from "../../App";
 import { useContext, useState, useEffect } from "react";
 
 
