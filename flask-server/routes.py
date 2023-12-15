@@ -14,7 +14,7 @@ app = create_app(ApplicationConfig)  # Takes in a config now so can unit test wi
 
 @app.route("/")
 def home():
-    return "hello"
+    return {"message": "hello"}
 
 
 # Register
