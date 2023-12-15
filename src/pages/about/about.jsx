@@ -8,8 +8,8 @@ import Abbie from '../../assets/img/TeamMembers/abbie.jpg';
 import TeamMemeber from '../../components/TeamMember/teamMember';
 import NavBar from '../../components/NavBar/navbar';
 import DropDownMenu from '../../components/DropDownMenu/dropDownMenu';
-import { charities } from '../../constants';
 import MobileNav from '../../components/MobileNav/MobileNav';
+import Charities from '../../components/Charities/Charities';
 
 export default function About() {
 	const [isPressed, setIsPressed] = useState(false);
@@ -58,25 +58,7 @@ export default function About() {
 							description='because I enjoy leaning :)'
 						/>
 					</div>
-
-					<div>
-						<h2>Helplines</h2>
-						<p className={styles.paragraph}>
-							If you are struggling with loneliness or anything please contact
-							the following charities dont ever feel like you cant reach out
-							because there are people who will help you.
-						</p>
-
-						{charities.map((charity) => (
-							<>
-								<h3>{charity.name}</h3>
-								<p className={styles.paragraph}>{charity.desc}</p>
-								<p className={styles.paragraph}>
-									website: <a href={charity.website}>{charity.website}</a>
-								</p>
-							</>
-						))}
-					</div>
+					<Charities/>
 				</section>
 			</main>
 		</Fragment>

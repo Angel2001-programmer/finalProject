@@ -3,7 +3,7 @@ import Button from "../Button/button"
 import UserInput from "../UserInput/userInput"
 import Card from "../Card/card";
 import { useState, useContext } from "react";
-import { SignUpContext, UserContext, NewUserContext } from "../../App";
+import { SignUpContext, UserContext, NewUserContext } from "../../components/FinalProject/FinalProject";
 import httpClient from "../../httpClient";
 import { login } from "../../auth";
 

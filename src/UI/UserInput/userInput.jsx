@@ -1,6 +1,6 @@
 import styles from "./userInput.module.css"
 import { useContext, useState } from 'react'
-import { UserContext } from "../../App";
+import { UserContext } from "../../components/FinalProject/FinalProject";;
 
 const UserInput = props => {
     const [isOpened, setIsOpened]  = useContext(UserContext);

@@ -17,10 +17,15 @@ const TeamMemeber = props => {
             alt="empty profile."/>
           </div> }
           <h2>{props.name}</h2>
-          <h4 className={styles.favouriteActivity}>Favourite hobby</h4>
+          {props.description === "" && props.hobby === "" ?
+          <div></div>
+          : <div> 
+            <h4 className={styles.favouriteActivity}>Favourite hobby</h4>
             <li>{props.hobby}</li>
             <h4 className={styles.favouriteActivity}>Description</h4>
             <li>{props.description}</li>
+            </div>
+          }
       </section>
         </Fragment>
     )

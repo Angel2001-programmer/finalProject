@@ -115,10 +115,10 @@ export default function Forum() {
           click={() => forumHandler(category)}
           />
         ))}
-        </div>
+        </div> 
       </Card>
-      </div> 
-      }
+       </div>
+      } 
     </main>
     </Fragment>
   )
