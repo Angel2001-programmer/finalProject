@@ -3,7 +3,7 @@ import Button from "../../UI/Button/button";
 import profile from "../../assets/images/logos/user.png";
 import profileDropArrow from "../../assets/images/profileArrow.svg";
 import { Link } from "react-router-dom";
-import { UserContext, NewUserContext, SignUpContext, MobileNavContext } from "../../App";
+import { UserContext, NewUserContext, SignUpContext, MobileNavContext } from "../../components/FinalProject/FinalProject";
 import { useContext, useState } from "react";
 import Menu from "../../assets/images/logos/menu.svg";
 

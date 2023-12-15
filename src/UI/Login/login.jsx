@@ -3,7 +3,7 @@ import Button from "../Button/button"
 import UserInput from "../UserInput/userInput"
 import Card from "../Card/card";
 import { useContext, useState } from 'react'
-import { UserContext, SignUpContext, NewUserContext } from "../../App";
+import { UserContext, SignUpContext, NewUserContext } from "../../components/FinalProject/FinalProject";
 import httpClient from "../../httpClient";
 
 const initialValues = {
