@@ -1,14 +1,22 @@
 # This file runs the server
 from flask import current_app, jsonify, request
 from app import create_app, db, bcrypt
-from models.user_models import User, Profile
+from models.user_models import User, Profile, Message
 from models.content_models import Books, Anime, Games
 from flask_jwt_extended import create_access_token, create_refresh_token, unset_jwt_cookies, get_jwt_identity, jwt_required
-from flask_restx import Resource
+from flask_restx import Resource, fields
 from email_validator import validate_email, EmailNotValidError
 
 # Create an application instance
 app = create_app()  # By default uses application config
+
+# Model serialiser so can be displayed as a JSON
+message_model=app.model("Message", {
+    "post_id": fields.Integer,
+    "post_content": fields.String,
+    "post_category": fields.String,
+    "post_date": fields.DateTime(dt_format='rfc822')
+})
 
 # Defining routes
 
@@ -110,7 +118,15 @@ def logout_user():
 
 
 #Retrieve Posts Data
-@app.route("/messages", methods=["PUT", "GET"])
+@app.route("/forum", methods=["GET"])
+@app.marshal_list_with(message_model)
+def get_all_posts():
+    messages=Message.query.all()
+
+@app.route("/forum/<string:category>", methods=["GET"])
+def get_by_category(category):
+    pass
+
 
 
 @app.route("/refresh")

@@ -32,5 +32,8 @@ class Profile(db.Model):
 class Message(db.Model):
     __tablename__ = "message_board"
     post_id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
-    category = db.Column(db.String(50), nullable=False)
-    post_author = db.Column(db.String(30), db.ForeignKey(User.username), nullable=False)
+    post_content = db.Column(db.Text, nullable=False)
+    post_category = db.Column(db.String(50), nullable=False)
+    post_author = db.Column(db.String(30), nullable=False)
+    post_date = db.Column(db.DateTime(), default=dt.utcnow, nullable=False)
+    # post_author = db.Column(db.String(30), db.ForeignKey(User.username), nullable=False)  # Dropping the FK restraint for simplicity of demonstrating messages from mock users
