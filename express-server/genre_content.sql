@@ -1,6 +1,14 @@
 CREATE DATABASE genre_content; 
 USE genre_content;
 
+CREATE TABLE Anime ( 
+	Anime_ID INTEGER PRIMARY KEY NOT NULL,
+	Anime_Name VARCHAR(50) UNIQUE NOT NULL,
+    Anime_Genre VARCHAR(25) NOT NULL,
+	Where_TW VARCHAR(25), 
+    Anime_Script VARCHAR(1000) 
+    );
+
 CREATE TABLE Books ( 
 	Book_ID INTEGER PRIMARY KEY NOT NULL,
 	Book_Name VARCHAR(100) UNIQUE NOT NULL,
@@ -8,14 +16,6 @@ CREATE TABLE Books (
     Book_Genre VARCHAR(25) NOT NULL,
 	Price FLOAT NOT NULL, 
     Book_Script VARCHAR(1000) 
-    );
-
-CREATE TABLE Anime ( 
-	Anime_ID INTEGER PRIMARY KEY NOT NULL,
-	Anime_Name VARCHAR(50) UNIQUE NOT NULL,
-    Anime_Genre VARCHAR(25) NOT NULL,
-	Where_TW VARCHAR(25), 
-    Anime_Script VARCHAR(1000) 
     );
 
 CREATE TABLE Games ( 
@@ -74,5 +74,3 @@ VALUES
 (10, 'Two Point Hospital', 'SIMULATION', 'PC, NINTENDO SWITCH, XBOX, PLAYSTATION', 24.99, 'Design stunning hospitals, cure peculiar illnesses and manage troublesome staff as you spread your budding healthcare organisation across Two Point County.'),
 (11, 'GAME DEV TYCOON', 'SIMULATION', 'PC', 8.50, 'In Game Dev Tycoon you replay the history of the gaming industry by starting your own video game development company in the 80s. Create best selling games. Research new technologies and invent new game types. Become the leader of the market and gain worldwide fans.'),
 (12, 'NAHEULBEUKS DUNGEON MASTER', 'SIMULATION', 'PC', 20.99, 'A dungeon in danger ! Build, manage, and defend your tower in the satirical heroic fantasy universe of Dungeon of Naheulbeuk. From a shaky establishment to an infamous lair!');
-
-

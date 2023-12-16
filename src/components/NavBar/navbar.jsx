@@ -27,7 +27,6 @@ function NavBar(props) {
             <Link className={styles.link} to="/finalProject"><h3 className={styles.navItem}>Home</h3></Link>
             <Link className={styles.link} to="/recommendations"><h3 className={styles.navItem}>Recommendations</h3></Link>
             <Link className={styles.link} to="/forums"><h3 className={styles.navItem}>Forums</h3></Link>
-            <Link className={styles.link} to="/editAccount"><h3 className={styles.navItem}>Profile</h3></Link>
             <Link className={styles.link} to="/about"><h3 className={styles.navItem}>About</h3></Link>
             {/* <Link className={styles.link} to="/finalProject"><h3 className={styles.navItem} onClick={logMeOut}>Sign Out</h3></Link> */}
             <div className={styles.profileRow}>
