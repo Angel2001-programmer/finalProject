@@ -66,16 +66,12 @@ def register_user():
     db.session.add(new_profile)
     db.session.commit()  # Commit profile
 
-    # session["user_id"] = new_user.id  # Doesn't work with flask 3.0
-
+    # Creates an access and refresh token which is needed at the front end
     access_token = create_access_token(identity=new_user.username)
     refresh_token = create_refresh_token(identity=new_user.username)
     return jsonify(
         {"access_token": access_token, "refresh_token": refresh_token})
-    # return jsonify({
-    #     "user_id": new_user.user_id,
-    #     "email": new_profile.email
-    # }), 201  # Need to return status code?
+
 
 # Login
 @app.route("/login", methods=["POST"])
@@ -91,8 +87,6 @@ def login_user():
     if not bcrypt.check_password_hash(user.password, password):
         return jsonify({"error": "Unauthorised"}), 401
     
-    # session["user_id"] = user.id  # Doesn't work with flask 3.0
-    
     access_token = create_access_token(identity=user.username)
     refresh_token = create_refresh_token(identity=user.username)
     return jsonify(
@@ -106,10 +100,9 @@ def login_user():
 @app.route("/logout", methods=["POST"])
 def logout_user():
     response = jsonify({"message": "Logout successful"})
+    # Unset the JWT cookie
     unset_jwt_cookies(response)
     return response
-    # session.pop("user_id")  # This won't work currently
-    # return "200"
 
 #Retrieve User Data
 @app.route("/getUserData", methods=["GET"])
@@ -117,6 +110,7 @@ def logout_user():
 
 
 #Retrieve Posts Data
+@app.route("/messages", methods=["PUT", "GET"])
 
 
 @app.route("/refresh")
