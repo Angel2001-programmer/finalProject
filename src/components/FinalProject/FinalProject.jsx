@@ -1,6 +1,7 @@
 import { Fragment, createContext, useState } from 'react';
 import NavGraph from '../../navigation/NavGraph';
 import AccountCreation from '../../components/accountCreation/accountCreation';
+import Recommendations from '../../pages/recommendations/recommendations';
 
 export const UserContext = createContext();
 export const SignUpContext = createContext();
