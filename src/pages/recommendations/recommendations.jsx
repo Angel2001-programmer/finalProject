@@ -64,7 +64,7 @@ const Recommendations = () => {
          )}
          </Fragment>
         break;
-        case "Games":
+      case "Games":
           listComponent = <Fragment>
        {List.map((item) => 
         <div key={item.Game_ID} className={styles.Container} style={{backgroundColor: "white"}}>
@@ -82,17 +82,16 @@ const Recommendations = () => {
          </Fragment>
           break;
         default:
-          listComponent = <h3>Something went wrong please try again later!</h3>
-          break;
+          listComponent = <h3 className={styles.errorMessage}>Something went wrong please try again later!</h3>
+        break;
     }
   } catch(e){
-    listComponent = <h3>Something went wrong please try again later!</h3>
+    listComponent = <h3 className={styles.errorMessage}>Something went wrong please try again later!</h3>
   }
   
 
   useEffect(() => {
     const getAPI = async () => {
-      if(GenreTitle !== ''){
       try{
         const response = await axios.get('http://localhost:8080/get' + GenreTitle);
         setList(response.data);
@@ -101,7 +100,6 @@ const Recommendations = () => {
         setList(null);
         console.log(error)
       }
-    }
     }
     getAPI();
   }, [GenreTitle])

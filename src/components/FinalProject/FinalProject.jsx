@@ -23,9 +23,8 @@ const FinalProject = () => {
       <NewUserContext.Provider value={[newUser, setNewUser]}>
       <SignUpContext.Provider value={[isSignModal, setIsSignModal]}>
       <UserContext.Provider value={[isOpened, setIsOpened]}>
-        {/* <AccountCreation/>
-        <NavGraph/> */}
-        <Recommendations/>
+        <AccountCreation/>
+        <NavGraph/>
       </UserContext.Provider>
       </SignUpContext.Provider>
       </NewUserContext.Provider>
