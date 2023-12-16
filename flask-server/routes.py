@@ -111,6 +111,14 @@ def logout_user():
     # session.pop("user_id")  # This won't work currently
     # return "200"
 
+#Retrieve User Data
+@app.route("/getUserData", methods=["GET"])
+# def getUserData():
+
+
+#Retrieve Posts Data
+
+
 @app.route("/refresh")
 class RefreshResource(Resource):
     @jwt_required(refresh=True)
@@ -119,9 +127,6 @@ class RefreshResource(Resource):
         new_access_token = create_access_token(identity=current_user)
 
         return make_response(jsonify({"access_token": new_access_token}), 200)
-
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
