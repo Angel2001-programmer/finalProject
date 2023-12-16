@@ -19,6 +19,7 @@ export default function Forum() {
     const [isPost, setIsPost] = useState(false);
     const [title, setTitle] = useState("");
     const [isPressed, setIsPressed] = useState(false);
+    
     const list = [
       {icon: tiger, title: "Introduce Yourself"},
       {icon: anime, title: "Anime"},

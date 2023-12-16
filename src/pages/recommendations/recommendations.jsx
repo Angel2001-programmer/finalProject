@@ -105,10 +105,11 @@ const Recommendations = () => {
   }, [GenreTitle])
 
 return (
-    <div className={styles.Page}>
-      {/* <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
+    <div>
+      <NavBar isPressed={isPressed} onChangePressed={setIsPressed}/>
       <DropDownMenu isPressed={isPressed} setIsPressed={setIsPressed}/>
-      <MobileNav/> */}
+      <MobileNav/>
+    <div className={styles.Page}>
       {!isClicked?
       <div className={styles.Container}>
           {tempList.map((Genre) => 
@@ -125,6 +126,7 @@ return (
       </div>
       </Fragment>
       }  
+      </div>
       </div>
   )
 }  
