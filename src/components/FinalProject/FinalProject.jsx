@@ -12,7 +12,7 @@ export const StyleMobileNavContext = createContext();
 const FinalProject = () => {
   const [isOpened, setIsOpened] = useState(false);
   const [isSignModal, setIsSignModal] = useState(false);
-  const [newUser, setNewUser] = useState(true);
+  const [newUser, setNewUser] = useState(false);
   const [isMobileClicked, setIsMobileClicked] = useState(false);
   let style2 = null
 
