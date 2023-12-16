@@ -19,6 +19,14 @@ message_model=api.model("Message", {
     "post_date": fields.DateTime(dt_format='rfc822')
 })
 
+profile_model=api.model("Profile", {
+    "first_name": fields.String,
+    "last_name": fields.String,
+    "email": fields.String,
+    "date_of_birth": fields.DateTime(dt_format='rfc822'),
+    "interests": fields.String
+})
+
 # Defining routes
 
 # Might use this function to check emails
@@ -122,7 +130,7 @@ def logout_user():
 @api.route("/forum")
 class ForumResource(Resource):
     @api.marshal_list_with(message_model)
-    def get_all_posts():
+    def get(self):
         messages=Message.query.all()
         return messages
 
@@ -138,7 +146,14 @@ def get_by_category(category):
 #         messages=Message.query.all()
 #         return messages
 
-@app.route("/refresh")
+@api.route("/users")
+class UsersResource(Resource):
+    @api.marshal_list_with(profile_model)
+    def get(self):
+        users=Profile.query.all()
+        return users
+
+@api.route("/refresh")
 class RefreshResource(Resource):
     @jwt_required(refresh=True)
     def post(self):
