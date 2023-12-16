@@ -213,7 +213,8 @@ const SignUp = () => {
       <p>Password must be at least 8 characters</p>
       <Button 
       type="submit" 
-      text="Create an account" 
+      text="Create an account"
+      label="submitBtn"
       UIcolor="linear-gradient(#D000AF, #9000A8)"
       borderColor="purple"
       dropShadow="#AD0B9A70 5px 5px 5px"
