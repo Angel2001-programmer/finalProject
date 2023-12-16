@@ -1,6 +1,7 @@
 import { Fragment, createContext, useState } from 'react';
 import NavGraph from '../../navigation/NavGraph';
 import AccountCreation from '../../components/accountCreation/accountCreation';
+import Recommendations from '../../pages/recommendations/recommendations';
 
 export const UserContext = createContext();
 export const SignUpContext = createContext();
@@ -11,7 +12,7 @@ export const StyleMobileNavContext = createContext();
 const FinalProject = () => {
   const [isOpened, setIsOpened] = useState(false);
   const [isSignModal, setIsSignModal] = useState(false);
-  const [newUser, setNewUser] = useState(true);
+  const [newUser, setNewUser] = useState(false);
   const [isMobileClicked, setIsMobileClicked] = useState(false);
   let style2 = null
 
@@ -22,8 +23,9 @@ const FinalProject = () => {
       <NewUserContext.Provider value={[newUser, setNewUser]}>
       <SignUpContext.Provider value={[isSignModal, setIsSignModal]}>
       <UserContext.Provider value={[isOpened, setIsOpened]}>
-        <AccountCreation/>
-        <NavGraph/>
+        {/* <AccountCreation/>
+        <NavGraph/> */}
+        <Recommendations/>
       </UserContext.Provider>
       </SignUpContext.Provider>
       </NewUserContext.Provider>

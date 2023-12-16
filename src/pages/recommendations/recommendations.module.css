@@ -8,18 +8,59 @@
   align-items: center;
   height: 100vh;
   margin: 0;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.ContainerMain{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #433E8E;
+  min-width: 400px;
+  max-width: 700px;
+  max-height: 550px;
+  overflow-x: hidden;
+  padding: 20px;
+  gap: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .Container{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
         background-color: #433E8E;
+        min-width: 600px;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.photo{
+  display: flex;
+  height: 250px;
+}
+
+.rowContainer{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
 }
       
 .Message { 
     color: whitesmoke;
     text-align: center;
+}
+
+.ColumnContainer{
+  display: flex;
+  margin-left: 60px;
+  margin-right: 200px;
+  flex-direction: column;
 }
       
 .AdditionalTextBelow {
@@ -38,3 +79,23 @@
         border-radius: 5px;
         cursor: pointer;
     }
+
+    .title{
+      display: flex;
+      color: white;
+      font-size: 30px;
+    }
+
+    .topMenu{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      gap: 60px;
+      width: 600px;
+      background-color: #433E8E;
+      border-radius: 10px;
+    }
+
+    
