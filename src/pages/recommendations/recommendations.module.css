@@ -17,7 +17,8 @@
   flex-direction: column;
   align-items: center;
   background-color: #433E8E;
-  min-width: 600px;
+  min-width: 400px;
+  max-width: 700px;
   max-height: 550px;
   overflow-x: hidden;
   padding: 20px;
