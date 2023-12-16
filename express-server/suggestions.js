@@ -32,4 +32,5 @@ router.get('/:tablename/:genre', (req, res) => {
     });
 });
 
+// export default router;
 module.exports = router;
