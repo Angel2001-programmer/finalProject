@@ -4,14 +4,15 @@ from app import create_app, db, bcrypt
 from models.user_models import User, Profile, Message
 from models.content_models import Books, Anime, Games
 from flask_jwt_extended import create_access_token, create_refresh_token, unset_jwt_cookies, get_jwt_identity, jwt_required
-from flask_restx import Resource, fields
+from flask_restx import Api, Resource, fields
 from email_validator import validate_email, EmailNotValidError
 
 # Create an application instance
 app = create_app()  # By default uses application config
+api = Api(app)
 
 # Model serialiser so can be displayed as a JSON
-message_model=app.model("Message", {
+message_model=api.model("Message", {
     "post_id": fields.Integer,
     "post_content": fields.String,
     "post_category": fields.String,
@@ -117,17 +118,25 @@ def logout_user():
 # def getUserData():
 
 
-#Retrieve Posts Data
-@app.route("/forum", methods=["GET"])
-@app.marshal_list_with(message_model)
-def get_all_posts():
-    messages=Message.query.all()
+# #Retrieve Posts Data
+@api.route("/forum")
+class ForumResource(Resource):
+    @api.marshal_list_with(message_model)
+    def get_all_posts():
+        messages=Message.query.all()
+        return messages
 
 @app.route("/forum/<string:category>", methods=["GET"])
 def get_by_category(category):
     pass
 
-
+# # #Retrieve Posts Data
+# @api.route("/forum", methods=["GET"])
+# class ForumResource(Resource):
+#     @api.marshal_list_with(message_model)
+#     def get_all_posts():
+#         messages=Message.query.all()
+#         return messages
 
 @app.route("/refresh")
 class RefreshResource(Resource):
