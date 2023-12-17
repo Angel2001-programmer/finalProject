@@ -20,7 +20,7 @@ class User(db.Model):
 # Class for user profile table, columns by default to be null and added by user if they wish on edit profile page
 class Profile(db.Model):
     __tablename__ = "user_profiles"
-    user_id = db.Column(db.String(36), primary_key=True, unique=True)  # This column must have same data from User table inserted when creating a user
+    username = db.Column(db.String(30), primary_key=True, unique=True)  # Changing from user id to username
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(254), unique=True, nullable=False)
@@ -29,3 +29,11 @@ class Profile(db.Model):
     date_joined = db.Column(db.DateTime(), default=dt.utcnow)
 
 
+class Message(db.Model):
+    __tablename__ = "message_board"
+    post_id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
+    post_content = db.Column(db.Text, nullable=False)
+    post_category = db.Column(db.String(50), nullable=False)
+    post_author = db.Column(db.String(30), nullable=False)
+    post_date = db.Column(db.DateTime(), default=dt.utcnow, nullable=False)
+    # post_author = db.Column(db.String(30), db.ForeignKey(User.username), nullable=False)  # Dropping the FK restraint for simplicity of demonstrating messages from mock users

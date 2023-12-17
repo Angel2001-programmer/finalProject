@@ -3,15 +3,15 @@ USE introverse;
 
 -- Tables for user profile and accounts (can also create them from Python)
 CREATE TABLE user_profiles (
-        user_id VARCHAR(36) NOT NULL,
+        username VARCHAR(30) NOT NULL,
         first_name VARCHAR(50) NOT NULL,
         last_name VARCHAR(50) NOT NULL,
         email VARCHAR(254) NOT NULL,
         date_of_birth DATE,
         interests TEXT,
         date_joined DATETIME,
-        PRIMARY KEY (user_id),
-        UNIQUE (user_id),
+        PRIMARY KEY (username),
+        UNIQUE (username),
         UNIQUE (email)
 );
 
@@ -24,7 +24,36 @@ CREATE TABLE user_accounts (
         UNIQUE (username)
 );
 
+-- Table for forum message board
+-- Going to drop the foreign key constraint on author to prevent any errors from creating mock posts to display the messages
+CREATE TABLE message_board (
+	post_id INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+    post_content TEXT NOT NULL,
+    post_category VARCHAR(50) NOT NULL,
+	post_author VARCHAR(30) NOT NULL,
+    post_date DATETIME NOT NULL DEFAULT NOW()
+);
 
+-- Mock posts
+INSERT INTO message_board
+(post_content, post_category, post_author)
+VALUES
+("What new Anime can I watch everyone?", "Anime", "BlueMonkey"),
+("Is there a new season of FairyTail coming out?", "Anime", "MarshmellowDestroyer"),
+("Should really get around to finishing Hokuto no Ken/FoTNS already...it's bad ass...", "Anime", "BlueMonkey"),
+("Look to the 80's and 90's for anime that isn't trying to give you a stiffy. Sure, there's still women in skimpy outfits, but it's not a primary goal of the anime.", "Anime", "randomDUDEEEEEE"),
+("I'm starting Welcome to the N.H.K myself. Reading the LN to and figure I might as well do a side by side comparison.", "Anime", "BloodLord55"),
+("D.Gray man's OST is really good. Only watched the first two seasons but those two have both of some my favourite openings of all time.", "Anime", "DogWar");
+
+INSERT INTO message_board
+(post_content, post_category, post_author)
+VALUES
+("Hello I am BlueMonkey here I got the nickname from my friends a while back", "Introduce", "BlueMonkey"),
+("Sup dudes, anyone play anything then?", "Introduce", "MarshmellowDestroyer"),
+("So what are rules to these forums then?", "Introduce", "MonkeyFivesss"),
+("Just some sound dude from new york.", "Introduce", "randomDUDEEEEEE"),
+("I got a really cute puppy anyone wanna see?", "Introduce", "BloodLord55"),
+("Just here for cool community!", "Introduce", "DogWar");
 
 -- Content tables for recommendations
 CREATE TABLE Books ( 
