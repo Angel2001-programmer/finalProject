@@ -18,7 +18,7 @@ class Books(db.Model):
 # Class for Anime table
 class Anime(db.Model):
     __tablename__ = "Anime"
-    Book_ID = db.Column(db.Integer, primary_key=True, unique=True)
+    Anime_ID = db.Column(db.Integer, primary_key=True, unique=True)
     Anime_Name = db.Column(db.String(50), unique=True, nullable=False)
     Anime_Genre = db.Column(db.String(25), nullable=False)
     Where_TW = db.Column(db.String(25))
