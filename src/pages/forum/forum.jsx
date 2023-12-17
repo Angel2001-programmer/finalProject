@@ -21,6 +21,7 @@ export default function Forum() {
     const [title, setTitle] = useState("");
     const [isPressed, setIsPressed] = useState(false);
     const [posts, setPosts] = useState(null);
+    let error = '';
 
     const list = [
       {icon: introduce, title: "Introduce Yourself"},
@@ -43,17 +44,24 @@ export default function Forum() {
     setPostContent(e.target.value);
   }
 
+  if(posts.length === 0){
+    error = <div className={styles.NoPosts}>
+    <h2>No Posts Yet.</h2>
+    </div>
+
+  }
+
 	useEffect(() => {
-    try{
       const getForms = async () => {
+      try{
         const res = await axios('http://localhost:5000/forum');
         console.log(res.data);
+        setPosts(res.data);
+      } catch(e) {
+        console.log(e + ' Couldnt get api.')
       }
-      getForms();
-    } catch(e) {
-      console.log(e + ' Couldnt get api.')
     }
-		
+    getForms();
 	},[])
 
   return (
@@ -123,8 +131,8 @@ export default function Forum() {
       <Card UIcolor="#D9D9D9" 
       borderRadius="10px">
         <div className={styles.column}>
+          {error}
         {posts !== null?
-
         posts.map((category) =>
           <ForumItem 
           key={category.title}

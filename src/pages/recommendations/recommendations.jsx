@@ -13,6 +13,7 @@ const Recommendations = () => {
   const [List, setList] = useState([])
   const [isClicked, setisClicked] = useState(false)
   const [isPressed, setIsPressed] = useState(false);
+  let route = '';
 
   const formatter = new Intl.NumberFormat('en-UK', {
     style: 'currency',
@@ -32,6 +33,7 @@ const Recommendations = () => {
   try {
     switch(GenreTitle){
       case "Anime":
+        route = "anime_suggestions"
         listComponent = <Fragment>
         {List.map((item) => 
         <div key={item.Anime_ID} className={styles.Container} style={{backgroundColor: "white"}}>
@@ -48,6 +50,7 @@ const Recommendations = () => {
       </Fragment>
         break;
       case "Books":
+        route = "book_suggestions"
         listComponent = <Fragment>
        {List.map((item) => 
         <div key={item.Books_ID} className={styles.Container} style={{backgroundColor: "white"}}>
@@ -65,6 +68,8 @@ const Recommendations = () => {
          </Fragment>
         break;
       case "Games":
+        route = "games_suggestions"
+
           listComponent = <Fragment>
        {List.map((item) => 
         <div key={item.Game_ID} className={styles.Container} style={{backgroundColor: "white"}}>
@@ -88,17 +93,22 @@ const Recommendations = () => {
   } catch(e){
     listComponent = <h3 className={styles.errorMessage}>Something went wrong please try again later!</h3>
   }
+
+  if(List.length === 0){
+    listComponent = <h3 className={styles.errorMessage}>Something went wrong please try again later!</h3>
+  }
   
 
   useEffect(() => {
     const getAPI = async () => {
       try{
-        const response = await axios.get('http://localhost:5000/' + GenreTitle.toLowerCase() + "_suggestions");
+        const response = await axios.get('http://localhost:5000/' + route);
         setList(response.data);
         console.log(List);
       } catch (error) {
         setList(null);
         console.log(error)
+        listComponent = <h3 className={styles.errorMessage}>Something went wrong please try again later!</h3>
       }
     }
     getAPI();
