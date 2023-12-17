@@ -35,7 +35,7 @@ const MobileNav = () => {
           <Link className={styles.navLink} to="/forums" onClick={() => setIsMobileClicked(false)}>Forums</Link>
           </div>
           <div className={styles.navItemMobile}>
-          <Link className={styles.navLink} to="/editAccount" onClick={() => setIsMobileClicked(false)}>Profile</Link>
+          <Link className={styles.navLink} to="/profile" onClick={() => setIsMobileClicked(false)}>Profile</Link>
           </div>
           <div className={styles.navItemMobile}>
           <Link className={styles.navLink} onClick={() => {

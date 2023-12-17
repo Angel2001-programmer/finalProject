@@ -32,7 +32,7 @@ const DropDownMenu = props => {
         props.isPressed?
             <div className="dropDownMenuContainer">
               <div className="dropDownMenu">
-              <Link className='link' to="/editAccount">
+              <Link className='link' to="/profile">
                 <div className='dropMenuItem'>
                 <p>Profile</p>
                 </div></Link>

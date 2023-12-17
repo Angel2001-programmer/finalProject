@@ -12,7 +12,7 @@ const NavGraph = () => {
          <Routes>
             <Route path="/finalProject" exact element={<Home/>}/>
             <Route path="/about" element={<About/>}/>
-            <Route path="/editAccount" element={<EditAccount/>}/>
+            <Route path="/profile" element={<EditAccount/>}/>
             <Route path="/forums" element={<Forums/>}/>
             <Route path="/recommendations" element={<Recommendations/>}/>
             <Route path='*' element={<Error/>}/>
