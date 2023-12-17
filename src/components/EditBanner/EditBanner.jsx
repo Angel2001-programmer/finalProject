@@ -12,7 +12,7 @@ const EditBanner = () => {
         <div className={styles.banner}></div>
 				<div className={styles.profile}>
 					<img className={styles.profilePicture} src={profile} alt='profile.' />
-					<h4 className={styles.profileName}>{UserName}</h4>
+					<h4 className={styles.profileName}>User2</h4>
 		</div>
         </Fragment>
     )
