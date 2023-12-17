@@ -6,7 +6,8 @@
 
 .NoPosts{
 	display: flex;
-	height: 200px;
+	margin-top: 70px;
+	/* height: 200px; */
 	justify-content: center;
 	align-items: center;
 }

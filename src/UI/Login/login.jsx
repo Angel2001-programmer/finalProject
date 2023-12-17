@@ -41,6 +41,7 @@ const Login = props => {
       setIsOpened(false)
       setNewUser(true)
       setIsSignModal(false)
+      alert("Welcome you have successfully logged in.")
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)

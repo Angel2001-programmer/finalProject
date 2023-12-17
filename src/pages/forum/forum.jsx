@@ -12,6 +12,7 @@ import Button from "../../UI/Button/button";
 import { Link } from 'react-router-dom';
 import DropDownMenu from "../../components/DropDownMenu/dropDownMenu";
 import MobileNav from '../../components/MobileNav/MobileNav';
+import axios from 'axios';
 
 export default function Forum() {  
     const [isClicked, setIsClicked] = useState(false);
@@ -43,9 +44,16 @@ export default function Forum() {
   }
 
 	useEffect(() => {
-		const getUserDetails = async () => {
-			// const res = await axios.get('http://localhost:5000/getUser());
-		}
+    try{
+      const getForms = async () => {
+        const res = await axios('http://localhost:5000/forum');
+        console.log(res.data);
+      }
+      getForms();
+    } catch(e) {
+      console.log(e + ' Couldnt get api.')
+    }
+		
 	},[])
 
   return (

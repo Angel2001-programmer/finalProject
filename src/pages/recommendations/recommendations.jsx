@@ -93,7 +93,7 @@ const Recommendations = () => {
   useEffect(() => {
     const getAPI = async () => {
       try{
-        const response = await axios.get('http://localhost:8080/get' + GenreTitle);
+        const response = await axios.get('http://localhost:5000/' + GenreTitle.toLowerCase() + "_suggestions");
         setList(response.data);
         console.log(List);
       } catch (error) {
