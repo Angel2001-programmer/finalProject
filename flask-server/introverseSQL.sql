@@ -3,15 +3,15 @@ USE introverse;
 
 -- Tables for user profile and accounts (can also create them from Python)
 CREATE TABLE user_profiles (
-        user_id VARCHAR(36) NOT NULL,
+        username VARCHAR(30) NOT NULL,
         first_name VARCHAR(50) NOT NULL,
         last_name VARCHAR(50) NOT NULL,
         email VARCHAR(254) NOT NULL,
         date_of_birth DATE,
         interests TEXT,
         date_joined DATETIME,
-        PRIMARY KEY (user_id),
-        UNIQUE (user_id),
+        PRIMARY KEY (username),
+        UNIQUE (username),
         UNIQUE (email)
 );
 

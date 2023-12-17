@@ -9,13 +9,15 @@ from email_validator import validate_email, EmailNotValidError
 
 # Create an application instance
 app = create_app()  # By default uses application config
-api = Api(app)
+api = Api(app)  # Passing our app through the Api class from Flask RestX
+# api = Api(app, doc="/docs") 
 
 # Model serialiser so can be displayed as a JSON
 message_model=api.model("Message", {
     "post_id": fields.Integer,
     "post_content": fields.String,
     "post_category": fields.String,
+    "post_author": fields.String,
     "post_date": fields.DateTime(dt_format='rfc822')
 })
 
@@ -77,9 +79,9 @@ def register_user():
     # Creating an instance of User class to add to user_accounts table, user_id will use default generation
     new_user = User(username=username, password=hashed_password)
     db.session.add(new_user)
-    db.session.commit()  # Need to commit the insertion of user to then grab the same user_id it generated
+    # db.session.commit()  # Need to commit the insertion of user to then grab the same user_id it generated
     # Create an instance of the Profile class to add to user_profiles table
-    new_profile=Profile(user_id = new_user.user_id, first_name=first_name, last_name=last_name, email=email)
+    new_profile=Profile(username=username, first_name=first_name, last_name=last_name, email=email)
     db.session.add(new_profile)
     db.session.commit()  # Commit profile
 
@@ -126,26 +128,46 @@ def logout_user():
 # def getUserData():
 
 
-# #Retrieve Posts Data
+
+
+# Message board routes (get and post to any board)
 @api.route("/forum")
 class ForumResource(Resource):
+    # Get all messages, returns a list
     @api.marshal_list_with(message_model)
     def get(self):
         messages=Message.query.all()
         return messages
+    
+    # Post a message, returns a single message
+    @api.marshal_with(message_model)
+    def post(self):
+        data = request.get_json()
+        new_post = Message(
+            post_content = data.get("post_content"),
+            post_category = data.get("post_category"),
+            post_author = data.get("post_author"),
+            post_date = data.get("post_date")
+        )
 
-@app.route("/forum/<string:category>", methods=["GET"])
-def get_by_category(category):
-    pass
+        db.session.add(new_post)
+        db.session.commit()
 
-# # #Retrieve Posts Data
-# @api.route("/forum", methods=["GET"])
-# class ForumResource(Resource):
-#     @api.marshal_list_with(message_model)
-#     def get_all_posts():
-#         messages=Message.query.all()
-#         return messages
+        return new_post, 201
 
+# Message board route for filtering by category
+@api.route("/forum/<string:post_category>")
+class ForumCatResource(Resource):
+    # Get a post by category
+
+    @api.marshal_list_with(message_model)
+    def get(self, post_category):
+        category = Message.query.get_or_404(post_category)
+
+        return category
+
+
+# List of all users
 @api.route("/users")
 class UsersResource(Resource):
     @api.marshal_list_with(profile_model)
@@ -153,6 +175,16 @@ class UsersResource(Resource):
         users=Profile.query.all()
         return users
 
+
+@api.route("/current_user")
+class UserResource(Resource):
+    @api.marshal_with(profile_model)
+    def get(self, current_user):
+        user = Profile.query.filter_by(username=get_jwt_identity()).first()  # Filter by username (from the JWT token)
+        return user
+
+
+# Refresh access token, probably won't have time to implement this on the frontend though
 @api.route("/refresh")
 class RefreshResource(Resource):
     @jwt_required(refresh=True)
@@ -161,6 +193,7 @@ class RefreshResource(Resource):
         new_access_token = create_access_token(identity=current_user)
 
         return make_response(jsonify({"access_token": new_access_token}), 200)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
