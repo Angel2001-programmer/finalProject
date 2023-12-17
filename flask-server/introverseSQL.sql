@@ -1,7 +1,20 @@
+-- Run create database
 CREATE DATABASE introverse;
 USE introverse;
 
--- Tables for user profile and accounts (can also create them from Python)
+
+-- Table for forum message board, this table needs to be created in MySQL so that it can have the MySQL default method of getting the time for the example data
+-- Going to drop the foreign key constraint on author to prevent any errors from creating mock posts to display the messages
+CREATE TABLE message_board (
+	post_id INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+    post_content TEXT NOT NULL,
+    post_category VARCHAR(50) NOT NULL,
+	post_author VARCHAR(30) NOT NULL,
+    post_date DATETIME NOT NULL DEFAULT NOW()
+);
+
+
+-- Tables for user profile and accounts (can also create them from Python - recommend create from python)
 CREATE TABLE user_profiles (
         username VARCHAR(30) NOT NULL,
         first_name VARCHAR(50) NOT NULL,
@@ -24,15 +37,7 @@ CREATE TABLE user_accounts (
         UNIQUE (username)
 );
 
--- Table for forum message board
--- Going to drop the foreign key constraint on author to prevent any errors from creating mock posts to display the messages
-CREATE TABLE message_board (
-	post_id INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
-    post_content TEXT NOT NULL,
-    post_category VARCHAR(50) NOT NULL,
-	post_author VARCHAR(30) NOT NULL,
-    post_date DATETIME NOT NULL DEFAULT NOW()
-);
+
 
 -- Mock posts
 INSERT INTO message_board
@@ -133,15 +138,15 @@ VALUES
 (12, 'NAHEULBEUKS DUNGEON MASTER', 'SIMULATION', 'PC', 20.99, 'A dungeon in danger ! Build, manage, and defend your tower in the satirical heroic fantasy universe of Dungeon of Naheulbeuk. From a shaky establishment to an infamous lair!');
 
 -- Values for user tables, need to update and best not to insert directly from SQL because need to hash passwords, but keeping them here in meantime for an idea
-
-INSERT INTO Users (UserID, Username, Email, Name, DateOfBirth, Interests, Password)
-VALUES
-(1,'the_kickboxer', 'kathoop@email.com', 'Katherine Hooper', '1990-01-01', 'Gaming ', 'password1'),
-(2,'pokemon_girl', 'angel.pika@email.com', 'Angel Witchell', '2001-02-02', 'Shonen' , 'password2' ) ,
-(3,'lover_ofbooks', 'agd@email.com', 'Abbie-Gayle Daniel', '2002-03-03', 'Reading', 'password3'),
-(4, 'dog_mum', 'haiyingl@email.com', 'Haiying Liao', '2003-04-04', 'Cozy_games', 'password4'),
-(5, 'the_baroness', 'katbray@email.com', 'Katalin Bray', '1920-04-04', 'History', 'password5'),
-(6, 'friday_13', 'jimmychamp@email.com', 'Jimmy Champagne', '1970-05-05', 'Horror', 'password6'),
-(7, 'elder_scrolls', 'pewdiepie@email.com', 'Felix Kjellberg', '1995-06-06', 'Adventure', 'password7'),
-(8,'nerdrotic', 'garyb@email.com', 'Gary Brown', '1950-07-07', 'Fantasy', 'password8'),
-(9, 'critical_drinker', 'willjordan@email.com', 'Will Jordan', '1980-07-07', 'Simulation', 'password8');
+-- Just for reference of some of the users added through the website
+-- INSERT INTO Users (UserID, Username, Email, Name, DateOfBirth, Interests, Password)
+-- VALUES
+-- (1,'the_kickboxer', 'kathoop@email.com', 'Katherine Hooper', '1990-01-01', 'Gaming ', 'password1'),
+-- (2,'pokemon_girl', 'angel.pika@email.com', 'Angel Witchell', '2001-02-02', 'Shonen' , 'password2' ) ,
+-- (3,'lover_ofbooks', 'agd@email.com', 'Abbie-Gayle Daniel', '2002-03-03', 'Reading', 'password3'),
+-- (4, 'dog_mum', 'haiyingl@email.com', 'Haiying Liao', '2003-04-04', 'Cozy_games', 'password4'),
+-- (5, 'the_baroness', 'katbray@email.com', 'Katalin Bray', '1920-04-04', 'History', 'password5'),
+-- (6, 'friday_13', 'jimmychamp@email.com', 'Jimmy Champagne', '1970-05-05', 'Horror', 'password6'),
+-- (7, 'elder_scrolls', 'pewdiepie@email.com', 'Felix Kjellberg', '1995-06-06', 'Adventure', 'password7'),
+-- (8,'nerdrotic', 'garyb@email.com', 'Gary Brown', '1950-07-07', 'Fantasy', 'password8'),
+-- (9, 'critical_drinker', 'willjordan@email.com', 'Will Jordan', '1980-07-07', 'Simulation', 'password8');

@@ -180,10 +180,17 @@ class ForumCatResource(Resource):
 
     # Doesn't work think doing it wrong
     @api.marshal_list_with(message_model)
-    def get(self, post_category):
-        post_category = Message.query.get_or_404(post_category)
+    def get(self, search):
+        result = Message.query.filter_by(post_category=search).all()
 
-        return post_category
+        return result
+    
+    #     # Doesn't work think doing it wrong
+    # @api.marshal_list_with(message_model)
+    # def get(self, post_category):
+    #     search = Message.query.filter_by(post_category="{search}").all()
+
+    #     return search
 
 
 # Content api

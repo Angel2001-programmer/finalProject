@@ -20,4 +20,4 @@ class TestConfig:
     SECRET_KEY = os.environ["SECRET_KEY"]
     SQLALCHEMY_ECHO = False
     SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{USER}:{PASSWORD}@{HOST}:3306/introverse"
-    Testing=True
+    Testing=True  # No data gets actually passed into the database
