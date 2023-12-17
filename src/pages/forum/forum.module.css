@@ -6,14 +6,14 @@
     background-size: cover;
     justify-content: center;
     align-items: center;
-    height: 60vw;
-    padding-top: 10vh;
+    height: 100%;
 }
 
 .column{
     display: flex;
     flex-direction: column;
     gap: 15px;
+    max-height: 75vh;
 }
 
 .row{
@@ -52,6 +52,6 @@
 
 @media all and (min-width: 360px) {
     .main{
-        height: 100vh;
+        height: 150vh;
     }
 }

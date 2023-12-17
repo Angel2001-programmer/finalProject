@@ -18,8 +18,7 @@ li a{
 .mainText{
   font-size: 35px;
   margin: 0;
-  margin-top: 150px;
-
+  margin-top: 190px;
 }
 
 .main {
@@ -45,6 +44,13 @@ li a{
 .mainText{
   color: black;
   margin-top: 8vh;
+}
+
+.mainText2{
+  color: black;
+  margin-top: 1vh;
+  font-weight: 600;
+  font-size: 27px;
 }
 
 .card{
@@ -75,6 +81,22 @@ li a{
   text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.51);
   font-size: 20px;
   margin: 0;
+}
+
+.missionTitle{
+  margin: 0;
+  padding: 0;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.missionText{
+  display: flex;
+  max-width: 96%;
+  font-size: 18px;
+  text-align: justify;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .dropDownMenuContainer{

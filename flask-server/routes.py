@@ -148,8 +148,6 @@ def logout_user():
     unset_jwt_cookies(response)
     return response
 
-
-
 # Message board routes (get and post to any board)
 @api.route("/forum")
 class ForumResource(Resource):
@@ -174,7 +172,7 @@ class ForumResource(Resource):
         db.session.commit()
 
         return new_post, 201
-
+    
 # Message board route for filtering by category
 @api.route("/forum/<string:post_category>")
 class ForumCatResource(Resource):
