@@ -1,11 +1,12 @@
 .MobileNav{
     display: none;
 }
-@media all and (max-width: 800px){
+
+@media all and (max-width: 872px){
     .MobileNav{
         position: absolute;
         z-index: 1;
-        top: 9.1vh;
+        top: 19.1vh;
         justify-content: center;
         width: 100%;
     }

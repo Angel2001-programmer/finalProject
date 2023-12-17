@@ -5,11 +5,23 @@ from models.user_models import User, Profile
 from models.content_models import Books, Anime, Games
 from flask_jwt_extended import create_access_token, create_refresh_token, unset_jwt_cookies, get_jwt_identity, jwt_required
 from flask_restx import Resource
+# from email_validator import validate_email, EmailNotValidError
 
 # Create an application instance
-app = create_app()  # Takes in a config now so can unit test with a test config
+app = create_app()  # By default uses application config
 
 # Defining routes
+
+# Might use this function to check emails
+def check_email(email):
+    try:
+        v = validate_email(email)
+        email = v["email"]
+        return True
+    except EmailNotValidError as e:
+        print(str(e))
+        return False
+    
 
 @app.route("/")
 def home():
@@ -36,7 +48,7 @@ def register_user():
     
     # Validate input
     if len(username) < 1 or len(username) > 30:
-        return jsonify({"error": "Username is invalid"}), 400  # Not sure if should use 409 or 422 or 400 even
+        return jsonify({"error": "Username is invalid"}), 400
     if len(first_name) < 1 or len(first_name) > 50:
         return jsonify({"error": "Name is invalid"}), 400
     if len(last_name) < 1 or len(last_name) > 50:
