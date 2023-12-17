@@ -3,4 +3,4 @@ function handleDatabaseErrors(res, err, tablename, genre) {
     res.status(500).json({ error: `Error fetching ${tablename} suggestions for ${genre}` });
 }
 
-module.exports = { handleDatabaseErrors };
+module.exports = {handleDatabaseErrors} ;

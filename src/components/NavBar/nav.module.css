@@ -82,6 +82,12 @@
 .link{
     text-decoration: none;
 }
+
+.logo{
+    height: 150px;
+    border-radius: 90px;
+    margin-left: 20px;
+}
 @media all and (max-width: 900px){
     .MobileMenu{
         display: none;
@@ -96,6 +102,29 @@
 
     .navbar h1 {
         margin-left: 0;
+        font-size: 35px;
+    }
+}
+
+@media all and (max-width: 872px){
+    .MobileMenu{
+        display: block;
+    }
+
+    .menu{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 65vw;
+    }
+
+    .navItems{
+        display: none;
+        overflow-x: hidden;
+    }
+
+    .navbar h1 {
+        margin-left: 15px;
         font-size: 35px;
     }
 }

@@ -26,6 +26,9 @@ const MobileNav = () => {
           <Link className={styles.navLink} to={"/finalProject"} onClick={() => setIsMobileClicked(false)}>Home</Link>
           </div>
           <div className={styles.navItemMobile}>
+          <Link className={styles.navLink} to="/recommendations" onClick={() => setIsMobileClicked(false)}>Recommendations</Link>
+          </div>
+          <div className={styles.navItemMobile}>
           <Link className={styles.navLink} to="/about" onClick={() => setIsMobileClicked(false)}>About</Link>
           </div>
           <div className={styles.navItemMobile}>

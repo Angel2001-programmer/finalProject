@@ -9,7 +9,8 @@ const TeamMemeber = props => {
           {props.profilepictrue !== "" ? 
           <img className={styles.profileIMG} 
           src={props.profilepictrue} 
-          alt={props.name}/>
+          alt={props.name}
+          style={{height: props.height, width: props.width}}/>
           : 
           <div className={styles.profileContainer}>
             <img className={styles.profileIMG} 

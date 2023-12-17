@@ -2,7 +2,6 @@ import styles from "./Charities.module.css";
 import { charities } from '../../constants';
 import TeamMemeber from "../TeamMember/teamMember";
 import { Fragment } from "react";
-// import image from "../../assets/images/logos/bipolar.png";
 
 const Charities = () => {
     return(
@@ -17,10 +16,12 @@ const Charities = () => {
 						{charities.map((charity) => (
                             <Fragment>
                                 <TeamMemeber 
-                                //Haiying can you please have look why the images are not loading.
-                                // I am not sure if there something wrong with our imports in the TeamMember Componenet.
-                                // profilepictrue={charity.image}  
-                                hobby="" description=""/>
+								width="680px"
+                                profilepictrue={charity.image}  
+                                hobby="" 
+								description="" 
+								height="450px"
+								/>
 								<h3>{charity.name}</h3>
 								<p className={styles.paragraph}>{charity.desc}</p>
 								<p className={styles.paragraph}>
