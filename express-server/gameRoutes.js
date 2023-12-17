@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const connection = require('./db');
-const { handleDatabaseErrors } = require('./errorHandling').default;
+const  handleDatabaseErrors  = require('./errorHandling').default;
 
 router.get('/', (req, res) => {
     console.log('Fetching games from the database...');

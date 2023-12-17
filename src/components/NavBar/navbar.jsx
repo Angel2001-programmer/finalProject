@@ -3,6 +3,7 @@ import Button from "../../UI/Button/button";
 import profile from "../../assets/images/logos/user.png";
 import profileDropArrow from "../../assets/images/profileArrow.svg";
 import { Link } from "react-router-dom";
+import logo from "../../logo.png";
 
 import Menu from "../../assets/images/logos/menu.svg";
 import { useAuth } from "../../auth";
@@ -65,7 +66,7 @@ function NavBar(props) {
   return(
     <nav className={styles.navbar}>
         <div className={styles.menu}>
-        <Link className={styles.link} to="/finalProject"><h1>IntroVerse</h1></Link>
+        <Link className={styles.link} to="/finalProject"><img className={styles.logo} src={require("../../logo.png")} alt="logo"></img></Link>
         <img className={styles.MobileMenu} src={Menu} alt="dropDownMenu" onClick={() => setIsMobileClicked(!isMobileClicked)}/>
         </div>
         {logged ? <LoggedInLinks /> : <LoggedOutLinks />}

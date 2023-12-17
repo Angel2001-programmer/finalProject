@@ -1,13 +1,13 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import NavBar from '../../components/NavBar/navbar';
 import styles from "./forum.module.css";
 import Card from "../../UI/Card/card"
 import ForumItem from "../../components/ForumItem/ForumItem";
-import tiger from "../../assets/images/logos/tiger.png"
+import introduce from "../../assets/images/logos/introduce.png"
 import anime from "../../assets/images/logos/anime.png"
 import gaming from "../../assets/images/logos/joystick.png"
 import books from "../../assets/images/logos/books_3771417.png"
-import manga from "../../assets/images/logos/tiger.png"
+import manga from "../../assets/images/logos/manga.png"
 import Button from "../../UI/Button/button";
 import { Link } from 'react-router-dom';
 import DropDownMenu from "../../components/DropDownMenu/dropDownMenu";
@@ -19,9 +19,10 @@ export default function Forum() {
     const [isPost, setIsPost] = useState(false);
     const [title, setTitle] = useState("");
     const [isPressed, setIsPressed] = useState(false);
-    
+    const [posts, setPosts] = useState(null);
+
     const list = [
-      {icon: tiger, title: "Introduce Yourself"},
+      {icon: introduce, title: "Introduce Yourself"},
       {icon: anime, title: "Anime"},
       {icon: gaming, title: "Gaming"},
       {icon: books, title: "Books"},
@@ -40,6 +41,12 @@ export default function Forum() {
   const postHandler = (e) => {
     setPostContent(e.target.value);
   }
+
+	useEffect(() => {
+		const getUserDetails = async () => {
+			// const res = await axios.get('http://localhost:5000/getUser());
+		}
+	},[])
 
   return (
     <Fragment>
@@ -100,6 +107,7 @@ export default function Forum() {
         <Card UIcolor="#D9D9D9" 
         borderRadius="10px">
         <div className={styles.row}>
+          <h2 onClick={() => setIsClicked(false)}>←</h2>
           <h2>{title}</h2>  
           <h2 onClick={() => createPost()}>Create Post</h2>  
         </div>
@@ -107,15 +115,22 @@ export default function Forum() {
       <Card UIcolor="#D9D9D9" 
       borderRadius="10px">
         <div className={styles.column}>
-        {list.map((category =>
+        {posts !== null?
+
+        posts.map((category) =>
           <ForumItem 
           key={category.title}
           icon={category.icon} 
           title={category.title} 
           userName="Posted By User"
           click={() => forumHandler(category)}
-          />
-        ))}
+        />
+        )
+:
+				<div className={styles.NoPosts}>
+				<h2>No Posts Yet.</h2>
+				</div>
+				}
         </div> 
       </Card>
        </div>
