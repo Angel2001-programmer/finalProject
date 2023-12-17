@@ -1,23 +1,36 @@
 const express = require('express');
 const router = express.Router();
-const connection = require('./db');
-const { handleDatabaseErrors } = require('./errorHandling');
+const db = require('./db');
+const suggestionsData = require('./suggestionsData');
 
-router.get('/', (req, res) => {
-    console.log('Fetching games from the database...');
-    connection.query('SELECT * FROM Games', (err, results) => {
+router.get('/:genre', (req, res) => {
+    const { genre } = req.params;
+    const tablename = 'Games'; 
+    const genreColumn = `${tablename}_genre`; 
+
+    const query = `SELECT Game_Name, Game_Genre, W_Console, Price, Game_Script FROM ${tablename} WHERE ${genreColumn} = ?`;
+
+    db.query(query, [genre], (err, results) => {
         if (err) {
-            console.error('Error querying MySQL - Games: Please check your query.', err);
-            res.status(500).json({ error: 'Error querying MySQL Games' });
+            console.error(`Error fetching ${tablename} suggestions for ${genre}:`, err);
+            res.status(500).json({ error: `Error fetching ${tablename} suggestions for ${genre}` });
             return;
         }
-        if (results.length === 0) {
-            console.log('No games found in the database.');
-        } else {
-            console.log('Games fetched successfully.');
-        }
-        res.json(results);
+
+        const mergedResults = results.map(result => {
+            const matchingSuggestion = suggestionsData[tablename][genre].find(suggestion => suggestion.title === result['Game_Name']);
+
+            if (matchingSuggestion) {
+                return {
+                    ...result,
+                    image: matchingSuggestion.image
+                };
+            }
+            return result;
+        });
+
+        res.json(mergedResults);
     });
 });
 
-module.exports = { router, connection, handleDatabaseErrors };
+module.exports = router;
