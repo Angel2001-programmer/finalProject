@@ -7,12 +7,14 @@ from flask_jwt_extended import create_access_token, create_refresh_token, unset_
 from flask_restx import Api, Resource, fields
 from email_validator import validate_email, EmailNotValidError
 
+# Would separate into different namespaces but don't have time unfortunately
+
 # Create an application instance
 app = create_app()  # By default uses application config
 api = Api(app)  # Passing our app through the Api class from Flask RestX
 # api = Api(app, doc="/docs") 
 
-# Model serialiser so can be displayed as a JSON
+# Model serialiser so can be displayed as a JSON, takes in model class and then the output format
 message_model=api.model("Message", {
     "post_id": fields.Integer,
     "post_content": fields.String,
@@ -27,6 +29,32 @@ profile_model=api.model("Profile", {
     "email": fields.String,
     "date_of_birth": fields.DateTime(dt_format='rfc822'),
     "interests": fields.String
+})
+
+books_model=api.model("Books", {
+    "Book_ID": fields.Integer,
+    "Book_Name": fields.String,
+    "Book_Author": fields.String,
+    "Book_Genre": fields.String,
+    "Price": fields.Float,
+    "Book_Script": fields.String
+})
+
+anime_model=api.model("Anime", {
+    "Anime_ID": fields.Integer,
+    "Anime_Name": fields.String,
+    "Anime_Genre": fields.String,
+    "Where_TW": fields.String,
+    "Anime_Script": fields.String
+})
+
+games_model=api.model("Games", {
+    "Game_ID": fields.Integer,
+    "Game_Name": fields.String,
+    "Game_Genre": fields.String,
+    "W_Console": fields.String,
+    "Price": fields.Float,
+    "Game_Script": fields.String
 })
 
 # Defining routes
@@ -110,9 +138,6 @@ def login_user():
     refresh_token = create_refresh_token(identity=user.username)
     return jsonify(
         {"access_token": access_token, "refresh_token": refresh_token})
-    # return jsonify({
-    #     "username": user.username
-    # }), 201  # Need to return status code? Change this jsonify later
 
 
 # Logout
@@ -123,11 +148,6 @@ def logout_user():
     unset_jwt_cookies(response)
     return response
 
-#Retrieve User Data
-@app.route("/getUserData", methods=["GET"])
-# def getUserData():
-
-
 
 
 # Message board routes (get and post to any board)
@@ -136,7 +156,7 @@ class ForumResource(Resource):
     # Get all messages, returns a list
     @api.marshal_list_with(message_model)
     def get(self):
-        messages=Message.query.all()
+        messages = Message.query.all()
         return messages
     
     # Post a message, returns a single message
@@ -160,11 +180,47 @@ class ForumResource(Resource):
 class ForumCatResource(Resource):
     # Get a post by category
 
+    # Doesn't work think doing it wrong
     @api.marshal_list_with(message_model)
     def get(self, post_category):
-        category = Message.query.get_or_404(post_category)
+        post_category = Message.query.get_or_404(post_category)
 
-        return category
+        return post_category
+
+
+# Content api
+# Books    
+@api.route("/book_suggestions")
+class BooksResource(Resource):
+    # Book suggestions
+
+    @api.marshal_list_with(books_model)
+    def get(self):
+        books = Books.query.all()
+        return books
+    
+
+# Content api
+# Anime    
+@api.route("/anime_suggestions")
+class AnimeResource(Resource):
+    # Anime suggestions
+
+    @api.marshal_list_with(anime_model)
+    def get(self):
+        anime = Anime.query.all()
+        return anime
+    
+# Content api
+# Games
+@api.route("/games_suggestions")
+class GamesResource(Resource):
+    # Game suggestions
+
+    @api.marshal_list_with(games_model)
+    def get(self):
+        games = Games.query.all()
+        return games
 
 
 # List of all users
@@ -179,9 +235,10 @@ class UsersResource(Resource):
 @api.route("/current_user")
 class UserResource(Resource):
     @api.marshal_with(profile_model)
+    @jwt_required
     def get(self, current_user):
-        user = Profile.query.filter_by(username=get_jwt_identity()).first()  # Filter by username (from the JWT token)
-        return user
+        current_user = Profile.query.filter_by(username=get_jwt_identity()).first()  # Filter by username (from the JWT token)
+        return current_user
 
 
 # Refresh access token, probably won't have time to implement this on the frontend though
