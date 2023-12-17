@@ -34,7 +34,7 @@ const DropDownMenu = props => {
               <div className="dropDownMenu">
               <Link className='link' to="/editAccount">
                 <div className='dropMenuItem'>
-                <p>EditAccount</p>
+                <p>Profile</p>
                 </div></Link>
                 <div className='dropMenuItem' onClick={() => {
                   setNewUser(false);

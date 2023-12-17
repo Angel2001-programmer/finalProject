@@ -22,6 +22,11 @@ export default function About() {
 			<main className='main'>
 				<section className={styles.content}>
 					<p className='mainText'>About</p>
+					<h2 className='missionTitle'>Our Mission</h2>
+					<p className='missionText'>At Introverse, we are dedicated to nurturing the mental well-being of introverts who cherish the worlds of anime, gaming and literature. We understand that finding a community where you can truly belong and express your passions can be a transformative experience. Our mission is to create an inviting digital haven where introverts can connect, share, and engage in meaningful conversations about anime, games and reading.
+We strive to offer a platform that resonates with the unique needs and preferences of our audience, providing a space that feels like home. Here, every voice is valued, every interest is celebrated, and every individual is encouraged to embrace their love for anime, literature and gaming. Our commitment extends beyond creating a community; it's about fostering an environment where introverts can flourish, find like-minded friends, and feel empowered to explore their passions without any reservations.
+In this journey, we are not just building a website; we are crafting a sanctuary where the beauty of solitude meets the warmth of togetherness, all centred around the shared love for anime, games and books.</p>
+					<p className='mainText2'>The Team!</p>
 					<div className={styles.about}>
 						<TeamMemeber
 							name='Angel'

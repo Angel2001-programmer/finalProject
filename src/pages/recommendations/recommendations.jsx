@@ -94,11 +94,6 @@ const Recommendations = () => {
     listComponent = <h3 className={styles.errorMessage}>Something went wrong please try again later!</h3>
   }
 
-  if(List.length === 0){
-    listComponent = <h3 className={styles.errorMessage}>Something went wrong please try again later!</h3>
-  }
-  
-
   useEffect(() => {
     const getAPI = async () => {
       try{

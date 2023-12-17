@@ -3,7 +3,7 @@ import Button from "../Button/button"
 import UserInput from "../UserInput/userInput"
 import Card from "../Card/card";
 import { useContext, useState } from 'react'
-import { UserContext, SignUpContext, NewUserContext } from "../../components/FinalProject/FinalProject";
+import { UserContext, SignUpContext, NewUserContext, UserNameContext } from "../../components/FinalProject/FinalProject";
 import httpClient from "../../httpClient";
 import { login } from "../../auth";
 
@@ -16,6 +16,7 @@ const Login = props => {
   const [isOpened, setIsOpened]  = useContext(UserContext);
   const [isSignModal, setIsSignModal] = useContext(SignUpContext);
   const [newUser, setNewUser] = useContext(NewUserContext);
+  const [userName, setUserName] = useContext(UserNameContext);
 
   // This is just a test to see if login works with data.
   const [userData, setUserData] = useState(initialValues);
@@ -52,7 +53,6 @@ const Login = props => {
         }
       }
     })
-
   };
 
 
@@ -73,6 +73,8 @@ const Login = props => {
           // setIsSignModal(false)
           loginUser()
           console.log('Login successful');
+          setUserName(userData.userName)
+
       }
   }
 

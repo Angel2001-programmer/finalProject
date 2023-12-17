@@ -12,21 +12,32 @@ import Button from "../../UI/Button/button";
 import { Link } from 'react-router-dom';
 import DropDownMenu from "../../components/DropDownMenu/dropDownMenu";
 import MobileNav from '../../components/MobileNav/MobileNav';
+import httpClient from '../../httpClient';
+// import api from "../../jsonAPI/posts.json";
+import API from '../../httpClient';
 import axios from 'axios';
+import { create } from 'react-test-renderer';
 
 export default function Forum() {  
     const [isClicked, setIsClicked] = useState(false);
     const [postContent, setPostContent] = useState("");
     const [isPost, setIsPost] = useState(false);
     const [title, setTitle] = useState("");
+    const [loaded, setIsLoaded] = useState(false);
+    const [newPost, setIsNewPost] = useState();
     const [isPressed, setIsPressed] = useState(false);
-    const [posts, setPosts] = useState(null);
+    const [posts, setPosts] = useState("");
+    const [filteredposts, setfilteredposts] = useState([]);
+    const currDate = new Date().toISOString().slice(0, 10);
+    let postID = null;
+
     let error = '';
+    let APIres = [];
 
     const list = [
-      {icon: introduce, title: "Introduce Yourself"},
+      {icon: introduce, title: "Introduce"},
       {icon: anime, title: "Anime"},
-      {icon: gaming, title: "Gaming"},
+      {icon: gaming, title: "Games"},
       {icon: books, title: "Books"},
       {icon: manga, title: "Manga"}
     ]
@@ -34,35 +45,82 @@ export default function Forum() {
     const forumHandler = (category) => {
       setTitle(category.title)
       setIsClicked(true)
+      console.log("Clicked");
+      console.log(category)
+      filterArray(category.title);
     }
 
+    const submitPost = async () => {
+      httpClient({
+        method: "POST",
+        url: "http://127.0.0.1:5000/forum",
+        data: {
+          post_id: Number(postID + 1),
+          post_content: postContent,
+          post_category: title,
+          post_author: "User2",
+          post_date: currDate
+        }
+      })
+      .then((response) => {
+        console.log(response)
+        setIsNewPost(!newPost)
+        setfilteredposts([...filteredposts, response])
+        filterArray(title);
+        console.log(filteredposts)
+        alert('Post Added!, \n please refresh browser.')
+      }).catch((error) => {
+        if (error.response) {
+          console.log(error.response)
+          console.log(error.response.status)
+          console.log(error.response.headers)
+          setIsNewPost(false)
+          if (error.response.status === 401) {
+            alert("Invalid Post");
+          }
+        }
+      })
+    }
+
+    console.log(posts)
+  
+  // Post request needs to be implemented
   const createPost = () => {
-      setIsPost(true);
-  }
+    setIsPost(true);
+  };
 
   const postHandler = (e) => {
     setPostContent(e.target.value);
   }
-
-  if(posts.length === 0){
-    error = <div className={styles.NoPosts}>
-    <h2>No Posts Yet.</h2>
-    </div>
-
-  }
+  
 
 	useEffect(() => {
+      console.log(newPost);
+      console.log(posts);
       const getForms = async () => {
-      try{
-        const res = await axios('http://localhost:5000/forum');
-        console.log(res.data);
-        setPosts(res.data);
-      } catch(e) {
-        console.log(e + ' Couldnt get api.')
-      }
+        const res = await axios.get("http://localhost:5000/forum")
+        .then(res => { 
+          APIres = res.data
+          setPosts(res.data)  
+          if (res.data.post_id < postID){
+            filterArray(title)
+          }  
+        })
+        .catch(err => {
+          setPosts(null);
+          console.log(err);
+          error = <h2>No Posts Yet.</h2>});
     }
     getForms();
-	},[])
+	},[newPost])
+
+  const filterArray = (category) => {
+    console.log(category);
+    postID = (posts[posts.length - 1].post_id);
+    let filterList = posts.filter((list) => list.post_category === category)
+    setfilteredposts(filterList);
+    console.log(posts);
+  }
 
   return (
     <Fragment>
@@ -88,7 +146,14 @@ export default function Forum() {
       borderColor="purple"
       dropShadow="5px 5px 5px #D000AF80"
       text="Submit Post"
-      click={() => setIsPost(false)}/>
+      click={(e) => {
+        setIsPost(false) 
+        submitPost()
+        setPostContent("")
+        setIsNewPost(true)  
+        filterArray(title)
+        // setTitle("")
+      }}/>
       </div>
       </div>
     </Card>
@@ -113,7 +178,9 @@ export default function Forum() {
             key={category.title}
             icon={category.icon} 
             title={category.title} 
-            click={() => forumHandler(category)}
+            click={() => {
+              forumHandler(category)
+            }}
             />
           ))}
           </div>
@@ -123,26 +190,32 @@ export default function Forum() {
         <Card UIcolor="#D9D9D9" 
         borderRadius="10px">
         <div className={styles.row}>
-          <h2 onClick={() => setIsClicked(false)}>←</h2>
+          <h2 onClick={() => {
+          setIsClicked(false)
+          setPosts(posts)
+          setTitle("")
+          }}>←</h2>
           <h2>{title}</h2>  
-          <h2 onClick={() => createPost()}>Create Post</h2>  
+          <h2 onClick={() => {
+            createPost()
+          }}>Create Post</h2>  
         </div>
       </Card>
       <Card UIcolor="#D9D9D9" 
-      borderRadius="10px">
+      borderRadius="10px"
+      overflowY = "scroll"
+      >
         <div className={styles.column}>
           {error}
         {posts !== null?
-        posts.map((category) =>
+        filteredposts.map((category) =>
           <ForumItem 
-          key={category.title}
-          icon={category.icon} 
-          title={category.title} 
-          userName="Posted By User"
-          click={() => forumHandler(category)}
+          key={category.post_id}
+          icon=""
+          title={category.post_content} 
+          userName={category.post_author}
         />
-        )
-:
+        ):
 				<div className={styles.NoPosts}>
 				<h2>No Posts Yet.</h2>
 				</div>
