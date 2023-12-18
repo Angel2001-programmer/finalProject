@@ -17,7 +17,6 @@ Follow the following steps to get frontend of application running in your termin
 ```
 
 ## Backend
-To use this application you need to do **cd my-app** then **npm install** and then **npm start** to run the project.
 ## To set up and run the server
 1. Install the required packages with pip
 ```
