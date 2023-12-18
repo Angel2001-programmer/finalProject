@@ -1,5 +1,5 @@
 ## Description
-This web application is purely bulit to help prevent loneliness around teens and older and connect them to people they can speak to, this website also offers resources on where to get help if you require it. We achieve this by creating a community where anyone can posts anything on there minds.
+This web application is purely bulit to help prevent loneliness around teens and older also, connect them to people they can speak to, this website also offers resources on where to get help if you require it. We achieve this by creating a community where anyone can posts anything on there minds.
 
 # Frontend
 Follow the following steps to get frontend of application running in your terminal;
