@@ -1,8 +1,8 @@
 import './App.css';
-import NavGraph from './navigation/NavGraph';
+import FinalProject from "./components/FinalProject/FinalProject";
 function App() {
-  return (
-      <NavGraph/>
+  return (   
+      <FinalProject/>
   );
 }
 
